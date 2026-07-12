@@ -92,20 +92,30 @@ export default function DonatePage() {
     <div className="min-h-screen bg-white">
 
       {/* Hero */}
-      <section className="pt-36 pb-20 bg-gradient-to-br from-primary-500 via-teal-deep to-primary-700 relative overflow-hidden noise-overlay">
+      <section className="pt-36 pb-20 lg:pt-44 lg:pb-28 bg-gradient-to-br from-primary-500 via-teal-deep to-primary-700 relative overflow-hidden noise-overlay">
         <div className="absolute -top-20 right-0 w-96 h-96 bg-seafoam-300/10 rounded-full blur-3xl animate-float" />
         <div className="absolute bottom-0 -left-20 w-80 h-80 bg-white/5 rounded-full blur-3xl animate-float-alt" />
-        <div className="container-x relative text-center">
-          <ScrollReveal animation="fade-up">
+        <div className="container-x relative grid lg:grid-cols-2 gap-12 items-center text-left">
+          <ScrollReveal animation="fade-right">
             <span className="section-eyebrow text-seafoam-300">Donate & Support</span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mt-4">
               Your support saves lives<br />
               <span className="gradient-text-seafoam">across Africa</span>
             </h1>
-            <p className="mt-6 text-seafoam-100 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-6 text-seafoam-100 text-lg max-w-xl leading-relaxed">
               Every contribution to Doctors360 directly funds free community clinics, health worker training,
               emergency care, and life-saving medicines for the most vulnerable.
             </p>
+          </ScrollReveal>
+          <ScrollReveal animation="scale-up" delay={200} className="relative hidden lg:block">
+            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl aspect-[4/3] max-w-lg ml-auto border border-white/10">
+              <img
+                src="/images/donate-impact.png"
+                alt="African child smiling with doctor"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-900/20 to-transparent" />
+            </div>
           </ScrollReveal>
         </div>
       </section>

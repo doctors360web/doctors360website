@@ -71,10 +71,10 @@ export default function Hero() {
               <div className="flex items-center gap-2.5">
                 <div className="flex -space-x-2.5">
                   {[
-                    'https://images.pexels.com/photos/5997988/pexels-photo-5997988.jpeg?auto=compress&cs=tinysrgb&w=80',
-                    'https://images.pexels.com/photos/5997987/pexels-photo-5997987.jpeg?auto=compress&cs=tinysrgb&w=80',
-                    'https://images.pexels.com/photos/5997996/pexels-photo-5997996.jpeg?auto=compress&cs=tinysrgb&w=80',
-                    'https://images.pexels.com/photos/5997991/pexels-photo-5997991.jpeg?auto=compress&cs=tinysrgb&w=80',
+                    '/images/avatar-1.jpg',
+                    '/images/avatar-2.jpg',
+                    '/images/avatar-3.jpg',
+                    '/images/avatar-4.jpg',
                   ].map((src, i) => (
                     <img
                       key={i}
@@ -118,7 +118,7 @@ export default function Hero() {
         <ScrollReveal animation="scale-up" delay={200} className="relative">
           <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/5] max-w-md mx-auto">
             <img
-              src="https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=900"
+              src="/images/hero-test.png"
               alt="Doctor consulting with patient"
               loading="lazy"
               className="w-full h-full object-cover"

@@ -39,7 +39,7 @@ export default function About() {
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-3xl overflow-hidden shadow-xl aspect-[3/4] group">
                 <img
-                  src="https://images.pexels.com/photos/5215028/pexels-photo-5215028.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src="/images/about-clinical.png"
                   alt="Medical team"
                   loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -47,7 +47,7 @@ export default function About() {
               </div>
               <div className="rounded-3xl overflow-hidden shadow-xl aspect-[3/4] mt-8 group">
                 <img
-                  src="https://images.pexels.com/photos/4225920/pexels-photo-4225920.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src="/images/about-community.png"
                   alt="Patient care"
                   loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"

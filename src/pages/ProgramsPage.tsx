@@ -10,7 +10,7 @@ const programs = [
     description:
       'Every month, Doctors360 teams travel to remote and underserved villages across South Sudan to provide free consultations, basic screenings, vaccinations, and essential medications. These mobile clinics serve thousands of patients who cannot access formal healthcare facilities.',
     impact: ['12,000+ patients reached annually', 'Active in 6 counties', 'Malaria, TB, and maternal health focus'],
-    image: 'https://images.pexels.com/photos/6234610/pexels-photo-6234610.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/programs-1.jpg',
   },
   {
     icon: BookOpen,
@@ -19,7 +19,7 @@ const programs = [
     description:
       'Our health promotion team runs structured awareness campaigns in schools, churches, and community centres. Topics include maternal and child health, nutrition, disease prevention, hygiene, and mental health. All materials are adapted to local languages and cultural contexts.',
     impact: ['30+ schools reached', '5 local languages', '50,000+ leaflets distributed in 2024'],
-    image: 'https://images.pexels.com/photos/8942991/pexels-photo-8942991.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/programs-2.jpg',
   },
   {
     icon: Users,
@@ -28,7 +28,7 @@ const programs = [
     description:
       'We recruit, train, and equip community health workers (CHWs) with the skills to deliver basic healthcare services, identify referral cases, and educate their communities. Trained CHWs become long-term change agents in their local areas.',
     impact: ['200+ CHWs trained to date', '3-month structured curriculum', 'Ongoing mentorship & supervision'],
-    image: 'https://images.pexels.com/photos/7579831/pexels-photo-7579831.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/programs-3.jpg',
   },
   {
     icon: Globe,
@@ -37,7 +37,7 @@ const programs = [
     description:
       'Doctors360 works alongside international NGOs, government health ministries, UN agencies, and private sector partners to amplify impact. Our collaborative model ensures we leverage every resource to serve more people more effectively.',
     impact: ['8 active partnerships', 'WHO & UNICEF-aligned programs', 'Ministry of Health collaboration'],
-    image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/programs-4.jpg',
   },
 ];
 

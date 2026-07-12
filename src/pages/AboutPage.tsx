@@ -5,25 +5,25 @@ const leadership = [
   {
     name: 'Dr. Emmanuel Lado',
     title: 'Founder & Executive Director',
-    image: 'https://images.pexels.com/photos/5452268/pexels-photo-5452268.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: '/images/leader-1.jpg',
     bio: 'A visionary physician with over 15 years of experience in Africa\'s healthcare sector. Dr. Lado founded Doctors360 with a belief that quality healthcare must be both accessible and ethical.',
   },
   {
     name: 'Dr. Amina Wek',
     title: 'Medical Director',
-    image: 'https://images.pexels.com/photos/5214958/pexels-photo-5214958.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: '/images/leader-2.jpg',
     bio: 'Specialist in internal medicine and public health, Dr. Wek oversees all clinical operations and ensures the highest standards of patient-centred care across every department.',
   },
   {
     name: 'James Deng',
     title: 'Director of Operations',
-    image: 'https://images.pexels.com/photos/5452201/pexels-photo-5452201.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: '/images/leader-3.jpg',
     bio: 'With a background in healthcare management and NGO operations, James leads the administrative, logistics, and community outreach functions of the organisation.',
   },
   {
     name: 'Grace Akol',
     title: 'Director of Programs & Partnerships',
-    image: 'https://images.pexels.com/photos/5214949/pexels-photo-5214949.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: '/images/leader-4.jpg',
     bio: 'Grace brings over a decade of experience in health program design across East Africa. She leads all NGO initiatives, donor relations, and strategic partnerships.',
   },
 ];

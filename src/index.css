@@ -150,7 +150,5 @@
 ::-webkit-scrollbar-thumb { background: #90CDBA; border-radius: 99px; }
 ::-webkit-scrollbar-thumb:hover { background: #4B858E; }
 
-/* ── Image fade-in ────────────────────────────────────────── */
+/* ── Image fade-in (disabled due to missing JS class toggler) ──────────────── */
 img { transition: opacity 0.4s ease; }
-img[loading] { opacity: 0; }
-img.loaded  { opacity: 1; }
