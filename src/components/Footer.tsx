@@ -1,17 +1,36 @@
+import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail, Send } from 'lucide-react';
 
 const linkGroups = [
   {
-    title: 'Services',
-    links: ['General Medicine', 'Emergency Care', 'Cardiology', 'Pediatrics', 'Obstetrics & Gynecology'],
+    title: 'Medical Services',
+    links: [
+      { label: 'General Medicine', href: '/#departments' },
+      { label: 'Emergency Care', href: '/#departments' },
+      { label: 'Cardiology', href: '/#departments' },
+      { label: 'Pediatrics', href: '/#departments' },
+      { label: 'Obstetrics & Gynecology', href: '/#departments' },
+    ],
   },
   {
-    title: 'Company',
-    links: ['About Us', 'Our Doctors', 'Careers', 'News & Blog', 'Privacy Policy'],
+    title: 'Organisation',
+    links: [
+      { label: 'About Us', href: '/about' },
+      { label: 'NGO Programs', href: '/programs' },
+      { label: 'News & Blog', href: '/news' },
+      { label: 'Gallery', href: '/gallery' },
+      { label: 'Donate & Support', href: '/donate' },
+    ],
   },
   {
     title: 'Patients',
-    links: ['Book Appointment', 'Patient Portal', 'Pharmacy', 'FAQs', 'Emergency'],
+    links: [
+      { label: 'Book Appointment', href: '/#contact' },
+      { label: 'Pharmacy', href: '/#departments' },
+      { label: 'FAQs', href: '/#contact' },
+      { label: 'Emergency', href: '/#contact' },
+      { label: 'Privacy Policy', href: '#' },
+    ],
   },
 ];
 
@@ -38,8 +57,8 @@ export default function Footer() {
               </span>
             </a>
             <p className="mt-4 text-seafoam-100 text-sm leading-relaxed max-w-xs">
-              Comprehensive, compassionate healthcare for every stage of life.
-              Your health, covered from every angle.
+              Integrated medical services and community health programs —
+              serving patients and communities across Africa since 2019.
             </p>
             <div className="mt-6 space-y-2.5">
               <p className="flex items-center gap-2 text-sm text-seafoam-100">
@@ -60,10 +79,16 @@ export default function Footer() {
               <h4 className="font-semibold text-seafoam-300 mb-4">{g.title}</h4>
               <ul className="space-y-2.5">
                 {g.links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="text-sm text-seafoam-100 hover-underline hover:text-white transition-colors">
-                      {l}
-                    </a>
+                  <li key={l.label}>
+                    {l.href.startsWith('/') && !l.href.startsWith('/#') ? (
+                      <Link to={l.href} className="text-sm text-seafoam-100 hover-underline hover:text-white transition-colors">
+                        {l.label}
+                      </Link>
+                    ) : (
+                      <a href={l.href} className="text-sm text-seafoam-100 hover-underline hover:text-white transition-colors">
+                        {l.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

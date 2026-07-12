@@ -1,85 +1,131 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Phone, CalendarCheck } from 'lucide-react';
+import { Menu, X, Phone, CalendarCheck, ChevronDown } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
-const links = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Departments', href: '#departments' },
-  { label: 'Testimonials', href: '#testimonials' },
-  { label: 'Contact', href: '#contact' },
+// Top-level page navigation
+const pageLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
+  {
+    label: 'Programs',
+    href: '/programs',
+    children: [
+      { label: 'Community Outreach', href: '/programs' },
+      { label: 'Health Promotion', href: '/programs' },
+      { label: 'CHW Training', href: '/programs' },
+      { label: 'Partnerships', href: '/programs' },
+    ],
+  },
+  { label: 'News & Blog', href: '/news' },
+  { label: 'Gallery', href: '/gallery' },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState('#home');
+  const [dropdown, setDropdown] = useState<string | null>(null);
+  const { pathname } = useLocation();
+  const isHome = pathname === '/';
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 24);
-      const sections = document.querySelectorAll('section[id]');
-      sections.forEach((s) => {
-        const rect = s.getBoundingClientRect();
-        if (rect.top <= 120 && rect.bottom >= 120) setActive(`#${s.id}`);
-      });
-    };
+    const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Close dropdown on outside click
+  useEffect(() => {
+    const close = () => setDropdown(null);
+    document.addEventListener('click', close);
+    return () => document.removeEventListener('click', close);
+  }, []);
+
+  const navBg = scrolled || !isHome
+    ? 'bg-white/95 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,59,74,0.08)] py-2.5'
+    : 'bg-transparent py-4';
+
+  const textColor = !scrolled && isHome ? 'text-primary-500' : 'text-primary-500';
+
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-white/85 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,59,74,0.08)] py-2.5'
-          : 'bg-transparent py-4'
-      }`}
-    >
+    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${navBg}`}>
       <nav className="container-x flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-2.5 group">
+
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
           <span className="relative flex items-center justify-center w-11 h-11 group-hover:scale-105 transition-transform duration-300">
             <img src="/doctors360logo1nobg.png" alt="Doctors360" className="w-11 h-11 object-contain" />
           </span>
           <span>
-            <span className="block text-xl font-bold text-primary-500 tracking-tight leading-tight">
+            <span className={`block text-xl font-bold tracking-tight leading-tight ${textColor}`}>
               Doctors<span className="text-teal-deep">360</span>
             </span>
             <span className="block text-[9px] text-slate-400 tracking-[0.14em] uppercase">Integrated medical services</span>
           </span>
-        </a>
+        </Link>
 
-        <ul className="hidden lg:flex items-center gap-1">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
-                  active === l.href
-                    ? 'text-teal-deep bg-seafoam-50'
-                    : 'text-primary-500 hover:text-teal-deep hover:bg-seafoam-50/50'
-                }`}
-              >
-                {l.label}
-              </a>
+        {/* Desktop nav */}
+        <ul className="hidden lg:flex items-center gap-0.5">
+          {pageLinks.map((l) => (
+            <li key={l.href} className="relative">
+              {l.children ? (
+                <>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setDropdown(dropdown === l.href ? null : l.href); }}
+                    className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                      pathname.startsWith(l.href) ? 'text-teal-deep bg-seafoam-50' : `${textColor} hover:text-teal-deep hover:bg-seafoam-50/50`
+                    }`}
+                  >
+                    {l.label}
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform ${dropdown === l.href ? 'rotate-180' : ''}`} />
+                  </button>
+                  {dropdown === l.href && (
+                    <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-2xl shadow-2xl border border-seafoam-50 py-2 z-50" onClick={(e) => e.stopPropagation()}>
+                      {l.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          to={child.href}
+                          onClick={() => setDropdown(null)}
+                          className="block px-4 py-2.5 text-sm text-primary-500 hover:text-teal-deep hover:bg-seafoam-50 transition-colors"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <Link
+                  to={l.href}
+                  className={`relative px-3 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                    pathname === l.href ? 'text-teal-deep bg-seafoam-50' : `${textColor} hover:text-teal-deep hover:bg-seafoam-50/50`
+                  }`}
+                >
+                  {l.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
 
-        <div className="hidden lg:flex items-center gap-3">
+        {/* Desktop CTA */}
+        <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
           <a
-            href="tel:+18005550199"
-            className="flex items-center gap-2 text-sm font-medium text-primary-500 hover:text-teal-deep transition-colors px-3 py-2 rounded-full hover:bg-seafoam-50"
+            href="tel:+211927702808"
+            className={`flex items-center gap-2 text-sm font-medium transition-colors px-3 py-2 rounded-full hover:bg-seafoam-50 ${textColor} hover:text-teal-deep`}
           >
             <Phone className="w-4 h-4" />
-            (800) 555-0199
+            +211 927 702 808
           </a>
-          <a href="#contact" className="btn-primary text-sm">
+          <Link to="/donate" className="btn-secondary text-sm whitespace-nowrap">
+            Donate
+          </Link>
+          <a href="/#contact" className="btn-primary text-sm whitespace-nowrap">
             <CalendarCheck className="w-4 h-4" />
             Book Appointment
           </a>
         </div>
 
+        {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
           className="lg:hidden flex items-center justify-center w-10 h-10 rounded-xl bg-seafoam-50 text-primary-500"
@@ -90,24 +136,24 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile menu */}
-      <div className={`lg:hidden overflow-hidden transition-all duration-500 ${open ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+      <div className={`lg:hidden overflow-hidden transition-all duration-500 ${open ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="container-x pt-4 pb-6">
           <ul className="flex flex-col gap-1 bg-white rounded-2xl shadow-lg p-3 border border-seafoam-100">
-            {links.map((l) => (
+            {pageLinks.map((l) => (
               <li key={l.href}>
-                <a
-                  href={l.href}
-                  onClick={() => setOpen(false)}
+                <Link to={l.href} onClick={() => setOpen(false)}
                   className={`block px-4 py-3 rounded-xl text-base font-medium transition-colors ${
-                    active === l.href ? 'bg-seafoam-50 text-teal-deep' : 'text-primary-500 hover:bg-seafoam-50'
-                  }`}
-                >
+                    pathname === l.href ? 'bg-seafoam-50 text-teal-deep' : 'text-primary-500 hover:bg-seafoam-50'
+                  }`}>
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
-            <li className="pt-2">
-              <a href="#contact" onClick={() => setOpen(false)} className="btn-primary w-full">
+            <li className="pt-2 space-y-2">
+              <Link to="/donate" onClick={() => setOpen(false)} className="btn-secondary w-full">
+                Donate to Doctors360
+              </Link>
+              <a href="/#contact" onClick={() => setOpen(false)} className="btn-primary w-full">
                 <CalendarCheck className="w-4 h-4" />
                 Book Appointment
               </a>
