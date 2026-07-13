@@ -45,14 +45,17 @@ export default function Footer() {
         <div className="grid lg:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="#home" className="flex flex-col items-start group">
-              <img 
-                src="/doctors360logo2nobg.png" 
-                alt="Doctors360" 
-                className="h-10 w-auto object-contain brightness-0 invert group-hover:scale-[1.01] transition-transform duration-300" 
-              />
-              <span className="block text-[8.5px] text-seafoam-100 tracking-[0.04em] uppercase mt-1.5 whitespace-nowrap">
-                The Choice of a healthy nation
+            <a href="#home" className="flex items-center gap-2.5 group">
+              <span className="relative flex items-center justify-center w-11 h-11 group-hover:scale-105 transition-transform duration-300">
+                <img src="/doctors360logo1nobg.png" alt="Doctors360" className="w-11 h-11 object-contain brightness-0 invert" />
+              </span>
+              <span className="flex flex-col items-start">
+                <span className="block text-xl font-bold tracking-tight">
+                  Doctors<span className="text-seafoam-300">360</span>
+                </span>
+                <span className="block text-[8.5px] text-seafoam-100 tracking-[0.02em] uppercase leading-[1.2] max-w-[110px] mt-0.5 whitespace-normal">
+                  The Choice of a healthy nation
+                </span>
               </span>
             </a>
             <p className="mt-4 text-seafoam-100 text-sm leading-relaxed max-w-xs">
