@@ -51,15 +51,14 @@ export default function Navbar() {
       <nav className="container-x flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
-          <span className="relative flex items-center justify-center w-11 h-11 group-hover:scale-105 transition-transform duration-300">
-            <img src="/doctors360logo1nobg.png" alt="Doctors360" className="w-11 h-11 object-contain" />
-          </span>
-          <span>
-            <span className={`block text-xl font-bold tracking-tight leading-tight ${textColor}`}>
-              Doctors<span className="text-teal-deep">360</span>
-            </span>
-            <span className="block text-[9px] text-slate-400 tracking-[0.14em] uppercase">The Choice of a healthy nation</span>
+        <Link to="/" className="flex flex-col items-start group flex-shrink-0">
+          <img 
+            src="/doctors360logo2nobg.png" 
+            alt="Doctors360" 
+            className="h-10 w-auto object-contain group-hover:scale-[1.01] transition-transform duration-300" 
+          />
+          <span className="block text-[8.5px] text-slate-400 tracking-[0.04em] uppercase mt-0.5 whitespace-nowrap">
+            The Choice of a healthy nation
           </span>
         </Link>
 
