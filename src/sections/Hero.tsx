@@ -153,7 +153,7 @@ export default function Hero() {
         <ScrollReveal animation="scale-up" delay={200} className="relative">
           <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/5] max-w-md mx-auto">
             <img
-              src="/images/hero-test.png"
+              src="/images/hero image Doctors360.png"
               alt="Doctor consulting with patient"
               loading="lazy"
               className="w-full h-full object-cover"
