@@ -65,9 +65,9 @@ export default function Footer() {
                 alt="Doctors360" 
                 className="w-10 h-10 object-contain brightness-0 invert group-hover:scale-105 transition-transform duration-300" 
               />
-              <div className="h-9 w-[1.5px] bg-white/20" />
+              <div className="h-10 w-[1.5px] bg-white/20" />
               <div className="flex flex-col justify-center leading-none">
-                <span className="text-[22px] font-bold tracking-tight text-white">
+                <span className="text-[22px] font-bold tracking-[0.22em] text-white whitespace-nowrap">
                   Doctors<span className="text-seafoam-300">360</span>
                 </span>
                 <span className="text-[7.5px] text-seafoam-100 tracking-[0.115em] uppercase mt-0.5 whitespace-nowrap">
