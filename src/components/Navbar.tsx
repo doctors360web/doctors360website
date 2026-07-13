@@ -51,15 +51,21 @@ export default function Navbar() {
       <nav className="container-x flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="flex flex-col justify-center items-end group flex-shrink-0">
+        <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
           <img 
-            src="/doctors360logo2nobgnomc-Photoroom.png" 
+            src="/doctors360logo1nobg.png" 
             alt="Doctors360" 
-            className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300" 
+            className="w-10 h-10 object-contain group-hover:scale-105 transition-transform duration-300" 
           />
-          <span className="text-[5.5px] text-slate-400 tracking-[0.1em] uppercase mt-0.5 whitespace-nowrap">
-            THE CHOICE OF A HEALTHY NATION
-          </span>
+          <div className="h-9 w-[1.5px] bg-slate-300" />
+          <div className="flex flex-col justify-center leading-none">
+            <span className="text-[22px] font-bold tracking-tight text-primary-500">
+              Doctors<span className="text-teal-deep">360</span>
+            </span>
+            <span className="text-[7.5px] text-slate-400 tracking-[0.115em] uppercase mt-0.5 whitespace-nowrap">
+              THE CHOICE OF A HEALTHY NATION
+            </span>
+          </div>
         </Link>
 
         {/* Desktop nav */}
