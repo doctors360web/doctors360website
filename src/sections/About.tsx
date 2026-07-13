@@ -37,26 +37,26 @@ export default function About() {
         <ScrollReveal animation="fade-right">
           <div className="relative">
             <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-3xl overflow-hidden shadow-xl aspect-[3/4] group">
+              <div className="rounded-3xl overflow-hidden shadow-xl group flex bg-slate-50">
                 <img
-                  src="/images/about-clinical.png"
+                  src="/images/about clinical doctors360.jpeg"
                   alt="Medical team"
                   loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
-              <div className="rounded-3xl overflow-hidden shadow-xl aspect-[3/4] mt-8 group">
+              <div className="rounded-3xl overflow-hidden shadow-xl mt-8 group flex bg-slate-50">
                 <img
-                  src="/images/about-community.png"
+                  src="/images/about community doctors360.png"
                   alt="Patient care"
                   loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-auto object-contain scale-[1.25] group-hover:scale-[1.3] transition-transform duration-700"
                 />
               </div>
             </div>
 
             {/* Stat badge */}
-            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-br from-primary-500 to-teal-deep text-white rounded-2xl shadow-2xl px-8 py-5 text-center">
+            <div className="relative mt-8 mx-auto w-max md:absolute md:-bottom-6 md:left-1/2 md:-translate-x-1/2 md:mt-0 bg-gradient-to-br from-primary-500 to-teal-deep text-white rounded-2xl shadow-2xl px-8 py-5 text-center z-10">
               <p className="text-3xl font-bold">7+</p>
               <p className="text-xs text-seafoam-100 uppercase tracking-wider mt-0.5">Years of Care</p>
             </div>
@@ -81,17 +81,13 @@ export default function About() {
 
           <ScrollReveal animation="fade-up" delay={100}>
             <p className="mt-5 text-lg text-slate-brand leading-relaxed">
-              Founded in 2019, Doctors360 began with a simple belief: healthcare should wrap around
-              the patient — covering prevention, diagnosis, treatment, and follow-up, both digitally
-              and physically across Africa.
+              Doctors360 was founded in 2019 in Juba, South Sudan, out of a conviction that no one should be denied quality care because of where they live. We set out to build a model of healthcare that wraps around the patient — prevention, diagnosis, treatment, and follow-up — reaching people both digitally and in person.
             </p>
           </ScrollReveal>
 
           <ScrollReveal animation="fade-up" delay={200}>
             <p className="mt-4 text-slate-brand leading-relaxed">
-              We are an integrated medical services provider — bringing together trusted professionals
-              and innovative digital solutions so that quality, ethical, patient-centred care is
-              accessible to all.
+              What began as a small effort in Juba has since grown into Uganda, as we work alongside trusted healthcare professionals and communities to close gaps in access. Every service we provide is guided by one purpose: making ethical, patient-centred care available to those who need it most, regardless of ability to pay or distance from a clinic.
             </p>
           </ScrollReveal>
 
