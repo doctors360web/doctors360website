@@ -59,13 +59,13 @@ export default function Footer() {
         <div className="grid lg:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="#home" className="flex flex-col justify-center items-start group">
+            <a href="#home" className="flex flex-col justify-center items-end group">
               <img 
                 src="/doctors360logo2nobgnomc-Photoroom.png" 
                 alt="Doctors360" 
-                className="h-10 w-auto object-contain brightness-0 invert group-hover:scale-105 transition-transform duration-300" 
+                className="h-12 w-auto object-contain brightness-0 invert group-hover:scale-105 transition-transform duration-300" 
               />
-              <span className="text-[6.5px] text-seafoam-100 tracking-[0.08em] uppercase mt-0.5 whitespace-nowrap ml-[3.5rem]">
+              <span className="text-[5.5px] text-seafoam-100 tracking-[0.1em] uppercase mt-0.5 whitespace-nowrap">
                 THE CHOICE OF A HEALTHY NATION
               </span>
             </a>
