@@ -59,7 +59,7 @@ export default function Navbar() {
             <span className={`block text-xl font-bold tracking-tight leading-none ${textColor}`}>
               Doctors<span className="text-teal-deep">360</span>
             </span>
-            <span className="block text-[8.5px] text-slate-400 tracking-[0.02em] uppercase leading-[1.2] max-w-[110px] mt-0.5 whitespace-normal text-right w-full">
+            <span className="block text-[8.5px] text-slate-400 tracking-[0.02em] uppercase leading-[1.2] max-w-[110px] mt-0.5 whitespace-normal text-right w-full pr-[6px]">
               The Choice of a healthy nation
             </span>
           </span>
