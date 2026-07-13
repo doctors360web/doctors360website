@@ -48,9 +48,8 @@ export default function Hero() {
 
           <ScrollReveal animation="fade-up" delay={200}>
             <p className="mt-6 text-lg text-slate-brand max-w-xl leading-relaxed">
-              doctors360 brings together world-class physicians, modern diagnostics, and a
-              personalized care plan — all under one roof. From prevention to recovery, we're
-              with you at every degree.
+              A nonprofit clinic bringing world-class care to communities that need it most
+              — from prevention to recovery.
             </p>
           </ScrollReveal>
 
