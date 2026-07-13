@@ -52,8 +52,8 @@ export default function WhyChooseUs() {
                   <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-seafoam-300 text-primary-500 mb-4 mx-auto sm:mx-0 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
                     <f.icon className="w-6 h-6" />
                   </span>
-                  <h3 className="text-lg font-semibold text-white">{f.title}</h3>
-                  <p className="mt-2 text-sm text-seafoam-100 leading-relaxed">{f.text}</p>
+                  <h3 className="text-lg font-semibold text-white text-center sm:text-left">{f.title}</h3>
+                  <p className="mt-2 text-sm text-seafoam-100 leading-relaxed text-center sm:text-left">{f.text}</p>
                 </div>
               </ScrollReveal>
             ))}

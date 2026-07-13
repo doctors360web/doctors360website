@@ -67,22 +67,24 @@ export default function Services() {
                   <span className={`flex items-center justify-center w-14 h-14 rounded-2xl ${s.iconBg} mb-5 mx-auto sm:mx-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500`}>
                     <s.icon className="w-7 h-7" />
                   </span>
-                  <h3 className="text-xl font-semibold text-primary-500">{s.title}</h3>
-                  <p className="mt-2 text-sm text-slate-brand leading-relaxed">{s.text}</p>
-                  <ul className="mt-5 space-y-2.5">
+                   <h3 className="text-xl font-semibold text-primary-500 text-center sm:text-left">{s.title}</h3>
+                  <p className="mt-2 text-sm text-slate-brand leading-relaxed text-center sm:text-left">{s.text}</p>
+                  <ul className="mt-5 space-y-2.5 flex flex-col items-center sm:items-start">
                     {s.points.map((p) => (
-                      <li key={p} className="flex items-center gap-2 text-sm text-primary-500">
+                      <li key={p} className="flex items-center gap-2 text-sm text-primary-500 justify-center sm:justify-start">
                         <span className={`w-1.5 h-1.5 rounded-full ${s.dot}`} />
                         {p}
                       </li>
                     ))}
                   </ul>
-                  <a
-                    href="#contact"
-                    className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-teal-deep hover:gap-2 transition-all duration-300"
-                  >
-                    Learn more <ArrowRight className="w-4 h-4" />
-                  </a>
+                  <div className="flex justify-center sm:justify-start">
+                    <a
+                      href="#contact"
+                      className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-teal-deep hover:gap-2 transition-all duration-300"
+                    >
+                      Learn more <ArrowRight className="w-4 h-4" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
