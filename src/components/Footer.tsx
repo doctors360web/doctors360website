@@ -53,7 +53,7 @@ export default function Footer() {
                 <span className="block text-xl font-bold tracking-tight">
                   Doctors<span className="text-seafoam-300">360</span>
                 </span>
-                <span className="block text-[8.5px] text-seafoam-100 tracking-[0.02em] uppercase leading-[1.2] max-w-[110px] mt-0.5 whitespace-normal">
+                <span className="block text-[8.5px] text-seafoam-100 tracking-[0.02em] uppercase leading-[1.2] max-w-[110px] mt-0.5 whitespace-normal text-right w-full">
                   The Choice of a healthy nation
                 </span>
               </span>
