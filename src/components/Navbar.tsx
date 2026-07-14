@@ -6,16 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 const pageLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
-  {
-    label: 'Programs',
-    href: '/programs',
-    children: [
-      { label: 'Community Outreach', href: '/programs#outreach' },
-      { label: 'Health Promotion', href: '/programs#education' },
-      { label: 'CHW Training', href: '/programs#training' },
-      { label: 'Partnerships', href: '/programs#partners' },
-    ],
-  },
+  { label: 'Programs', href: '/programs' },
   { label: 'News & Blog', href: '/news' },
   { label: 'Gallery', href: '/gallery' },
 ];

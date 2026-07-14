@@ -3,28 +3,22 @@ import ScrollReveal from '../components/ScrollReveal';
 
 const leadership = [
   {
-    name: 'Dr. Emmanuel Lado',
-    title: 'Founder & Executive Director',
-    image: '/images/leader-1.jpg',
-    bio: 'A visionary physician with over 15 years of experience in Africa\'s healthcare sector. Dr. Lado founded Doctors360 with a belief that quality healthcare must be both accessible and ethical.',
+    name: 'Tenywa Daniel',
+    title: 'Founder & Team Lead',
+    image: '/images/Tenywa Daniel, Founder & Team Lead, Doctors360.jpeg',
+    bio: 'Daniel founded Doctors360 in 2019 in Juba, South Sudan, to make quality healthcare accessible regardless of location. He now leads the organization\'s growth across South Sudan and Uganda, building partnerships that expand access to care.',
   },
   {
-    name: 'Dr. Amina Wek',
-    title: 'Medical Director',
-    image: '/images/leader-2.jpg',
-    bio: 'Specialist in internal medicine and public health, Dr. Wek oversees all clinical operations and ensures the highest standards of patient-centred care across every department.',
+    name: 'Funankya Joseph',
+    title: 'Co-Founder & Medical Director',
+    image: '/images/Funankya Joseph, Co-Founder & Medical Director.jpeg',
+    bio: 'Joseph co-founded Doctors360 and oversees the clinical quality of care across all operations. He ensures every service — from diagnosis to follow-up — meets the highest ethical and medical standards.',
   },
   {
-    name: 'James Deng',
-    title: 'Director of Operations',
-    image: '/images/leader-3.jpg',
-    bio: 'With a background in healthcare management and NGO operations, James leads the administrative, logistics, and community outreach functions of the organisation.',
-  },
-  {
-    name: 'Grace Akol',
-    title: 'Director of Programs & Partnerships',
-    image: '/images/leader-4.jpg',
-    bio: 'Grace brings over a decade of experience in health program design across East Africa. She leads all NGO initiatives, donor relations, and strategic partnerships.',
+    name: 'Niinsima Cathy',
+    title: 'Partnerships & Programs Director',
+    image: '/images/Niinsima Cathy, Partnerships & Programs Director, Doctors360.jpeg',
+    bio: 'Cathy leads Doctors360\'s efforts to build partnerships with donors, governments, and communities across South Sudan and Uganda. She oversees program execution, translating the organization\'s mission into real, measurable impact.',
   },
 ];
 
@@ -90,6 +84,14 @@ export default function AboutPage() {
               committed to making quality, ethical, patient-centred healthcare accessible
               to all — digitally and physically, across Africa.
             </p>
+            <div className="mt-12 md:mt-16 w-full max-w-4xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10">
+              <img 
+                src="/images/team%20doctors360.jpeg" 
+                alt="Doctors360 Team" 
+                className="w-full h-auto block hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-900/60 via-transparent to-transparent"></div>
+            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -143,22 +145,22 @@ export default function AboutPage() {
             </p>
           </ScrollReveal>
 
-          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {leadership.map((person, i) => (
               <ScrollReveal key={person.name} animation="fade-up" delay={i * 100}>
-                <div className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-seafoam-50 hover:shadow-xl hover:-translate-y-1 transition-all duration-400">
-                  <div className="aspect-[4/3] overflow-hidden">
+                <div className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-seafoam-50 hover:shadow-xl hover:-translate-y-1 transition-all duration-400 h-full flex flex-col">
+                  <div className="aspect-[3/4] overflow-hidden bg-slate-50">
                     <img
                       src={person.image}
                       alt={person.name}
                       loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
-                  <div className="p-6">
+                  <div className="p-6 flex-1 flex flex-col">
                     <h3 className="font-bold text-primary-500">{person.name}</h3>
                     <p className="text-xs text-teal-deep font-medium uppercase tracking-wider mt-0.5">{person.title}</p>
-                    <p className="mt-3 text-sm text-slate-brand leading-relaxed">{person.bio}</p>
+                    <p className="mt-3 text-sm text-slate-brand leading-relaxed whitespace-pre-line">{person.bio}</p>
                   </div>
                 </div>
               </ScrollReveal>
