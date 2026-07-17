@@ -1,6 +1,7 @@
 import { Loader, Edit2, Trash2, X, AlertCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
+import { logActivity } from '../../lib/logger';
 import { dbService, GalleryImage } from '../../services/dbService';
 import { Plus, Pencil, Trash, XLg, Upload, ArrowClockwise, ExclamationCircle } from 'react-bootstrap-icons';
 
@@ -115,11 +116,13 @@ export default function ManageGallery() {
           .update(payload)
           .eq('id', editingId);
         if (error) throw error;
+        logActivity('UPDATE', 'GALLERY', `Updated gallery photo: ${title}`);
       } else {
         const { error } = await supabase
           .from('gallery_images')
           .insert([payload]);
         if (error) throw error;
+        logActivity('UPLOAD', 'GALLERY', `Added photo to gallery: ${title}`);
       }
       setModalOpen(false);
       fetchGallery();
@@ -137,6 +140,7 @@ export default function ManageGallery() {
         .delete()
         .eq('id', id);
       if (error) throw error;
+      logActivity('DELETE', 'GALLERY', `Deleted photo from gallery: ${title}`);
       fetchGallery();
     } catch (err: any) {
       console.error('Delete failed:', err);

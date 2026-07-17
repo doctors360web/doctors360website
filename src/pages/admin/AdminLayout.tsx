@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link, Routes, Route, useLocation } from 'react-router-dom';
 import { supabase } from '../../lib/supabaseClient';
 import { FileText, People, Globe, Image, Calendar, BoxArrowRight, List, XLg, Speedometer2, ArrowClockwise } from 'react-bootstrap-icons';
-import { Loader, LayoutDashboard, Users, X, Menu, LogOut } from 'lucide-react';
+import { Loader, LayoutDashboard, Users, X, Menu, LogOut, User, UserPlus, Activity } from 'lucide-react';
 
 import AdminDashboard from './AdminDashboard';
 import ManageNews from './ManageNews';
@@ -10,6 +10,9 @@ import ManageTestimonials from './ManageTestimonials';
 import ManagePrograms from './ManagePrograms';
 import ManageGallery from './ManageGallery';
 import ViewSubmissions from './ViewSubmissions';
+import Profile from './Profile';
+import AddUser from './AddUser';
+import ActivityLogs from './ActivityLogs';
 
 export default function AdminLayout() {
   const [session, setSession] = useState<any>(null);
@@ -63,6 +66,9 @@ export default function AdminLayout() {
     { name: 'NGO Programs', path: '/admin/programs', icon: Globe },
     { name: 'Gallery', path: '/admin/gallery', icon: Image },
     { name: 'Submissions', path: '/admin/submissions', icon: Calendar },
+    { name: 'Activity Logs', path: '/admin/activity-logs', icon: Activity },
+    { name: 'Profile', path: '/admin/profile', icon: User },
+    { name: 'Add User', path: '/admin/add-user', icon: UserPlus },
   ];
 
   return (
@@ -150,6 +156,9 @@ export default function AdminLayout() {
           <Route path="/programs" element={<ManagePrograms />} />
           <Route path="/gallery" element={<ManageGallery />} />
           <Route path="/submissions" element={<ViewSubmissions />} />
+          <Route path="/activity-logs" element={<ActivityLogs />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/add-user" element={<AddUser />} />
         </Routes>
       </main>
     </div>

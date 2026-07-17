@@ -1,6 +1,7 @@
 import { Loader, Edit2, Trash2, X, AlertCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
+import { logActivity } from '../../lib/logger';
 import { dbService, Testimonial } from '../../services/dbService';
 import { Plus, Pencil, Trash, XLg, Upload, ArrowClockwise, Star, ExclamationCircle } from 'react-bootstrap-icons';
 
@@ -116,11 +117,13 @@ export default function ManageTestimonials() {
           .update(payload)
           .eq('id', editingId);
         if (error) throw error;
+        logActivity('UPDATE', 'TESTIMONIALS', `Updated testimonial: ${name}`);
       } else {
         const { error } = await supabase
           .from('testimonials')
           .insert([payload]);
         if (error) throw error;
+        logActivity('CREATE', 'TESTIMONIALS', `Added testimonial: ${name}`);
       }
       setModalOpen(false);
       fetchTestimonials();
@@ -138,6 +141,7 @@ export default function ManageTestimonials() {
         .delete()
         .eq('id', id);
       if (error) throw error;
+      logActivity('DELETE', 'TESTIMONIALS', `Deleted testimonial: ${name}`);
       fetchTestimonials();
     } catch (err: any) {
       console.error('Delete failed:', err);

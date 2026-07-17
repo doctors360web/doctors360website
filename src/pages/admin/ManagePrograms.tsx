@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
+import { logActivity } from '../../lib/logger';
 import { dbService, Program } from '../../services/dbService';
 import { Plus, Pencil, Trash, XLg, Upload, ArrowClockwise, ExclamationCircle, QuestionCircle } from 'react-bootstrap-icons';
 import { Loader, HelpCircle, Edit2, Trash2, X, AlertCircle, Globe, HeartHandshake, BookOpen, Users, Flame, Home } from 'lucide-react';
@@ -143,11 +144,13 @@ export default function ManagePrograms() {
           .update(payload)
           .eq('id', editingId);
         if (error) throw error;
+        logActivity('UPDATE', 'PROGRAMS', `Updated program: ${title}`);
       } else {
         const { error } = await supabase
           .from('programs')
           .insert([payload]);
         if (error) throw error;
+        logActivity('CREATE', 'PROGRAMS', `Created new program: ${title}`);
       }
       setModalOpen(false);
       fetchPrograms();
@@ -165,6 +168,7 @@ export default function ManagePrograms() {
         .delete()
         .eq('id', id);
       if (error) throw error;
+      logActivity('DELETE', 'PROGRAMS', `Deleted program: ${title}`);
       fetchPrograms();
     } catch (err: any) {
       console.error('Delete failed:', err);

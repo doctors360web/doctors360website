@@ -1,6 +1,7 @@
 import { AlertCircle, Loader, Edit2, Trash2, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
+import { logActivity } from '../../lib/logger';
 import { dbService, Article } from '../../services/dbService';
 import { Plus, Pencil, Trash, XLg, Upload, ArrowClockwise, Calendar, Eye, Search, ExclamationCircle } from 'react-bootstrap-icons';
 
@@ -157,11 +158,13 @@ export default function ManageNews() {
           .update(payload)
           .eq('id', editingId);
         if (error) throw error;
+        logActivity('UPDATE', 'NEWS', `Updated news article: ${title}`);
       } else {
         const { error } = await supabase
           .from('news_blogs')
           .insert([payload]);
         if (error) throw error;
+        logActivity('CREATE', 'NEWS', `Created new article: ${title}`);
       }
       setModalOpen(false);
       fetchBlogs();
@@ -179,6 +182,7 @@ export default function ManageNews() {
         .delete()
         .eq('id', id);
       if (error) throw error;
+      logActivity('DELETE', 'NEWS', `Deleted article: ${title}`);
       fetchBlogs();
     } catch (err: any) {
       console.error('Delete failed:', err);
