@@ -1,7 +1,7 @@
-import { X } from 'lucide-react';
+import { X, ZoomIn } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import ScrollReveal from '../components/ScrollReveal';
-import { XLg, ZoomIn } from 'react-bootstrap-icons';
+
 import { dbService, GalleryImage } from '../services/dbService';
 
 export default function GalleryPage() {

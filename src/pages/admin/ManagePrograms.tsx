@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 import { logActivity } from '../../lib/logger';
 import { dbService, Program } from '../../services/dbService';
-import { Plus, Pencil, Trash, XLg, Upload, ArrowClockwise, ExclamationCircle, QuestionCircle } from 'react-bootstrap-icons';
-import { Loader, HelpCircle, Edit2, Trash2, X, AlertCircle, Globe, HeartHandshake, BookOpen, Users, Flame, Home } from 'lucide-react';
+
+import { Loader, HelpCircle, Edit2, Trash2, X, AlertCircle, Globe, HeartHandshake, BookOpen, Users, Flame, Home, Plus, Upload } from 'lucide-react';
 
 const iconMap: Record<string, any> = {
   Globe,

@@ -1,5 +1,4 @@
-import { Stethoscope, Ambulance, Baby, BrainCog, Bone, Syringe, Brain, Microscope, Pill, FlaskConical } from 'lucide-react';
-import { Heart, Lightning, Activity, Person, Eye, Gear, HeartPulse, Eyedropper, ArrowRight, Truck, Cup, Search, Capsule } from 'react-bootstrap-icons';
+import { Stethoscope, Ambulance, Baby, BrainCog, Bone, Syringe, Brain, Microscope, Pill, FlaskConical, Heart, Eye, ArrowRight } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 
 const departments = [
@@ -44,14 +43,7 @@ export default function Departments() {
                 </div>
                 
                 <h3 className="text-xl font-bold text-primary-500 mb-3 group-hover:text-teal-deep transition-colors">{d.name}</h3>
-                <p className="text-sm text-slate-brand leading-relaxed mb-6 flex-grow">{d.desc}</p>
-                
-                <div className="flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
-                  <span className="text-xs font-bold text-teal-deep uppercase tracking-wider bg-seafoam-50 px-3 py-1 rounded-full group-hover:bg-teal-50 transition-colors">
-                    {d.doctors} Specialists
-                  </span>
-                  <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-teal-deep group-hover:translate-x-1 transition-all" />
-                </div>
+                <p className="text-sm text-slate-brand leading-relaxed flex-grow">{d.desc}</p>
               </div>
             </ScrollReveal>
           ))}

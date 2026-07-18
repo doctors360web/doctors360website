@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import { useState, useRef } from 'react';
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { logActivity } from '../../lib/logger';
 import { UserPlus, Save, Loader, AlertCircle, CheckCircle2 } from 'lucide-react';
 
@@ -12,22 +12,27 @@ function sanitize(value: string): string {
 const supabaseUrl = sanitize(import.meta.env.VITE_SUPABASE_URL || '');
 const supabaseAnonKey = sanitize(import.meta.env.VITE_SUPABASE_ANON_KEY || '');
 
-// Create a secondary client that doesn't persist the session
-// This prevents logging out the current admin when creating a new user.
-const secondarySupabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    persistSession: false,
-    autoRefreshToken: false,
-    detectSessionInUrl: false
-  }
-});
-
 export default function AddUser() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const clientRef = useRef<SupabaseClient | null>(null);
+
+  const getClient = () => {
+    if (!clientRef.current) {
+      clientRef.current = createClient(supabaseUrl, supabaseAnonKey, {
+        auth: {
+          persistSession: false,
+          autoRefreshToken: false,
+          detectSessionInUrl: false,
+          storageKey: 'supabase.auth.token.secondary'
+        }
+      });
+    }
+    return clientRef.current;
+  };
 
   const handleCreateUser = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,7 +46,7 @@ export default function AddUser() {
 
     setLoading(true);
 
-    const { data, error } = await secondarySupabase.auth.signUp({
+    const { error } = await getClient().auth.signUp({
       email,
       password,
     });

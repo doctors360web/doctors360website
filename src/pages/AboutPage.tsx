@@ -1,5 +1,5 @@
-import { Bullseye, Shield, Book, Globe, Award, ChevronRight } from 'react-bootstrap-icons';
-import { BookOpen, Target } from 'lucide-react';
+
+import { BookOpen, Target, Shield, Globe, Award, ChevronRight } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 
 const leadership = [
@@ -72,7 +72,6 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="pt-36 pb-20 bg-gradient-to-br from-primary-500 via-teal-deep to-primary-700 relative overflow-hidden noise-overlay">
         <div className="absolute -top-20 -right-20 w-96 h-96 bg-seafoam-300/10 rounded-full blur-3xl " />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-white rounded-full blur-3xl -alt" />
         <div className="container-x relative text-center">
           <ScrollReveal animation="fade-up">
             <span className="section-eyebrow text-seafoam-300">About Doctors360</span>

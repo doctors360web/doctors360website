@@ -1,9 +1,9 @@
-import { Loader, Edit2, Trash2, X, AlertCircle } from 'lucide-react';
+import { Loader, Edit2, Trash2, X, AlertCircle, Plus, Upload, Star } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 import { logActivity } from '../../lib/logger';
 import { dbService, Testimonial } from '../../services/dbService';
-import { Plus, Pencil, Trash, XLg, Upload, ArrowClockwise, Star, ExclamationCircle } from 'react-bootstrap-icons';
+
 
 export default function ManageTestimonials() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);

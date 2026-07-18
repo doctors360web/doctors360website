@@ -1,5 +1,4 @@
-import { Bullseye, Eye, Heart, Shield, Wifi, People, Flower1 } from 'react-bootstrap-icons';
-import { Target, HeartHandshake, Sprout, Users } from 'lucide-react';
+import { Target, HeartHandshake, Users, Eye, Shield, Smartphone, Zap } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 
 const pillars = [
@@ -21,11 +20,11 @@ const pillars = [
 ];
 
 const values = [
-  { icon: Shield, label: 'Trust & Integrity' },
-  { icon: Wifi, label: 'Accessibility & Convenience' },
-  { icon: Sprout, label: 'Innovation & Technology' },
-  { icon: HeartHandshake, label: 'Patient-Centered Care' },
-  { icon: Users, label: 'Community & National Health' },
+  { icon: Shield, label: 'Trust & Integrity', color: 'text-blue-600', bg: 'bg-blue-100', hoverBg: 'group-hover:bg-blue-500', hoverText: 'group-hover:text-white', border: 'hover:border-blue-200' },
+  { icon: Smartphone, label: 'Accessibility & Convenience', color: 'text-emerald-600', bg: 'bg-emerald-100', hoverBg: 'group-hover:bg-emerald-500', hoverText: 'group-hover:text-white', border: 'hover:border-emerald-200' },
+  { icon: Zap, label: 'Innovation & Technology', color: 'text-amber-500', bg: 'bg-amber-100', hoverBg: 'group-hover:bg-amber-500', hoverText: 'group-hover:text-white', border: 'hover:border-amber-200' },
+  { icon: HeartHandshake, label: 'Patient-Centered Care', color: 'text-rose-500', bg: 'bg-rose-100', hoverBg: 'group-hover:bg-rose-500', hoverText: 'group-hover:text-white', border: 'hover:border-rose-200' },
+  { icon: Users, label: 'Community & National Health', color: 'text-purple-600', bg: 'bg-purple-100', hoverBg: 'group-hover:bg-purple-500', hoverText: 'group-hover:text-white', border: 'hover:border-purple-200' },
 ];
 
 export default function About() {

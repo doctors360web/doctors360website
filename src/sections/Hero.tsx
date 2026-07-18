@@ -1,5 +1,5 @@
-import { ShieldCheck, HeartPulse, CalendarCheck, Star, People, GeoAlt, Heart, Calendar3 } from 'react-bootstrap-icons';
-import { Users, MapPin, CalendarDays } from 'lucide-react';
+
+import { Users, MapPin, CalendarDays, ShieldCheck, HeartPulse, CalendarCheck, Heart } from 'lucide-react';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import ScrollReveal from '../components/ScrollReveal';
 

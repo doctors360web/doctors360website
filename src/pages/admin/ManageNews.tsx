@@ -1,9 +1,9 @@
-import { AlertCircle, Loader, Edit2, Trash2, X } from 'lucide-react';
+import { AlertCircle, Loader, Edit2, Trash2, X, Plus, Upload, Calendar, Eye, Search } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 import { logActivity } from '../../lib/logger';
 import { dbService, Article } from '../../services/dbService';
-import { Plus, Pencil, Trash, XLg, Upload, ArrowClockwise, Calendar, Eye, Search, ExclamationCircle } from 'react-bootstrap-icons';
+
 
 export default function ManageNews() {
   const [blogs, setBlogs] = useState<Article[]>([]);

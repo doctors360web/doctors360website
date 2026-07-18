@@ -1,5 +1,5 @@
-import { Microscope, Stethoscope } from 'lucide-react';
-import { ShieldPlus, Search, HeartPulse, ClipboardCheck, ArrowRight } from 'react-bootstrap-icons';
+import { Microscope, Stethoscope, ShieldPlus, ClipboardCheck, ArrowRight } from 'lucide-react';
+
 import ScrollReveal from '../components/ScrollReveal';
 
 const services = [

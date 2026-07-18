@@ -1,8 +1,8 @@
-import { AlertCircle, Mail, Loader } from 'lucide-react';
+import { AlertCircle, Mail, Loader, Lock } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabaseClient';
-import { Lock, Envelope, ExclamationCircle, ArrowClockwise } from 'react-bootstrap-icons';
+
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('');

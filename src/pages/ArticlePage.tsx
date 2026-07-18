@@ -1,7 +1,7 @@
-import { User } from 'lucide-react';
+import { User, Calendar, Clock, ArrowLeft, Tag } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, Clock, ArrowLeft, Tag, Person } from 'react-bootstrap-icons';
+
 import { dbService, Article } from '../services/dbService';
 import ScrollReveal from '../components/ScrollReveal';
 

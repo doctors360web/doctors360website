@@ -1,6 +1,6 @@
-import { MapPin, Phone, Mail, Navigation, CheckCircle2 } from 'lucide-react';
+import { MapPin, Phone, Mail, Navigation, CheckCircle2, Clock, CalendarCheck, Send } from 'lucide-react';
 import { useState } from 'react';
-import { GeoAlt, Telephone, Envelope, Clock, CalendarCheck, CheckCircle, Send, Compass } from 'react-bootstrap-icons';
+
 import ScrollReveal from '../components/ScrollReveal';
 import { dbService } from '../services/dbService';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';

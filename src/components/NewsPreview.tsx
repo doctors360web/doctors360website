@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, Tag } from 'react-bootstrap-icons';
+
 import { dbService, Article } from '../services/dbService';
 import ScrollReveal from './ScrollReveal';
+import { ArrowRight, Calendar, Tag } from 'lucide-react';
+
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });

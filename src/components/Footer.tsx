@@ -1,6 +1,18 @@
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Linkedin, GeoAlt, Telephone, Envelope, Send } from 'react-bootstrap-icons';
+
+const Facebook = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
+);
+const Twitter = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" /></svg>
+);
+const Instagram = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
+);
+const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
+);
 
 const TiktokIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -126,7 +138,7 @@ export default function Footer() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 md:w-72 px-5 py-2.5 rounded-full bg-white border border-white/15 text-white placeholder-seafoam-100/60 focus:border-seafoam-300 focus:ring-2 focus:ring-seafoam-300/20 outline-none transition-all"
+              className="flex-1 md:w-72 px-5 py-2.5 rounded-full bg-white border border-white/15 text-gray-900 placeholder-gray-500 focus:border-seafoam-300 focus:ring-2 focus:ring-seafoam-300/20 outline-none transition-all"
             />
             <button className="btn-secondary whitespace-nowrap w-full sm:w-auto justify-center">
               <Send className="w-4 h-4" />
@@ -145,7 +157,7 @@ export default function Footer() {
               <a
                 key={i}
                 href="#"
-                className="flex items-center justify-center w-9 h-9 rounded-full bg-white hover:bg-seafoam-300 hover:text-primary-500 hover:scale-110 transition-all duration-300"
+                className="flex items-center justify-center w-9 h-9 rounded-full bg-white text-primary-700 hover:bg-seafoam-300 hover:text-primary-500 hover:scale-110 transition-all duration-300"
                 aria-label="Social link"
               >
                 <Icon className="w-4 h-4" />

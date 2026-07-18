@@ -1,7 +1,7 @@
-import { Loader, Users, TrendingUp } from 'lucide-react';
+import { Loader, Users, TrendingUp, FileText, Globe, Image, Heart, Calendar, ArrowRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
-import { FileText, People, Globe, Image, Heart, Calendar, ArrowRight, ArrowClockwise, GraphUp } from 'react-bootstrap-icons';
+
 import { Link } from 'react-router-dom';
 
 export default function AdminDashboard() {

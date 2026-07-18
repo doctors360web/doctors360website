@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link, Routes, Route, useLocation } from 'react-router-dom';
 import { supabase } from '../../lib/supabaseClient';
-import { FileText, People, Globe, Image, Calendar, BoxArrowRight, List, XLg, Speedometer2, ArrowClockwise } from 'react-bootstrap-icons';
-import { Loader, LayoutDashboard, Users, X, Menu, LogOut, User, UserPlus, Activity } from 'lucide-react';
+
+import { Loader, LayoutDashboard, Users, X, Menu, LogOut, User, UserPlus, Activity, FileText, Globe, Image, Calendar } from 'lucide-react';
 
 import AdminDashboard from './AdminDashboard';
 import ManageNews from './ManageNews';

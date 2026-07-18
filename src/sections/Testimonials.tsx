@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Star, Quote, ChevronLeft, ChevronRight } from 'react-bootstrap-icons';
+
 import ScrollReveal from '../components/ScrollReveal';
 import { dbService, Testimonial } from '../services/dbService';
+import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+
 
 export default function Testimonials() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);

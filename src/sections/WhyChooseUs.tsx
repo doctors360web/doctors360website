@@ -1,5 +1,5 @@
-import { Users, HeartHandshake } from 'lucide-react';
-import { Clock, People, Award, Heart, Activity, Lock } from 'react-bootstrap-icons';
+import { Users, HeartHandshake, Clock, Award, Activity, Lock } from 'lucide-react';
+
 import ScrollReveal from '../components/ScrollReveal';
 
 const features = [

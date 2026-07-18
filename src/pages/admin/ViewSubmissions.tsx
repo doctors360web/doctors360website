@@ -1,7 +1,7 @@
-import { RefreshCw, Loader, Mail, MessageSquare, Phone } from 'lucide-react';
+import { RefreshCw, Loader, Mail, MessageSquare, Phone, Calendar, Clock } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
-import { Calendar, ArrowClockwise, Envelope, Telephone, Clock, ArrowRepeat, Chat } from 'react-bootstrap-icons';
+
 
 export default function ViewSubmissions() {
   const [activeTab, setActiveTab] = useState<'donations' | 'appointments'>('donations');

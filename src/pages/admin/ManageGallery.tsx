@@ -1,9 +1,9 @@
-import { Loader, Edit2, Trash2, X, AlertCircle } from 'lucide-react';
+import { Loader, Edit2, Trash2, X, AlertCircle, Plus, Upload } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 import { logActivity } from '../../lib/logger';
 import { dbService, GalleryImage } from '../../services/dbService';
-import { Plus, Pencil, Trash, XLg, Upload, ArrowClockwise, ExclamationCircle } from 'react-bootstrap-icons';
+
 
 export default function ManageGallery() {
   const [gallery, setGallery] = useState<GalleryImage[]>([]);

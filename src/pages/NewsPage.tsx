@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Calendar, Clock, Tag, ArrowRight, Search } from 'react-bootstrap-icons';
+
 import { useState, useEffect } from 'react';
 import ScrollReveal from '../components/ScrollReveal';
 import { dbService, Article } from '../services/dbService';
+import { Calendar, Clock, Tag, ArrowRight, Search } from 'lucide-react';
+
 
 const categories = ['All', 'Community Health', 'Maternal Health', 'Mental Health', 'Child Health', 'Organisational Update', 'Community Stories'];
 

@@ -1,6 +1,6 @@
-import { Users, Handshake, CheckCircle2 } from 'lucide-react';
+import { Users, Handshake, CheckCircle2, Heart, Send, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
-import { Heart, People, CheckCircle, Send, ArrowRight } from 'react-bootstrap-icons';
+
 import ScrollReveal from '../components/ScrollReveal';
 import { dbService } from '../services/dbService';
 
