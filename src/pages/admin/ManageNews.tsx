@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 import { logActivity } from '../../lib/logger';
 import { dbService, Article } from '../../services/dbService';
+import { getSouthSudanDate } from '../../lib/dateTime';
 
 
 export default function ManageNews() {
@@ -21,7 +22,7 @@ export default function ManageNews() {
   const [readTime, setReadTime] = useState('5 min read');
   const [author, setAuthor] = useState('');
   const [imageUrl, setImageUrl] = useState('');
-  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+  const [date, setDate] = useState(getSouthSudanDate());
   const [isVisible, setIsVisible] = useState(true);
 
   // Upload state
@@ -111,7 +112,7 @@ export default function ManageNews() {
     setReadTime('5 min read');
     setAuthor('');
     setImageUrl('');
-    setDate(new Date().toISOString().split('T')[0]);
+    setDate(getSouthSudanDate());
     setIsVisible(true);
     setModalOpen(true);
   };
@@ -126,7 +127,7 @@ export default function ManageNews() {
     setReadTime(article.read_time);
     setAuthor(article.author);
     setImageUrl(article.image_url);
-    setDate(new Date(article.date).toISOString().split('T')[0]);
+    setDate(article.date);
     setIsVisible(article.is_visible ?? true);
     setModalOpen(true);
   };

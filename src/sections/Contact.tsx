@@ -2,8 +2,11 @@ import { MapPin, Phone, Mail, Navigation, CheckCircle2, Clock, CalendarCheck, Se
 import { useState } from 'react';
 
 import ScrollReveal from '../components/ScrollReveal';
+import PhoneCountryInput, { DEFAULT_COUNTRY } from '../components/PhoneCountryInput';
 import { dbService } from '../services/dbService';
 import { emailService } from '../services/emailService';
+import { formatIntlPhone, type CountryCode } from '../data/countryCodes';
+import { getSouthSudanDate } from '../lib/dateTime';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -38,6 +41,7 @@ const customIcon = L.divIcon({
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [country, setCountry] = useState<CountryCode>(DEFAULT_COUNTRY);
   const [form, setForm] = useState<{
     name: string;
     email: string;
@@ -68,13 +72,23 @@ export default function Contact() {
       alert('Please select at least one service.');
       return;
     }
+    if (form.phone.length < 4) {
+      alert('Please enter a valid phone number.');
+      return;
+    }
+    if (form.date < getSouthSudanDate()) {
+      alert('Please select today or a future date.');
+      return;
+    }
+
+    const fullPhone = formatIntlPhone(country.dial, form.phone);
     setLoading(true);
     try {
       // 1. Save to Supabase database
       await dbService.submitAppointment({
         name: form.name,
         email: form.email,
-        phone: form.phone,
+        phone: fullPhone,
         services: form.services,
         date: form.date,
         message: form.message || undefined
@@ -84,7 +98,7 @@ export default function Contact() {
       const emailResult = await emailService.sendAppointmentEmail({
         name: form.name,
         email: form.email,
-        phone: form.phone,
+        phone: fullPhone,
         services: form.services,
         date: form.date,
         message: form.message || undefined,
@@ -213,13 +227,11 @@ export default function Contact() {
                       </div>
                       <div>
                         <label className="text-sm font-medium text-primary-500">Phone</label>
-                        <input
-                          required
-                          name="phone"
-                          value={form.phone}
-                          onChange={handleChange}
-                          className="mt-1 w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all"
-                          placeholder="(555) 123-4567"
+                        <PhoneCountryInput
+                          phone={form.phone}
+                          country={country}
+                          onPhoneChange={(phone) => setForm({ ...form, phone })}
+                          onCountryChange={setCountry}
                         />
                       </div>
                     </div>
@@ -264,6 +276,7 @@ export default function Contact() {
                           name="date"
                           value={form.date}
                           onChange={handleChange}
+                          min={getSouthSudanDate()}
                           className="mt-1 w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-teal-light focus:ring-2 focus:ring-teal-light/20 outline-none transition-all"
                         />
                       </div>

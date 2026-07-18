@@ -1,5 +1,7 @@
 import nodemailer from 'nodemailer';
 
+const SOUTH_SUDAN_TIME_ZONE = 'Africa/Juba';
+
 function escapeHtml(str) {
   if (!str) return '';
   return String(str)
@@ -8,6 +10,17 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+function getSouthSudanDate(date = new Date()) {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: SOUTH_SUDAN_TIME_ZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(date);
+  const value = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+  return `${value.year}-${value.month}-${value.day}`;
 }
 
 export default async function handler(req, res) {
@@ -19,6 +32,9 @@ export default async function handler(req, res) {
 
   if (!name || !email || !phone || !services || !date) {
     return res.status(400).json({ error: 'Missing required fields' });
+  }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || date < getSouthSudanDate()) {
+    return res.status(400).json({ error: 'Preferred date must be today or a future date in South Sudan.' });
   }
 
   const recipient = process.env.SMTP_RECIPIENT || 'info@doctors360.org';
@@ -38,10 +54,42 @@ export default async function handler(req, res) {
 
   const safeName = escapeHtml(name);
   const safeEmail = escapeHtml(email);
-  const safePhone = escapeHtml(phone);
+  const rawPhone = String(phone).trim();
+  const normalizedPhone = rawPhone.startsWith('+')
+    ? rawPhone
+    : `+${rawPhone.replace(/\D/g, '')}`;
+  if (!/^\+\d{1,4}\s?\d{4,15}$/.test(normalizedPhone.replace(/\s+/g, ' ').trim())) {
+    return res.status(400).json({ error: 'Invalid phone number format' });
+  }
+  const safePhone = escapeHtml(normalizedPhone);
   const safeMessage = escapeHtml(message);
   const servicesList = Array.isArray(services) ? services : [services];
   const servicesFormatted = servicesList.map(s => escapeHtml(s)).join(', ');
+  const submittedAt = new Date();
+  const submittedDate = submittedAt.toLocaleDateString('en-US', {
+    timeZone: SOUTH_SUDAN_TIME_ZONE,
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+  const submittedTime = submittedAt.toLocaleTimeString('en-US', {
+    timeZone: SOUTH_SUDAN_TIME_ZONE,
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZoneName: 'short',
+  });
+  const preferredDate = new Date(`${date}T00:00:00+02:00`).toLocaleDateString('en-US', {
+    timeZone: SOUTH_SUDAN_TIME_ZONE,
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+  const southSudanYear = submittedAt.toLocaleDateString('en-US', {
+    timeZone: SOUTH_SUDAN_TIME_ZONE,
+    year: 'numeric',
+  });
 
   const servicesHtml = servicesList
     .map(s => `<span style="display: inline-block; background: #e0f7f4; color: #0d4f4f; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; margin: 2px 4px 2px 0;">${escapeHtml(s)}</span>`)
@@ -56,7 +104,7 @@ export default async function handler(req, res) {
           &#128203; New Appointment Request
         </h1>
         <p style="color: #b2dfdb; margin: 8px 0 0; font-size: 14px;">
-          Submitted on ${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} at ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+          Submitted on ${submittedDate} at ${submittedTime}
         </p>
       </div>
 
@@ -97,7 +145,7 @@ export default async function handler(req, res) {
             <tr>
               <td style="padding: 8px 0; color: #607d8b; font-size: 13px; width: 120px; vertical-align: top;">Preferred Date</td>
               <td style="padding: 8px 0; color: #1a1a2e; font-size: 14px; font-weight: 600;">
-                ${new Date(date + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                ${preferredDate}
               </td>
             </tr>
             <tr>
@@ -134,7 +182,7 @@ export default async function handler(req, res) {
           This is an automated notification from <strong style="color: #ffffff;">Doctors360</strong> Appointment System
         </p>
         <p style="color: #80cbc4; font-size: 11px; margin: 6px 0 0;">
-          &copy; ${new Date().getFullYear()} Doctors360 &mdash; Juba, South Sudan
+          &copy; ${southSudanYear} Doctors360 &mdash; Juba, South Sudan
         </p>
       </div>
     </div>
@@ -146,8 +194,9 @@ NEW APPOINTMENT REQUEST
 
 Patient: ${name}
 Email: ${email}
-Phone: ${phone}
-Preferred Date: ${date}
+Phone: ${normalizedPhone}
+Preferred Date: ${preferredDate}
+Submitted: ${submittedDate} at ${submittedTime}
 Services: ${servicesFormatted}
 ${message ? `Message: ${message}` : ''}
 
