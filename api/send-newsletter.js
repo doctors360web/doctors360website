@@ -24,7 +24,7 @@ const MIME_MAP = {
   '.svg': 'image/svg+xml',
 };
 
-async function fetchImageAsDataUri(imageUrl) {
+async function fetchImageAttachment(imageUrl, cid) {
   if (!imageUrl) return null;
 
   if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
@@ -33,7 +33,7 @@ async function fetchImageAsDataUri(imageUrl) {
       if (!response.ok) return null;
       const contentType = response.headers.get('content-type') || 'image/jpeg';
       const buffer = Buffer.from(await response.arrayBuffer());
-      return `data:${contentType};base64,${buffer.toString('base64')}`;
+      return { filename: cid, content: buffer, contentType, cid };
     } catch {
       return null;
     }
@@ -45,13 +45,9 @@ async function fetchImageAsDataUri(imageUrl) {
     const ext = extname(filePath).toLowerCase();
     const contentType = MIME_MAP[ext] || 'image/jpeg';
     const buffer = readFileSync(filePath);
-    return `data:${contentType};base64,${buffer.toString('base64')}`;
+    return { filename: cid, content: buffer, contentType, cid };
   }
   return null;
-}
-
-async function getLogoDataUri() {
-  return fetchImageAsDataUri('/doctors360logo1nobg.png');
 }
 
 function createTransporter() {
@@ -80,7 +76,7 @@ function getSupabaseAdmin() {
   return createClient(url, serviceKey);
 }
 
-function buildNewsletterHtml(article, siteUrl, unsubscribeToken, imageDataUri, logoDataUri) {
+function buildNewsletterHtml(article, siteUrl, unsubscribeToken, hasImage, hasLogo) {
   const safeTitle = escapeHtml(article.title);
   const safeCategory = escapeHtml(article.category);
   const safeExcerpt = escapeHtml(article.excerpt);
@@ -94,15 +90,18 @@ function buildNewsletterHtml(article, siteUrl, unsubscribeToken, imageDataUri, l
     year: 'numeric',
   });
 
-  const imageUrl = imageDataUri || article.image_url;
-  const imageBlock = imageUrl
-    ? `<img src="${escapeHtml(imageUrl)}" alt="${safeTitle}" style="width: 100%; max-height: 280px; object-fit: cover; display: block;" />`
+  const imageBlock = hasImage
+    ? `<img src="cid:article-image" alt="${safeTitle}" style="width: 100%; max-height: 280px; object-fit: cover; display: block;" />`
+    : '';
+
+  const logoBlock = hasLogo
+    ? `<img src="cid:logo-image" alt="Doctors360" style="height: 60px; margin-bottom: 16px;" />`
     : '';
 
   return `
     <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; background: #f8fffe; border-radius: 16px; overflow: hidden; border: 1px solid #e0f2f1;">
       <div style="background: linear-gradient(135deg, #0d4f4f 0%, #0a7e7e 100%); padding: 32px 24px; text-align: center;">
-        ${logoDataUri ? `<img src="${logoDataUri}" alt="Doctors360" style="height: 60px; margin-bottom: 16px;" />` : ''}
+        ${logoBlock}
         <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 700; letter-spacing: -0.5px;">
           New Story from Doctors360
         </h1>
@@ -202,10 +201,12 @@ export default async function handler(req, res) {
       return res.status(200).json({ success: true, sent: 0, failed: 0, total: 0, message: 'No active subscribers' });
     }
 
-    const [imageDataUri, logoDataUri] = await Promise.all([
-      fetchImageAsDataUri(article.image_url),
-      getLogoDataUri(),
+    const [imageAttachment, logoAttachment] = await Promise.all([
+      fetchImageAttachment(article.image_url, 'article-image'),
+      fetchImageAttachment('/doctors360logo1nobg.png', 'logo-image'),
     ]);
+
+    const attachments = [imageAttachment, logoAttachment].filter(Boolean);
 
     const transporter = createTransporter();
     const fromAddress = `"${process.env.SMTP_NAME || 'Doctors360'}" <${process.env.SMTP_EMAIL || process.env.SMTP_USERNAME}>`;
@@ -221,7 +222,11 @@ export default async function handler(req, res) {
           to: subscriber.email,
           subject,
           text: buildNewsletterText(article, siteUrl, subscriber.unsubscribe_token),
-          html: buildNewsletterHtml(article, siteUrl, subscriber.unsubscribe_token, imageDataUri, logoDataUri),
+          html: buildNewsletterHtml(article, siteUrl, subscriber.unsubscribe_token, !!imageAttachment, !!logoAttachment),
+          attachments,
+          list: {
+            unsubscribe: { url: `${siteUrl}/unsubscribe?token=${encodeURIComponent(subscriber.unsubscribe_token)}` },
+          },
         })
       )
     );
