@@ -32,11 +32,10 @@ const linkGroups = [
   {
     title: 'Medical Services',
     links: [
-      { label: 'General Medicine', href: '/#departments' },
-      { label: 'Emergency Care', href: '/#departments' },
-      { label: 'Cardiology', href: '/#departments' },
-      { label: 'Pediatrics', href: '/#departments' },
-      { label: 'Obstetrics & Gynecology', href: '/#departments' },
+      { label: 'Reproductive Health', href: '/#services' },
+      { label: "Men's Health", href: '/#services' },
+      { label: 'Vaccination Clinic', href: '/#services' },
+      { label: 'Dental', href: '/#services' },
     ],
   },
   {
@@ -100,7 +99,10 @@ export default function Footer() {
                 <Phone className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> +211 927 702 808
               </p>
               <p className="flex items-center gap-2 text-sm text-seafoam-100">
-                <Mail className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> care@doctors360.com
+                <Phone className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> +211 924 574 088
+              </p>
+              <p className="flex items-center gap-2 text-sm text-seafoam-100">
+                <Mail className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> reception.doctors360@gmail.com
               </p>
             </div>
           </div>

@@ -13,18 +13,16 @@ import 'leaflet/dist/leaflet.css';
 
 const contactInfo = [
   { icon: MapPin, label: 'Visit Us', value: 'Juba, South Sudan — serving patients across Africa' },
-  { icon: Phone, label: 'Call Us', value: '+211 927 702 808' },
-  { icon: Mail, label: 'Email Us', value: 'care@doctors360.com' },
+  { icon: Phone, label: 'Call Us', value: '+211 927 702 808 / +211 924 574 088' },
+  { icon: Mail, label: 'Email Us', value: 'reception.doctors360@gmail.com' },
   { icon: Clock, label: 'Open Hours', value: 'Mon–Sat: 8:00 AM – 10:00 PM' },
 ];
 
 const departments = [
-  'General Medicine', 'Emergency Care', 'Cardiology', 'Pediatrics',
-  'Obstetrics & Gynecology', 'Orthopedics', 'Mental Health', 'Dermatology',
-  'Ophthalmology', 'Pharmacy Services', 'Laboratory Services', 'Radiology',
+  'Reproductive Health', "Men's Health", 'Vaccination Clinic', 'Dental',
 ];
 
-const position: [number, number] = [4.859363, 31.57125];
+const position: [number, number] = [4.8599618, 31.5978874];
 
 const customIcon = L.divIcon({
   className: 'custom-leaflet-icon',
@@ -171,7 +169,7 @@ export default function Contact() {
               </div>
               <div className="mt-4 flex justify-center lg:justify-center relative z-20">
                 <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=4.859363,31.57125"
+                  href="https://www.google.com/maps/dir/?api=1&destination=Doctors360,Juba,South+Sudan&destination=4.8599618,31.5978874"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary flex items-center gap-2 text-sm"

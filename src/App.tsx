@@ -11,6 +11,7 @@ import WhyChooseUs from './sections/WhyChooseUs';
 import Departments from './sections/Departments';
 import Testimonials from './sections/Testimonials';
 import Contact from './sections/Contact';
+import InsurancePartners from './sections/InsurancePartners';
 import NewsPreview from './components/NewsPreview';
 
 // Full pages
@@ -34,6 +35,7 @@ function HomePage() {
       <WhyChooseUs />
       <Departments />
       <Testimonials />
+      <InsurancePartners />
       <NewsPreview />
       <Contact />
     </main>
