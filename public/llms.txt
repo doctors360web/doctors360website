@@ -24,19 +24,11 @@ Doctors360 is an integrated medical services provider and registered NGO committ
 - [Gallery](https://www.doctors360.org/gallery): Photos from community outreach, medical centre, and events.
 - [Donate & Support](https://www.doctors360.org/donate): Donation tiers, volunteer opportunities, corporate partnerships, and support form.
 
-## Medical Departments (12 Specialties)
-- General Medicine — Comprehensive primary care for all ages
-- Emergency Care — 24/7 rapid-response emergency services
-- Cardiology — Heart care from prevention to intervention
-- Pediatrics — Evidence-based care for children and adolescents
-- Mental Health — Counselling, therapy, and psychiatric support
-- Orthopedics — Bone, joint, and musculoskeletal care
-- Ophthalmology — Full-spectrum eye care
-- Obstetrics & Gynecology — Maternal and reproductive health
-- Radiology & Imaging — Digital X-ray, ultrasound, and advanced imaging
-- Laboratory Services — Diagnostic laboratory for blood, urine, and pathology
-- Pharmacy Services — Prescription and over-the-counter medications
-- Dermatology — Skin, hair, and nail care for tropical climates
+## Medical Services (4 Services)
+- Reproductive Health — Family planning, prenatal and postnatal care, sexual health education
+- Men's Health — Prostate health screening, hormonal health assessment, lifestyle & wellness coaching
+- Vaccination Clinic — Childhood vaccination programs, adult & travel vaccines, catch-up immunisation schedules
+- Dental — Routine check-ups & cleaning, fillings & extractions, oral health education
 
 ## Four-Pillar Care Model
 1. Prevention & Wellness — Check-ups, vaccinations, lifestyle counseling, and preventive screenings

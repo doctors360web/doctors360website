@@ -96,43 +96,31 @@ Your health data and personal information are handled with the utmost care, secu
 
 ## Our Departments — Specialized Care Across Every Field
 
-With 20+ specialties under one roof, you never have to look far for the right expert.
+With 4 specialized services, we bring focused, expert care to the communities we serve.
 
-### General Medicine
-Comprehensive primary care for all ages — prevention, diagnosis, and management of everyday health concerns.
+### Reproductive Health
+Comprehensive reproductive healthcare services including family planning, prenatal and postnatal care, and sexual health education.
+- Family planning counseling
+- Prenatal & postnatal care
+- Sexual health screening
 
-### Emergency Care
-Rapid-response emergency services available around the clock, equipped for critical and acute conditions.
+### Men's Health
+Dedicated men's health services addressing the unique medical needs of men at every stage of life.
+- Prostate health screening
+- Hormonal health assessment
+- Lifestyle & wellness coaching
 
-### Cardiology
-Comprehensive heart care from prevention and diagnostics to advanced cardiac interventions.
+### Vaccination Clinic
+Up-to-date immunisation services for children and adults, following WHO and national guidelines.
+- Childhood vaccination programs
+- Adult & travel vaccines
+- Catch-up immunisation schedules
 
-### Pediatrics
-Compassionate, evidence-based care for infants, children, and adolescents across Africa.
-
-### Mental Health
-Holistic mental health services including counselling, therapy, and psychiatric support.
-
-### Orthopedics
-Bone, joint, and musculoskeletal care including trauma management and rehabilitation.
-
-### Ophthalmology
-Full-spectrum eye care — routine checks, surgical correction, and specialised retinal treatment.
-
-### Obstetrics & Gynecology
-Safe motherhood, antenatal care, skilled birth attendance, and women's reproductive health.
-
-### Radiology & Imaging
-Digital X-ray, ultrasound, and advanced imaging to support accurate diagnosis across all departments.
-
-### Laboratory Services
-Accredited diagnostic laboratory providing rapid, reliable results for blood, urine, and pathology tests.
-
-### Pharmacy Services
-In-facility and online pharmacy dispensing prescription and over-the-counter medications safely.
-
-### Dermatology
-Skin, hair, and nail care — treating conditions common across tropical and sub-Saharan climates.
+### Dental
+Professional dental care covering preventive, restorative, and cosmetic dentistry for the whole family.
+- Routine check-ups & cleaning
+- Fillings & extractions
+- Oral health education
 
 ---
 
@@ -145,7 +133,7 @@ Doctors360 is an integrated medical services provider and registered NGO based i
 Our main medical centre is located in Juba, South Sudan. We also run community health programs in Uganda. Our coordinates are 4.859363, 31.57125. We are expanding into additional East African countries by 2027.
 
 ### What medical services does Doctors360 offer?
-We offer 12 medical specialties: General Medicine, Emergency Care (24/7), Cardiology, Pediatrics, Mental Health, Orthopedics, Ophthalmology, Obstetrics & Gynecology, Radiology & Imaging, Laboratory Services, Pharmacy Services, and Dermatology.
+We offer 4 specialized services: Reproductive Health — family planning, prenatal and postnatal care, and sexual health education; Men's Health — prostate health screening, hormonal health assessment, and lifestyle & wellness coaching; Vaccination Clinic — childhood vaccination programs, adult & travel vaccines, and catch-up immunisation schedules; and Dental — routine check-ups & cleaning, fillings & extractions, and oral health education.
 
 ### Is Doctors360 a nonprofit organization?
 Yes. Doctors360 is a registered NGO in South Sudan. We provide 30% of our care free of charge and operate community health programs funded by donors and partnerships with organizations including WHO, UNICEF, and MSF.

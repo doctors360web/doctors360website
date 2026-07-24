@@ -16,7 +16,7 @@ const faqs = [
   {
     question: 'What medical services does Doctors360 offer?',
     answer:
-      'We offer 12 medical specialties: General Medicine, Emergency Care (24/7), Cardiology, Pediatrics, Mental Health, Orthopedics, Ophthalmology, Obstetrics & Gynecology, Radiology & Imaging, Laboratory Services, Pharmacy Services, and Dermatology. Our care model follows four pillars: Prevention & Wellness, Advanced Diagnostics, Treatment & Therapy, and Follow-up & Recovery.',
+      'We offer 4 specialized services: Reproductive Health — family planning, prenatal and postnatal care, and sexual health education; Men\'s Health — prostate health screening, hormonal health assessment, and lifestyle & wellness coaching; Vaccination Clinic — childhood vaccination programs, adult & travel vaccines, and catch-up immunisation schedules; and Dental — routine check-ups & cleaning, fillings & extractions, and oral health education. Our care model follows four pillars: Prevention & Wellness, Advanced Diagnostics, Treatment & Therapy, and Follow-up & Recovery.',
   },
   {
     question: 'Is Doctors360 a nonprofit organization?',
