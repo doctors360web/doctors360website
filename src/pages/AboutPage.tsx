@@ -1,6 +1,7 @@
 
 import { BookOpen, Target, Shield, Globe, Award, ChevronRight } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
+import SEOHead from '../components/SEOHead';
 
 const leadership = [
   {
@@ -68,6 +69,19 @@ const milestones = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="About Us — Our Story, Team & Mission"
+        description="Learn about Doctors360 — a nonprofit medical clinic and registered NGO founded in 2019 in Juba, South Sudan. Meet our leadership team, governance board, and strategic objectives for accessible healthcare across Africa."
+        path="/about"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "name": "About Doctors360",
+          "url": "https://www.doctors360.org/about",
+          "description": "Learn about Doctors360 — a nonprofit medical clinic and registered NGO founded in 2019 in Juba, South Sudan.",
+          "mainEntity": { "@id": "https://www.doctors360.org/#organization" }
+        }}
+      />
 
       {/* Hero */}
       <section className="pt-36 pb-20 bg-gradient-to-br from-primary-500 via-teal-deep to-primary-700 relative overflow-hidden noise-overlay">

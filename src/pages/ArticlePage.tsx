@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 
 import { dbService, Article } from '../services/dbService';
 import ScrollReveal from '../components/ScrollReveal';
+import SEOHead from '../components/SEOHead';
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -84,6 +85,26 @@ export default function ArticlePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title={article.title}
+        description={article.excerpt}
+        path={`/news/${article.slug}`}
+        type="article"
+        image={article.image_url}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "NewsArticle",
+          "headline": article.title,
+          "description": article.excerpt,
+          "image": article.image_url,
+          "author": { "@type": "Person", "name": article.author },
+          "publisher": { "@id": "https://www.doctors360.org/#organization" },
+          "datePublished": article.date,
+          "dateModified": article.created_at,
+          "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.doctors360.org/news/${article.slug}` },
+          "articleSection": article.category
+        }}
+      />
 
       {/* Hero image */}
       <div className="relative h-[65vh] overflow-hidden">

@@ -7,6 +7,7 @@ interface SEOHeadProps {
   type?: string;
   image?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  noIndex?: boolean;
 }
 
 const BASE_URL = 'https://www.doctors360.org';
@@ -26,6 +27,7 @@ export default function SEOHead({
   type = 'website',
   image,
   jsonLd,
+  noIndex = false,
 }: SEOHeadProps) {
   useEffect(() => {
     const fullTitle = `${title} | ${SITE_NAME}`;
@@ -58,9 +60,21 @@ export default function SEOHead({
     setMeta('property', 'og:site_name', SITE_NAME);
 
     // Twitter
+    setMeta('name', 'twitter:card', 'summary_large_image');
     setMeta('name', 'twitter:title', fullTitle);
     setMeta('name', 'twitter:description', description);
     setMeta('name', 'twitter:image', img);
+
+    // Open Graph extras
+    setMeta('property', 'og:locale', 'en_US');
+    setMeta('property', 'og:image:width', '1200');
+    setMeta('property', 'og:image:height', '630');
+
+    // Robots
+    setMeta('name', 'robots', noIndex
+      ? 'noindex, nofollow'
+      : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
+    );
 
     // Canonical
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
@@ -88,7 +102,7 @@ export default function SEOHead({
     return () => {
       scripts.forEach((s) => s.remove());
     };
-  }, [title, description, path, type, image, jsonLd]);
+  }, [title, description, path, type, image, jsonLd, noIndex]);
 
   return null;
 }

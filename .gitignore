@@ -22,7 +22,6 @@ dist-ssr
 *.sw?
 
 !.env.example
-
 credentials.json
 *.pem
 *.key

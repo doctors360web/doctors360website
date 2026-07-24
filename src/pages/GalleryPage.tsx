@@ -1,6 +1,7 @@
 import { X, ZoomIn } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import ScrollReveal from '../components/ScrollReveal';
+import SEOHead from '../components/SEOHead';
 
 import { dbService, GalleryImage } from '../services/dbService';
 
@@ -27,6 +28,19 @@ export default function GalleryPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="Photo Gallery — Our Work in Pictures"
+        description="A visual story of Doctors360's medical services, community health programs, and the people we serve across South Sudan and East Africa."
+        path="/gallery"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "ImageGallery",
+          "name": "Doctors360 Photo Gallery",
+          "url": "https://www.doctors360.org/gallery",
+          "description": "Visual stories of Doctors360's medical services and community programs across Africa.",
+          "isPartOf": { "@id": "https://www.doctors360.org/#organization" }
+        }}
+      />
 
       {/* Hero */}
       <section className="pt-36 pb-20 bg-gradient-to-br from-primary-500 via-teal-deep to-primary-700 relative overflow-hidden noise-overlay">

@@ -11,6 +11,7 @@ const iconMap: Record<string, any> = {
   Home
 };
 import ScrollReveal from '../components/ScrollReveal';
+import SEOHead from '../components/SEOHead';
 import ProgramsMap from '../components/ProgramsMap';
 import AnimatedCounter from '../components/AnimatedCounter';
 import { dbService, Program } from '../services/dbService';
@@ -50,6 +51,19 @@ export default function ProgramsPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="NGO Community Health Programs — East Africa"
+        description="Doctors360 community health programs bring prevention, education, and care to underserved communities across South Sudan and Uganda. Mobile clinics, health worker training, maternal health outreach, and emergency response."
+        path="/programs"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Doctors360 NGO Programs",
+          "url": "https://www.doctors360.org/programs",
+          "description": "Community health programs bringing prevention, education, and care to underserved communities across East Africa.",
+          "isPartOf": { "@id": "https://www.doctors360.org/#organization" }
+        }}
+      />
 
       {/* Hero */}
       <section className="pt-36 pb-20 bg-gradient-to-br from-primary-500 via-teal-deep to-primary-700 relative overflow-hidden noise-overlay">

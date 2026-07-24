@@ -2,6 +2,7 @@ import { Users, Handshake, CheckCircle2, Heart, Send, ArrowRight } from 'lucide-
 import { useState } from 'react';
 
 import ScrollReveal from '../components/ScrollReveal';
+import SEOHead from '../components/SEOHead';
 import { dbService } from '../services/dbService';
 
 const tiers = [
@@ -104,6 +105,28 @@ export default function DonatePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="Donate — Support Healthcare in Africa"
+        description="Every contribution to Doctors360 funds free community clinics, health worker training, emergency care, and life-saving medicines for vulnerable communities across South Sudan and East Africa."
+        path="/donate"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Donate to Doctors360",
+          "url": "https://www.doctors360.org/donate",
+          "description": "Support Doctors360's mission to provide accessible healthcare across Africa.",
+          "mainEntity": {
+            "@type": "NonprofitType",
+            "name": "Doctors360",
+            "url": "https://www.doctors360.org"
+          },
+          "potentialAction": {
+            "@type": "DonateAction",
+            "name": "Donate to Doctors360",
+            "target": "https://www.doctors360.org/donate"
+          }
+        }}
+      />
 
       {/* Hero */}
       <section className="pt-36 pb-20 lg:pt-44 lg:pb-28 bg-gradient-to-br from-primary-500 via-teal-deep to-primary-700 relative overflow-hidden noise-overlay">

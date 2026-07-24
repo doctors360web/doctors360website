@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import SEOHead from './components/SEOHead';
+import { initGA, pageview } from './lib/analytics';
 
 // Home page sections
 import Hero from './sections/Hero';
@@ -23,6 +24,7 @@ import ArticlePage from './pages/ArticlePage';
 import GalleryPage from './pages/GalleryPage';
 import DonatePage from './pages/DonatePage';
 import UnsubscribePage from './pages/UnsubscribePage';
+import NotFoundPage from './pages/NotFoundPage';
 
 // Admin pages
 import AdminLogin from './pages/admin/AdminLogin';
@@ -51,11 +53,12 @@ function HomePage() {
 }
 
 
-// Scroll to top on route change
+// Scroll to top and track pageview on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+    pageview(`${window.location.origin}${pathname}`, document.title);
   }, [pathname]);
   return null;
 }
@@ -89,6 +92,7 @@ function AppShell() {
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/donate" element={<DonatePage />} />
         <Route path="/unsubscribe" element={<UnsubscribePage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </div>
@@ -96,6 +100,10 @@ function AppShell() {
 }
 
 export default function App() {
+  useEffect(() => {
+    initGA();
+  }, []);
+
   return (
     <BrowserRouter>
       <AppShell />

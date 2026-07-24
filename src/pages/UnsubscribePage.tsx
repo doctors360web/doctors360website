@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Loader, CheckCircle2, AlertCircle } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
+import SEOHead from '../components/SEOHead';
 
 type Status = 'loading' | 'success' | 'already' | 'error';
 
@@ -42,6 +43,12 @@ export default function UnsubscribePage() {
 
   return (
     <div className="min-h-[60vh] flex items-center justify-center px-4 py-16">
+      <SEOHead
+        title="Unsubscribe from Newsletter"
+        description="Manage your Doctors360 newsletter subscription."
+        path="/unsubscribe"
+        noIndex={true}
+      />
       <div className="max-w-md w-full bg-white border border-gray-100 rounded-3xl shadow-xl p-8 text-center">
         {status === 'loading' && (
           <>

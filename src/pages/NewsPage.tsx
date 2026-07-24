@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { useState, useEffect } from 'react';
 import ScrollReveal from '../components/ScrollReveal';
+import SEOHead from '../components/SEOHead';
 import { dbService, Article } from '../services/dbService';
 import { Calendar, Clock, Tag, ArrowRight, Search } from 'lucide-react';
 
@@ -38,6 +39,19 @@ export default function NewsPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="News & Health Blog — Medical Articles & Community Stories"
+        description="Read the latest medical articles, community health stories, organisational updates, and health education from the Doctors360 team in South Sudan and East Africa."
+        path="/news"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Doctors360 News & Blog",
+          "url": "https://www.doctors360.org/news",
+          "description": "Medical articles, community stories, and health education from Doctors360.",
+          "isPartOf": { "@id": "https://www.doctors360.org/#organization" }
+        }}
+      />
 
       {/* Hero */}
       <section className="pt-36 pb-20 bg-gradient-to-br from-primary-500 via-teal-deep to-primary-700 relative overflow-hidden noise-overlay">
