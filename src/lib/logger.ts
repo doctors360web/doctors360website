@@ -1,7 +1,7 @@
 import { supabase } from './supabaseClient';
 
-export type ActionType = 'CREATE' | 'UPDATE' | 'DELETE' | 'UPLOAD' | 'LOGIN' | 'PASSWORD_CHANGE';
-export type ResourceType = 'NEWS' | 'PROGRAMS' | 'TESTIMONIALS' | 'GALLERY' | 'USER' | 'SYSTEM';
+export type ActionType = 'CREATE' | 'UPDATE' | 'DELETE' | 'UPLOAD' | 'LOGIN' | 'PASSWORD_CHANGE' | 'SEND';
+export type ResourceType = 'NEWS' | 'PROGRAMS' | 'TESTIMONIALS' | 'GALLERY' | 'USER' | 'SYSTEM' | 'NEWSLETTER';
 
 export const logActivity = async (
   action: ActionType,

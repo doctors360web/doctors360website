@@ -62,7 +62,6 @@ const linkGroups = [
   },
 ];
 
-const socials = [Facebook, Twitter, Instagram, Linkedin, TiktokIcon];
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -143,7 +142,7 @@ export default function Footer() {
               Integrated medical services and community health programs —
               serving patients and communities across Africa since 2019.
             </p>
-            <div className="mt-6 space-y-2.5">
+            <address className="mt-6 space-y-2.5 not-italic">
               <p className="flex items-center gap-2 text-sm text-seafoam-100">
                 <MapPin className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> Juba, South Sudan
               </p>
@@ -156,7 +155,7 @@ export default function Footer() {
               <p className="flex items-center gap-2 text-sm text-seafoam-100">
                 <Mail className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> reception.doctors360@gmail.com
               </p>
-            </div>
+            </address>
           </div>
 
           {/* Link groups */}
@@ -227,12 +226,18 @@ export default function Footer() {
             © {new Date().getFullYear()} Doctors360 Company Limited. All rights reserved.
           </p>
           <div className="flex gap-3">
-            {socials.map((Icon, i) => (
+            {[
+              { Icon: Facebook, name: 'Facebook' },
+              { Icon: Twitter, name: 'Twitter' },
+              { Icon: Instagram, name: 'Instagram' },
+              { Icon: Linkedin, name: 'LinkedIn' },
+              { Icon: TiktokIcon, name: 'TikTok' }
+            ].map(({ Icon, name }) => (
               <a
-                key={i}
+                key={name}
                 href="#"
                 className="flex items-center justify-center w-9 h-9 rounded-full bg-seafoam-300 text-primary-700 hover:bg-white hover:text-primary-500 hover:scale-110 transition-all duration-300"
-                aria-label="Social link"
+                aria-label={`Doctors360 on ${name}`}
               >
                 <Icon className="w-4 h-4" />
               </a>
