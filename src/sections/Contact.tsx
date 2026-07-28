@@ -1,5 +1,5 @@
+import { useState, useEffect } from 'react';
 import { MapPin, Phone, Mail, Navigation, CheckCircle2, Clock, CalendarCheck, Send, Loader2 } from 'lucide-react';
-import { useState } from 'react';
 
 import ScrollReveal from '../components/ScrollReveal';
 import PhoneCountryInput, { DEFAULT_COUNTRY } from '../components/PhoneCountryInput';
@@ -47,7 +47,7 @@ const branches: Record<BranchKey, {
 };
 
 const departments = [
-  'Reproductive Health', "Men's Health", 'Vaccination Clinic', 'Dental',
+  "Women's Health", "Men's Health", 'Weight Management', 'Podiatry', 'Wellness IV Therapy', 'Dental Services',
 ];
 
 const customIcon = L.divIcon({
@@ -62,7 +62,11 @@ const customIcon = L.divIcon({
   iconAnchor: [16, 16],
 });
 
-export default function Contact() {
+interface ContactProps {
+  initialServices?: string[];
+}
+
+export default function Contact({ initialServices }: ContactProps) {
   const [activeBranch, setActiveBranch] = useState<BranchKey>('southSudan');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -75,8 +79,14 @@ export default function Contact() {
     date: string;
     message: string;
   }>({
-    name: '', email: '', phone: '', services: [], date: '', message: '',
+    name: '', email: '', phone: '', services: initialServices || [], date: '', message: '',
   });
+
+  useEffect(() => {
+    if (initialServices) {
+      setForm(prev => ({ ...prev, services: initialServices }));
+    }
+  }, [initialServices]);
 
   const branch = branches[activeBranch];
 
@@ -232,7 +242,7 @@ export default function Contact() {
                 <MapPin className="w-3.5 h-3.5 text-seafoam-300 flex-shrink-0" />
                 {activeBranch === 'southSudan'
                   ? 'Juba, South Sudan'
-                  : 'Kigogwa Matuga, Uganda · FGXC+JWJ'}
+                  : 'Kigogwa Matuga, Uganda'}
               </div>
 
               <div className="mt-3 flex justify-center lg:justify-center relative z-20">

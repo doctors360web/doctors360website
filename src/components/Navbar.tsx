@@ -6,6 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 const pageLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
+  { label: 'Services', href: '/services' },
   { label: 'Programs', href: '/programs' },
   { label: 'News & Blog', href: '/news' },
   { label: 'Gallery', href: '/gallery' },

@@ -18,6 +18,7 @@ import FAQ, { faqJsonLd } from './sections/FAQ';
 
 // Full pages
 import AboutPage from './pages/AboutPage';
+import ServicesPage from './pages/ServicesPage';
 import ProgramsPage from './pages/ProgramsPage';
 import NewsPage from './pages/NewsPage';
 import ArticlePage from './pages/ArticlePage';
@@ -35,7 +36,7 @@ function HomePage() {
     <main>
       <SEOHead
         title="Nonprofit Healthcare Clinic in South Sudan & East Africa"
-        description="Doctors360 is a nonprofit medical clinic and registered NGO in Juba, South Sudan, providing accessible, patient-centred healthcare across East Africa. 4 services — reproductive health, men's health, vaccination clinic, and dental — plus community health programs and 50,000+ patients served since 2019."
+        description="Doctors360 is a nonprofit medical clinic and registered NGO in Juba, South Sudan, providing accessible, patient-centred healthcare across East Africa. Comprehensive services including women's health, men's health, weight management, podiatry, dental care, and wellness IV therapy, plus community health programs and 50,000+ patients served since 2019."
         path="/"
         jsonLd={faqJsonLd}
       />
@@ -86,6 +87,7 @@ function AppShell() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/services" element={<ServicesPage />} />
         <Route path="/programs" element={<ProgramsPage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/news/:slug" element={<ArticlePage />} />

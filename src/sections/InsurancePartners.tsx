@@ -46,7 +46,7 @@ export default function InsurancePartners() {
         <ScrollReveal animation="fade-up" delay={150}>
           <div className="mt-8 max-w-2xl mx-auto">
             <div className="bg-gradient-to-br from-seafoam-50 to-teal-light/10 rounded-2xl p-6 lg:p-8 border border-seafoam-100">
-              <div className="flex items-start gap-3">
+              <div className="flex items-center gap-3">
                 <span className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-seafoam-300 text-primary-700">
                   <ShieldCheck className="w-5 h-5" />
                 </span>

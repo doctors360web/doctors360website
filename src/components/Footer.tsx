@@ -2,6 +2,7 @@ import { MapPin, Phone, Mail, Send, Loader, CheckCircle2, AlertCircle } from 'lu
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
+import PrivacyPolicyModal from './PrivacyPolicyModal';
 
 const Facebook = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
@@ -34,10 +35,12 @@ const linkGroups = [
   {
     title: 'Medical Services',
     links: [
-      { label: 'Reproductive Health', href: '/#services' },
-      { label: "Men's Health", href: '/#services' },
-      { label: 'Vaccination Clinic', href: '/#services' },
-      { label: 'Dental', href: '/#services' },
+      { label: "Women's Health", href: '/services#womens-health' },
+      { label: "Men's Health", href: '/services#mens-health' },
+      { label: 'Weight Management', href: '/services#weight-management' },
+      { label: 'Podiatry', href: '/services#podiatry' },
+      { label: 'Wellness IV Therapy', href: '/services#iv-therapy' },
+      { label: 'Dental Services', href: '/services#dental' },
     ],
   },
   {
@@ -54,9 +57,7 @@ const linkGroups = [
     title: 'Patients',
     links: [
       { label: 'Book Appointment', href: '/#contact' },
-      { label: 'Pharmacy', href: '/#departments' },
-      { label: 'FAQs', href: '/#contact' },
-      { label: 'Emergency', href: '/#contact' },
+      { label: 'FAQs', href: '/#faq' },
       { label: 'Privacy Policy', href: '#' },
     ],
   },
@@ -68,6 +69,7 @@ export default function Footer() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [showPrivacy, setShowPrivacy] = useState(false);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -190,7 +192,14 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {g.links.map((l) => (
                   <li key={l.label}>
-                    {l.href.startsWith('/') && !l.href.startsWith('/#') ? (
+                    {l.label === 'Privacy Policy' ? (
+                      <button
+                        onClick={() => setShowPrivacy(true)}
+                        className="text-sm text-seafoam-100 hover-underline hover:text-white transition-colors text-left"
+                      >
+                        {l.label}
+                      </button>
+                    ) : l.href.startsWith('/') && !l.href.startsWith('/#') ? (
                       <Link to={l.href} className="text-sm text-seafoam-100 hover-underline hover:text-white transition-colors">
                         {l.label}
                       </Link>
@@ -198,8 +207,7 @@ export default function Footer() {
                       <a href={l.href} className="text-sm text-seafoam-100 hover-underline hover:text-white transition-colors">
                         {l.label}
                       </a>
-                    )}
-                  </li>
+                    )}                  </li>
                 ))}
               </ul>
             </div>
@@ -270,6 +278,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <PrivacyPolicyModal isOpen={showPrivacy} onClose={() => setShowPrivacy(false)} />
     </footer>
   );
 }

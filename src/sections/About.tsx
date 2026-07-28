@@ -94,7 +94,7 @@ export default function About() {
           <div className="mt-8 space-y-3">
             {pillars.map((p, i) => (
               <ScrollReveal key={p.title} animation="fade-left" delay={300 + i * 100}>
-                <div className="flex gap-4 p-5 rounded-2xl bg-white border border-slate-100 hover:border-seafoam-200 hover:shadow-lg hover:bg-seafoam-50/50 transition-all duration-300 group">
+                <div className="flex items-center gap-4 p-5 rounded-2xl bg-white border border-slate-100 hover:border-seafoam-200 hover:shadow-lg hover:bg-seafoam-50/50 transition-all duration-300 group">
                   <span className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-seafoam-100 to-teal-light/20 text-teal-deep group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                     <p.icon className="w-6 h-6" />
                   </span>
