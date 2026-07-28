@@ -142,19 +142,44 @@ export default function Footer() {
               Integrated medical services and community health programs —
               serving patients and communities across Africa since 2019.
             </p>
-            <address className="mt-6 space-y-2.5 not-italic">
-              <p className="flex items-center gap-2 text-sm text-seafoam-100">
-                <MapPin className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> Juba, South Sudan
+            <address className="mt-6 not-italic">
+              {/* South Sudan */}
+              <p className="text-xs font-semibold text-seafoam-300 uppercase tracking-wider mb-2">
+                South Sudan — Juba
               </p>
-              <p className="flex items-center gap-2 text-sm text-seafoam-100">
-                <Phone className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> +211 927 702 808
+              <div className="space-y-2">
+                <p className="flex items-center gap-2 text-sm text-seafoam-100">
+                  <MapPin className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> Juba, South Sudan
+                </p>
+                <p className="flex items-center gap-2 text-sm text-seafoam-100">
+                  <Phone className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> +211 927 702 808
+                </p>
+                <p className="flex items-center gap-2 text-sm text-seafoam-100">
+                  <Phone className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> +211 924 574 088
+                </p>
+                <p className="flex items-center gap-2 text-sm text-seafoam-100">
+                  <Mail className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> reception.doctors360@gmail.com
+                </p>
+              </div>
+
+              {/* Divider */}
+              <div className="my-4 border-t border-white/10" />
+
+              {/* Uganda */}
+              <p className="text-xs font-semibold text-seafoam-300 uppercase tracking-wider mb-2">
+                Uganda — Kigogwa Matuga
               </p>
-              <p className="flex items-center gap-2 text-sm text-seafoam-100">
-                <Phone className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> +211 924 574 088
-              </p>
-              <p className="flex items-center gap-2 text-sm text-seafoam-100">
-                <Mail className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> reception.doctors360@gmail.com
-              </p>
+              <div className="space-y-2">
+                <p className="flex items-center gap-2 text-sm text-seafoam-100">
+                  <MapPin className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> Kigogwa Matuga, Uganda
+                </p>
+                <p className="flex items-center gap-2 text-sm text-seafoam-100">
+                  <Phone className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> +256 773 493087
+                </p>
+                <p className="flex items-center gap-2 text-sm text-seafoam-100">
+                  <Mail className="w-4 h-4 text-seafoam-300 flex-shrink-0" /> reception.doctors360@gmail.com
+                </p>
+              </div>
             </address>
           </div>
 

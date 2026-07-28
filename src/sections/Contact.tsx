@@ -11,18 +11,44 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-const contactInfo = [
-  { icon: MapPin, label: 'Visit Us', value: 'Juba, South Sudan — serving patients across Africa' },
-  { icon: Phone, label: 'Call Us', value: '+211 927 702 808 / +211 924 574 088' },
-  { icon: Mail, label: 'Email Us', value: 'reception.doctors360@gmail.com' },
-  { icon: Clock, label: 'Open Hours', value: 'Mon–Sat: 8:00 AM – 10:00 PM' },
-];
+// ─── Branch definitions ────────────────────────────────────────────────────
+type BranchKey = 'southSudan' | 'uganda';
+
+const branches: Record<BranchKey, {
+  label: string;
+  position: [number, number];
+  mapsHref: string;
+  contactInfo: { icon: typeof MapPin; label: string; value: string }[];
+}> = {
+  southSudan: {
+    label: 'South Sudan',
+    position: [4.8599618, 31.5978874],
+    mapsHref:
+      'https://www.google.com/maps/dir/?api=1&destination=Doctors360,Juba,South+Sudan&destination=4.8599618,31.5978874',
+    contactInfo: [
+      { icon: MapPin, label: 'Visit Us',   value: 'Juba, South Sudan — serving patients across Africa' },
+      { icon: Phone,  label: 'Call Us',    value: '+211 927 702 808 / +211 924 574 088' },
+      { icon: Mail,   label: 'Email Us',   value: 'reception.doctors360@gmail.com' },
+      { icon: Clock,  label: 'Open Hours', value: 'Mon–Sat: 8:00 AM – 10:00 PM' },
+    ],
+  },
+  uganda: {
+    label: 'Uganda',
+    position: [0.49926974750181546, 32.522229542328944],
+    mapsHref:
+      'https://www.google.com/maps/dir/?api=1&destination=0.49926974750181546,32.522229542328944',
+    contactInfo: [
+      { icon: MapPin, label: 'Visit Us',   value: 'Kigogwa Matuga, Uganda' },
+      { icon: Phone,  label: 'Call Us',    value: '+256 773 493087' },
+      { icon: Mail,   label: 'Email Us',   value: 'reception.doctors360@gmail.com' },
+      { icon: Clock,  label: 'Open Hours', value: 'Mon–Sat: 8:00 AM – 10:00 PM' },
+    ],
+  },
+};
 
 const departments = [
   'Reproductive Health', "Men's Health", 'Vaccination Clinic', 'Dental',
 ];
-
-const position: [number, number] = [4.8599618, 31.5978874];
 
 const customIcon = L.divIcon({
   className: 'custom-leaflet-icon',
@@ -37,6 +63,7 @@ const customIcon = L.divIcon({
 });
 
 export default function Contact() {
+  const [activeBranch, setActiveBranch] = useState<BranchKey>('southSudan');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [country, setCountry] = useState<CountryCode>(DEFAULT_COUNTRY);
@@ -50,6 +77,8 @@ export default function Contact() {
   }>({
     name: '', email: '', phone: '', services: [], date: '', message: '',
   });
+
+  const branch = branches[activeBranch];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -116,7 +145,11 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 lg:py-28 bg-primary-500 relative overflow-hidden noise-overlay" aria-label="Contact Doctors360 — Book an appointment, phone, email, and location in Juba, South Sudan">
+    <section
+      id="contact"
+      className="py-20 lg:py-28 bg-primary-500 relative overflow-hidden noise-overlay"
+      aria-label="Contact Doctors360 — Book an appointment, phone, email, and location in Juba South Sudan and Kigogwa Uganda"
+    >
       <div className="absolute -top-20 -left-20 w-[28rem] h-[28rem] bg-teal-deep/30 rounded-full blur-3xl " />
       <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-seafoam-300/10 rounded-full blur-3xl -alt" />
 
@@ -136,8 +169,32 @@ export default function Contact() {
               </p>
             </ScrollReveal>
 
-            <div className="mt-10 grid sm:grid-cols-2 gap-5">
-              {contactInfo.map((c, i) => (
+            {/* ── Branch tab switcher ── */}
+            <ScrollReveal animation="fade-up" delay={100}>
+              <div className="mt-8 inline-flex items-center gap-1 bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-1.5">
+                {(Object.keys(branches) as BranchKey[]).map((key) => {
+                  const b = branches[key];
+                  const isActive = activeBranch === key;
+                  return (
+                    <button
+                      key={key}
+                      onClick={() => setActiveBranch(key)}
+                      className={`flex items-center gap-2 px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                        isActive
+                          ? 'bg-seafoam-300 text-primary-700 shadow-lg shadow-black/20 scale-[1.03]'
+                          : 'text-seafoam-100 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      {b.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </ScrollReveal>
+
+            {/* ── Contact info cards ── */}
+            <div className="mt-6 grid sm:grid-cols-2 gap-5">
+              {branch.contactInfo.map((c, i) => (
                 <ScrollReveal key={c.label} animation="fade-up" delay={i * 80}>
                   <div className="flex gap-3 items-start group">
                     <span className="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-seafoam-300 text-primary-700 group-hover:bg-white group-hover:text-primary-500 transition-all duration-300 group-hover:scale-110">
@@ -152,11 +209,13 @@ export default function Contact() {
               ))}
             </div>
 
+            {/* ── Map ── */}
             <ScrollReveal animation="fade-up" delay={400}>
               <div className="mt-8 rounded-2xl overflow-hidden shadow-xl h-64 border border-white/10 relative z-10">
-                <MapContainer 
-                  center={position} 
-                  zoom={14} 
+                <MapContainer
+                  key={activeBranch}          /* re-mount when branch changes */
+                  center={branch.position}
+                  zoom={14}
                   className="w-full h-full bg-slate-100 outline-none"
                   scrollWheelZoom={false}
                 >
@@ -164,18 +223,27 @@ export default function Contact() {
                     attribution='&copy; <a href="https://maps.google.com/">Google Maps</a>'
                     url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
                   />
-                  <Marker position={position} icon={customIcon} />
+                  <Marker position={branch.position} icon={customIcon} />
                 </MapContainer>
               </div>
-              <div className="mt-4 flex justify-center lg:justify-center relative z-20">
+
+              {/* ── Location label pill ── */}
+              <div className="mt-3 flex items-center gap-1.5 text-seafoam-100 text-xs">
+                <MapPin className="w-3.5 h-3.5 text-seafoam-300 flex-shrink-0" />
+                {activeBranch === 'southSudan'
+                  ? 'Juba, South Sudan'
+                  : 'Kigogwa Matuga, Uganda · FGXC+JWJ'}
+              </div>
+
+              <div className="mt-3 flex justify-center lg:justify-center relative z-20">
                 <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=Doctors360,Juba,South+Sudan&destination=4.8599618,31.5978874"
+                  href={branch.mapsHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary flex items-center gap-2 text-sm"
                 >
                   <Navigation className="w-4 h-4" />
-                  Navigate to Doctors360
+                  Navigate to Doctors360 — {branch.label}
                 </a>
               </div>
             </ScrollReveal>
@@ -317,4 +385,3 @@ export default function Contact() {
     </section>
   );
 }
-
