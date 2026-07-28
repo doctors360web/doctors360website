@@ -180,7 +180,7 @@ export default function Contact({ initialServices }: ContactProps) {
             </ScrollReveal>
 
             {/* ── Branch tab switcher ── */}
-            <ScrollReveal animation="fade-up" delay={100}>
+            <ScrollReveal animation="fade-up" delay={100} className="text-center">
               <div className="mt-8 inline-flex items-center gap-1 bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-1.5">
                 {(Object.keys(branches) as BranchKey[]).map((key) => {
                   const b = branches[key];
