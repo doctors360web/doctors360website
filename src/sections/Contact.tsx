@@ -47,7 +47,7 @@ const branches: Record<BranchKey, {
 };
 
 const departments = [
-  "Women's Health", "Men's Health", 'Weight Management', 'Podiatry', 'Wellness IV Therapy', 'Dental Services',
+  "Concierge & Preventive Medicine", "Men's Health", "Women's Health", "Children's Health", "Sexual Health", "General Medical Services", "Laboratory", "Pharmacy", "Dental Services",
 ];
 
 const customIcon = L.divIcon({

@@ -36,7 +36,7 @@ function HomePage() {
     <main>
       <SEOHead
         title="Nonprofit Healthcare Clinic in South Sudan & East Africa"
-        description="Doctors360 is a nonprofit medical clinic and registered NGO in Juba, South Sudan, providing accessible, patient-centred healthcare across East Africa. Comprehensive services including women's health, men's health, weight management, podiatry, dental care, and wellness IV therapy, plus community health programs and 50,000+ patients served since 2019."
+        description="Doctors360 is a nonprofit medical clinic and registered NGO in Juba, South Sudan, providing accessible, patient-centred healthcare across East Africa. Comprehensive services including Concierge & Preventive Medicine, Men's Health, Women's Health, Children's Health, Sexual Health, General Medical Services, Laboratory, Pharmacy, and Dental Care, plus community health programs and 50,000+ patients served since 2019."
         path="/"
         jsonLd={faqJsonLd}
       />

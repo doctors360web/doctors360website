@@ -1,27 +1,28 @@
 import { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import {
-  HeartPulse,
+  Shield,
   UserRound,
-  Scale,
-  Footprints,
-  Syringe,
+  HeartPulse,
+  Baby,
+  HeartHandshake,
+  Stethoscope,
+  FlaskConical,
+  Pill,
   Smile,
   CalendarCheck,
   ArrowRight,
   ChevronDown,
-  Shield,
-  Clock,
-  MapPin,
+  Scale,
+  Syringe,
+  AlertCircle,
   CheckCircle2,
-  AlertCircle
 } from 'lucide-react';
 
 import ScrollReveal from '../components/ScrollReveal';
 import SEOHead from '../components/SEOHead';
 import Contact from '../sections/Contact';
 
-// Interactive FAQ component
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -43,11 +44,11 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 export default function ServicesPage() {
   const { hash } = useLocation();
   const [menTab, setMenTab] = useState<'trt' | 'smc'>('trt');
+  const [conciergeTab, setConciergeTab] = useState<'screening' | 'weight' | 'iv' | 'metabolic'>('screening');
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
   const handleBookService = (service: string) => {
     setSelectedServices([service]);
-    // Small timeout to allow state sync before scrolling
     setTimeout(() => {
       const element = document.getElementById('appointment-contact');
       if (element) {
@@ -56,10 +57,8 @@ export default function ServicesPage() {
     }, 50);
   };
 
-  // Handle smooth scroll to target hash anchor
   useEffect(() => {
     if (hash) {
-      // Small timeout to allow render completion
       const timer = setTimeout(() => {
         const id = hash.replace('#', '');
         const element = document.getElementById(id);
@@ -74,8 +73,8 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Comprehensive Medical Services — Women's & Men's Health, Podiatry, IV Therapy, Weight Management & Dental"
-        description="Explore Doctors360's medical services. We offer personalized Women's Health, Men's Health (including TRT and Safe Male Circumcision), Weight Management, Podiatry, Dental Care, and Wellness IV Therapy."
+        title="Comprehensive Medical Services — Concierge & Preventive Medicine, Men's & Women's Health, Children's Health, Sexual Health, Lab, Pharmacy & Dental"
+        description="Explore Doctors360's full range of medical services. We offer Concierge & Preventive Medicine, Men's Health, Women's Health, Children's Health, Sexual Health, General Medical Services, Laboratory, Pharmacy, and Dental Care."
         path="/services"
       />
 
@@ -102,63 +101,189 @@ export default function ServicesPage() {
         <div className="container-x">
           <div className="space-y-24 md:space-y-32">
 
-            {/* 1. WOMEN'S HEALTH */}
-            <div id="womens-health" className="scroll-mt-28">
+            {/* 1. CONCIERGE & PREVENTIVE MEDICINE */}
+            <div id="concierge-preventive" className="scroll-mt-28">
               <ScrollReveal animation="fade-up">
                 <div className="grid lg:grid-cols-12 gap-10 items-start">
                   <div className="lg:col-span-5 space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
-                    <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-rose-100 text-rose-600 mx-auto lg:self-center">
-                      <HeartPulse className="w-7 h-7" />
+                    <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-teal-100 text-teal-deep mx-auto lg:self-center">
+                      <Shield className="w-7 h-7" />
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500">Women's Health Clinic</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500 text-center lg:self-center">Concierge & Preventive Medicine</h2>
                     <p className="text-base text-slate-brand leading-relaxed">
-                      At Doctors360, our Women's Health Clinic provides comprehensive clinical support, preventative checkups, and educational tools designed to support your wellbeing through every life transition. From contraception to pregnancy care and menopause, we offer sensitive, evidence-based gynecological care.
+                      Our Concierge and Preventive Medicine program is designed for patients who value proactive health management. We combine comprehensive wellness assessments, preventive screenings, and personalised care plans to help you stay ahead of illness. This service includes our medically supervised Weight Management and Wellness IV Therapy programmes.
                     </p>
-                    <div className="bg-rose-50/50 border border-rose-100 rounded-2xl p-5">
-                      <h4 className="font-semibold text-rose-800 mb-2">Our Goal</h4>
-                      <p className="text-sm text-rose-900/80 leading-relaxed">
-                        To empower women with diagnostic screening, compassionate family planning advice, and personalized treatments that support active, healthy lifestyles.
-                      </p>
+
+                    {/* Sub-tabs */}
+                    <div className="flex gap-2 p-1.5 bg-slate-100 rounded-xl w-full flex-wrap">
+                      {(['screening', 'weight', 'iv', 'metabolic'] as const).map((tab) => (
+                        <button
+                          key={tab}
+                          onClick={() => setConciergeTab(tab)}
+                          className={`flex-1 text-center py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
+                            conciergeTab === tab
+                              ? 'bg-teal-deep text-white shadow-sm'
+                              : 'text-slate-600 hover:text-teal-deep'
+                          }`}
+                        >
+                          {tab === 'screening' ? 'Screenings' : tab === 'weight' ? 'Weight Mgmt' : tab === 'iv' ? 'IV Therapy' : 'Metabolic'}
+                        </button>
+                      ))}
                     </div>
                   </div>
 
-                  <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
-                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
-                      <h3 className="font-semibold text-primary-500 mb-3">General Wellness & Screenings</h3>
-                      <p className="text-sm text-slate-brand leading-relaxed">
-                        Annual wellness checkups, blood pressure & diabetes screening, breast examinations, cervical cancer screening (Pap smear), and lifestyle counseling.
-                      </p>
-                    </div>
-                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
-                      <h3 className="font-semibold text-primary-500 mb-3">Family Planning & Contraception</h3>
-                      <p className="text-sm text-slate-brand leading-relaxed">
-                        Personalized contraceptive counseling, oral pills, injectables, long-acting implants, intrauterine devices (IUDs), and emergency contraception.
-                      </p>
-                    </div>
-                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
-                      <h3 className="font-semibold text-primary-500 mb-3">Pregnancy & Prenatal Care</h3>
-                      <p className="text-sm text-slate-brand leading-relaxed">
-                        Early pregnancy testing, comprehensive antenatal (prenatal) counseling, maternal nutrition assessment, birth preparedness, and postnatal follow-up.
-                      </p>
-                    </div>
-                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
-                      <h3 className="font-semibold text-primary-500 mb-3">Menstrual & Vaginal Health</h3>
-                      <p className="text-sm text-slate-brand leading-relaxed">
-                        Medical support for painful periods (dysmenorrhea), heavy or irregular bleeding, yeast infections (thrush), bacterial vaginosis (BV), and fertility preconception.
-                      </p>
-                    </div>
-                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 sm:col-span-2">
-                      <h3 className="font-semibold text-primary-500 mb-3">Menopause Clinic</h3>
-                      <p className="text-sm text-slate-brand leading-relaxed">
-                        Evidence-based assessment and management of menopausal symptoms including hot flushes, mood changes, sleep disturbances, hormonal fluctuations, bone density monitoring, and heart health.
-                      </p>
-                    </div>
+                  <div className="lg:col-span-7">
+                    {conciergeTab === 'screening' && (
+                      <div className="grid sm:grid-cols-2 gap-6">
+                        <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                          <h3 className="font-semibold text-primary-500 mb-3">Annual Wellness Exams</h3>
+                          <p className="text-sm text-slate-brand leading-relaxed">
+                            Comprehensive yearly physical examinations including vital signs, blood work, urinalysis, and lifestyle assessment to establish a baseline and detect early changes.
+                          </p>
+                        </div>
+                        <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                          <h3 className="font-semibold text-primary-500 mb-3">Cardiovascular Screening</h3>
+                          <p className="text-sm text-slate-brand leading-relaxed">
+                            Blood pressure monitoring, cholesterol panels, ECG, and risk stratification for heart disease and stroke.
+                          </p>
+                        </div>
+                        <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                          <h3 className="font-semibold text-primary-500 mb-3">Diabetes & Metabolic Screening</h3>
+                          <p className="text-sm text-slate-brand leading-relaxed">
+                            Fasting blood glucose, HbA1c, and insulin resistance markers for early detection of prediabetes and type 2 diabetes.
+                          </p>
+                        </div>
+                        <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                          <h3 className="font-semibold text-primary-500 mb-3">Cancer Risk Assessments</h3>
+                          <p className="text-sm text-slate-brand leading-relaxed">
+                            Age-appropriate cancer screenings including breast exams, cervical cancer screening, prostate evaluation, and colorectal risk assessment.
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
+                    {conciergeTab === 'weight' && (
+                      <div className="space-y-6">
+                        <div className="bg-amber-50/50 border border-amber-100 rounded-2xl p-5">
+                          <h4 className="font-semibold text-amber-800 mb-2">Medically Supervised Care</h4>
+                          <p className="text-sm text-amber-900/80 leading-relaxed">
+                            We avoid crash diets. Our emphasis is on long-term lifestyle changes combined with clinical monitoring and medical therapies (such as GLP-1 weight-loss medications like Ozempic) for qualifying patients.
+                          </p>
+                        </div>
+                        <div className="grid sm:grid-cols-2 gap-4">
+                          <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+                            <h3 className="font-semibold text-primary-500 mb-3">Comprehensive Assessments</h3>
+                            <p className="text-sm text-slate-brand leading-relaxed">
+                              Clinical consultation, BMI and body measurements, blood pressure checks, review of sleep patterns and stress factors, and blood panels screening for thyroid or insulin resistance.
+                            </p>
+                          </div>
+                          <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+                            <h3 className="font-semibold text-primary-500 mb-3">Lifestyle & Diet Coaching</h3>
+                            <p className="text-sm text-slate-brand leading-relaxed">
+                              Personalized nutritional coaching, physical activity programming aligned with your fitness level, behavior adjustments, and support for emotional eating triggers.
+                            </p>
+                          </div>
+                          <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+                            <h3 className="font-semibold text-primary-500 mb-3">Therapeutic Medical Aids</h3>
+                            <p className="text-sm text-slate-brand leading-relaxed">
+                              Evaluations and prescriptions for clinically approved weight loss medications (e.g., GLP-1 receptor agonists) under strict medical oversight to help regulate appetite.
+                            </p>
+                          </div>
+                          <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+                            <h3 className="font-semibold text-primary-500 mb-3">Metabolic Risk Management</h3>
+                            <p className="text-sm text-slate-brand leading-relaxed">
+                              Active treatment and monitoring of conditions aggravated by excess weight, including type 2 diabetes, high blood pressure, sleep apnea, PCOS, and joint pains.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {conciergeTab === 'iv' && (
+                      <div className="space-y-6">
+                        <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 text-amber-950">
+                          <h4 className="font-semibold text-amber-800 mb-1 flex items-center gap-1.5 text-sm">
+                            <AlertCircle className="w-4 h-4 flex-shrink-0" /> Safety First Policy
+                          </h4>
+                          <p className="text-xs leading-relaxed text-amber-900/90">
+                            IV infusions are medical procedures. A medical consultation, vital signs review, allergy check, and screening of kidney/heart function history are required before any infusion. Wellness infusions are intended to support hydration and are not a substitute for medical treatments.
+                          </p>
+                        </div>
+
+                        <h3 className="text-xl font-semibold text-primary-500">Our Wellness IV Packages</h3>
+                        <div className="grid sm:grid-cols-2 gap-4">
+                          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                            <h4 className="font-semibold text-primary-500 text-sm">Essential Hydration</h4>
+                            <p className="text-xs text-slate-brand mt-1">
+                              A targeted isotonic saline or Ringer's solution infusion designed to quickly restore fluid and electrolyte balance in the body.
+                            </p>
+                          </div>
+                          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                            <h4 className="font-semibold text-primary-500 text-sm">Recovery IV</h4>
+                            <p className="text-xs text-slate-brand mt-1">
+                              Rehydration and mineral replacement following minor illness, stomach bug fluid loss, strenuous athletic events, or jetlag.
+                            </p>
+                          </div>
+                          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                            <h4 className="font-semibold text-primary-500 text-sm">Executive Wellness</h4>
+                            <p className="text-xs text-slate-brand mt-1">
+                              Hydration therapy containing selected B-complex vitamins, vitamin C, and micronutrients to support fatigue recovery in busy professionals.
+                            </p>
+                          </div>
+                          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                            <h4 className="font-semibold text-primary-500 text-sm">Customized Wellness Infusion</h4>
+                            <p className="text-xs text-slate-brand mt-1">
+                              A bespoke hydration and nutritional formula prescribed by our clinician based on your health history and metabolic requirements.
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="p-5 rounded-2xl bg-white border border-slate-100 shadow-sm">
+                          <h4 className="font-semibold text-primary-500 text-sm mb-2">Who May Benefit?</h4>
+                          <ul className="text-xs text-slate-brand grid sm:grid-cols-2 gap-2">
+                            <li>• Adults dehydrated from travel or heat</li>
+                            <li>• Rehydration after diarrhoea or vomiting</li>
+                            <li>• Fatigue recovery after extreme physical exertion</li>
+                            <li>• Mild dehydration with hangover symptoms</li>
+                          </ul>
+                        </div>
+                      </div>
+                    )}
+
+                    {conciergeTab === 'metabolic' && (
+                      <div className="grid sm:grid-cols-2 gap-6">
+                        <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+                          <h3 className="font-semibold text-primary-500 mb-3">Diabetes Management</h3>
+                          <p className="text-sm text-slate-brand leading-relaxed">
+                            Comprehensive monitoring and treatment for type 2 diabetes including blood glucose tracking, medication management, dietary guidance, and complication screening.
+                          </p>
+                        </div>
+                        <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+                          <h3 className="font-semibold text-primary-500 mb-3">Hypertension Care</h3>
+                          <p className="text-sm text-slate-brand leading-relaxed">
+                            Ongoing blood pressure monitoring, lifestyle modification support, and medication management to reduce cardiovascular risk.
+                          </p>
+                        </div>
+                        <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+                          <h3 className="font-semibold text-primary-500 mb-3">Sleep Apnoea Screening</h3>
+                          <p className="text-sm text-slate-brand leading-relaxed">
+                            Assessment for obstructive sleep apnoea and referral for sleep studies, with management options including lifestyle changes and CPAP therapy.
+                          </p>
+                        </div>
+                        <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+                          <h3 className="font-semibold text-primary-500 mb-3">PCOS & Hormonal Health</h3>
+                          <p className="text-sm text-slate-brand leading-relaxed">
+                            Diagnosis and management of polycystic ovary syndrome and other hormonal imbalances that affect weight, fertility, and overall metabolic health.
+                          </p>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 
                 <div className="text-center mt-8">
-                  <button onClick={() => handleBookService("Women's Health")} className="btn-primary">
-                    <CalendarCheck className="w-4 h-4" /> Book Women's Health Consultation
+                  <button onClick={() => handleBookService("Concierge & Preventive Medicine")} className="btn-primary">
+                    <CalendarCheck className="w-4 h-4" /> Book Concierge & Preventive Medicine Consultation
                   </button>
                 </div>
 
@@ -166,12 +291,12 @@ export default function ServicesPage() {
                   <h3 className="font-semibold text-primary-500 mb-4">Frequently Asked Questions</h3>
                   <div className="space-y-1">
                     <FAQItem
-                      question="When should I go for a cervical cancer screening?"
-                      answer="Routine cervical screening (Pap smear) is recommended for women aged 21 to 65. It helps detect early abnormal changes in the cervix. Talk to our healthcare provider to determine the best screening interval based on your history."
+                      question="Who qualifies for prescription weight-loss medications?"
+                      answer="Prescription weight loss support is typically indicated for adults with a BMI of 30 or higher, or a BMI of 27 or higher in the presence of weight-related health conditions (like high blood pressure or type 2 diabetes), after a complete metabolic medical evaluation."
                     />
                     <FAQItem
-                      question="What family planning options are available at Doctors360?"
-                      answer="We provide a full range of methods, including short-term solutions (pills, injections) and long-acting reversible contraceptives (IUDs and subdermal implants). Our clinicians help you assess the options to select what best matches your body and lifestyle."
+                      question="Is Wellness IV Therapy safe?"
+                      answer="Yes, when performed under proper clinical criteria. Our clinic implements strict pre-infusion checks. Patients with severe heart failure, kidney disease, or uncontrolled high blood pressure do not qualify for IV infusions due to the risk of fluid overload."
                     />
                   </div>
                 </div>
@@ -188,12 +313,11 @@ export default function ServicesPage() {
                     <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 mx-auto lg:self-center">
                       <UserRound className="w-7 h-7" />
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500">Men's Health Clinic</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500 text-center lg:self-center">Men's Health Clinic</h2>
                     <p className="text-base text-slate-brand leading-relaxed">
-                      Men face distinct physiological requirements and wellness issues. Doctors360 provides confidential, specialized medical assessment and treatment. Click below to view details on our specialized therapies and minor surgeries.
+                      Men face distinct physiological requirements and wellness issues. Doctors360 provides confidential, specialized medical assessment and treatment including Testosterone Replacement Therapy, safe male circumcision, and general wellness monitoring.
                     </p>
 
-                    {/* Sub-tabs for Men's Health */}
                     <div className="flex gap-2 p-1.5 bg-slate-100 rounded-xl w-full max-w-sm">
                       <button
                         onClick={() => setMenTab('trt')}
@@ -208,7 +332,6 @@ export default function ServicesPage() {
                         Circumcision (SMC)
                       </button>
                     </div>
-
                   </div>
 
                   <div className="lg:col-span-7 bg-slate-50/50 border border-slate-100 rounded-3xl p-6 md:p-8">
@@ -316,57 +439,135 @@ export default function ServicesPage() {
 
             <hr className="border-slate-100" />
 
-            {/* 3. WEIGHT MANAGEMENT */}
-            <div id="weight-management" className="scroll-mt-28">
+            {/* 3. WOMEN'S HEALTH */}
+            <div id="womens-health" className="scroll-mt-28">
+              <ScrollReveal animation="fade-up">
+                <div className="grid lg:grid-cols-12 gap-10 items-start">
+                  <div className="lg:col-span-5 space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
+                    <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-rose-100 text-rose-600 mx-auto lg:self-center">
+                      <HeartPulse className="w-7 h-7" />
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500 text-center lg:self-center">Women's Health Clinic</h2>
+                    <p className="text-base text-slate-brand leading-relaxed">
+                      At Doctors360, our Women's Health Clinic provides comprehensive clinical support, preventative checkups, and educational tools designed to support your wellbeing through every life transition. From contraception to pregnancy care and menopause, we offer sensitive, evidence-based gynecological care.
+                    </p>
+                    <div className="bg-rose-50/50 border border-rose-100 rounded-2xl p-5">
+                      <h4 className="font-semibold text-rose-800 mb-2">Our Goal</h4>
+                      <p className="text-sm text-rose-900/80 leading-relaxed">
+                        To empower women with diagnostic screening, compassionate family planning advice, and personalized treatments that support active, healthy lifestyles.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">General Wellness & Screenings</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Annual wellness checkups, blood pressure & diabetes screening, breast examinations, cervical cancer screening (Pap smear), and lifestyle counseling.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Family Planning & Contraception</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Personalized contraceptive counseling, oral pills, injectables, long-acting implants, intrauterine devices (IUDs), and emergency contraception.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Pregnancy & Prenatal Care</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Early pregnancy testing, comprehensive antenatal (prenatal) counseling, maternal nutrition assessment, birth preparedness, and postnatal follow-up.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Menstrual & Vaginal Health</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Medical support for painful periods (dysmenorrhea), heavy or irregular bleeding, yeast infections (thrush), bacterial vaginosis (BV), and fertility preconception.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 sm:col-span-2">
+                      <h3 className="font-semibold text-primary-500 mb-3">Menopause Clinic</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Evidence-based assessment and management of menopausal symptoms including hot flushes, mood changes, sleep disturbances, hormonal fluctuations, bone density monitoring, and heart health.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-center mt-8">
+                  <button onClick={() => handleBookService("Women's Health")} className="btn-primary">
+                    <CalendarCheck className="w-4 h-4" /> Book Women's Health Consultation
+                  </button>
+                </div>
+
+                <div className="mt-10 max-w-4xl">
+                  <h3 className="font-semibold text-primary-500 mb-4">Frequently Asked Questions</h3>
+                  <div className="space-y-1">
+                    <FAQItem
+                      question="When should I go for a cervical cancer screening?"
+                      answer="Routine cervical screening (Pap smear) is recommended for women aged 21 to 65. It helps detect early abnormal changes in the cervix. Talk to our healthcare provider to determine the best screening interval based on your history."
+                    />
+                    <FAQItem
+                      question="What family planning options are available at Doctors360?"
+                      answer="We provide a full range of methods, including short-term solutions (pills, injections) and long-acting reversible contraceptives (IUDs and subdermal implants). Our clinicians help you assess the options to select what best matches your body and lifestyle."
+                    />
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            <hr className="border-slate-100" />
+
+            {/* 4. CHILDREN'S HEALTH */}
+            <div id="childrens-health" className="scroll-mt-28">
               <ScrollReveal animation="fade-up">
                 <div className="grid lg:grid-cols-12 gap-10 items-start">
                   <div className="lg:col-span-5 space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
                     <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 mx-auto lg:self-center">
-                      <Scale className="w-7 h-7" />
+                      <Baby className="w-7 h-7" />
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500">Weight Management Clinic</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500 text-center lg:self-center">Children's Health</h2>
                     <p className="text-base text-slate-brand leading-relaxed">
-                      Obesity is a complex, chronic medical condition influenced by genetics, metabolic rate, hormones, environment, and sleep quality. If you have struggled to achieve sustainable weight loss, our evidence-based, medically supervised programs are designed to assist you.
+                      Our paediatric services are designed to support the healthy development of infants, children, and adolescents. From newborn checkups to adolescent health screenings, we provide compassionate, family-centred care in a child-friendly environment.
                     </p>
                     <div className="bg-amber-50/50 border border-amber-100 rounded-2xl p-5">
-                      <h4 className="font-semibold text-amber-800 mb-2">Medically Supervised Care</h4>
+                      <h4 className="font-semibold text-amber-800 mb-2">Safe & Gentle Care</h4>
                       <p className="text-sm text-amber-900/80 leading-relaxed">
-                        We avoid crash diets. Our emphasis is on long-term lifestyle changes combined with clinical monitoring and medical therapies (such as GLP-1 weight-loss medications like Ozempic) for qualifying patients.
+                        We understand that children respond best when they feel safe and comfortable. Our team is trained to provide gentle, age-appropriate care that puts both children and parents at ease.
                       </p>
                     </div>
                   </div>
 
                   <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
                     <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
-                      <h3 className="font-semibold text-primary-500 mb-3">Comprehensive Assessments</h3>
+                      <h3 className="font-semibold text-primary-500 mb-3">Well-Child Checkups</h3>
                       <p className="text-sm text-slate-brand leading-relaxed">
-                        Clinical consultation, BMI and body measurements, blood pressure checks, review of sleep patterns and stress factors, and blood panels screening for thyroid or insulin resistance.
+                        Routine growth and development monitoring, vision and hearing screenings, and age-appropriate physical examinations from infancy through adolescence.
                       </p>
                     </div>
                     <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
-                      <h3 className="font-semibold text-primary-500 mb-3">Lifestyle & Diet Coaching</h3>
+                      <h3 className="font-semibold text-primary-500 mb-3">Vaccination Programmes</h3>
                       <p className="text-sm text-slate-brand leading-relaxed">
-                        Personalized nutritional coaching, physical activity programming aligned with your fitness level, behavior adjustments, and support for emotional eating triggers.
+                        Childhood immunisation schedules following national guidelines, including routine vaccines, catch-up schedules, and travel vaccines for older children.
                       </p>
                     </div>
                     <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
-                      <h3 className="font-semibold text-primary-500 mb-3">Therapeutic Medical Aids</h3>
+                      <h3 className="font-semibold text-primary-500 mb-3">Common Illness Management</h3>
                       <p className="text-sm text-slate-brand leading-relaxed">
-                        Evaluations and prescriptions for clinically approved weight loss medications (e.g., GLP-1 receptor agonists) under strict medical oversight to help regulate appetite.
+                        Diagnosis and treatment of common childhood conditions including respiratory infections, fevers, ear infections, allergies, and digestive complaints.
                       </p>
                     </div>
                     <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
-                      <h3 className="font-semibold text-primary-500 mb-3">Metabolic Risk Management</h3>
+                      <h3 className="font-semibold text-primary-500 mb-3">Adolescent Health</h3>
                       <p className="text-sm text-slate-brand leading-relaxed">
-                        Active treatment and monitoring of conditions aggravated by excess weight, including type 2 diabetes, high blood pressure, sleep apnea, PCOS, and joint pains.
+                        Confidential health consultations for teenagers covering nutrition, mental health, growth concerns, and preventive guidance for healthy lifestyle habits.
                       </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="text-center mt-8">
-                  <button onClick={() => handleBookService("Weight Management")} className="btn-primary">
-                    <CalendarCheck className="w-4 h-4" /> Book Weight Management Consultation
+                  <button onClick={() => handleBookService("Children's Health")} className="btn-primary">
+                    <CalendarCheck className="w-4 h-4" /> Book Children's Health Consultation
                   </button>
                 </div>
 
@@ -374,12 +575,12 @@ export default function ServicesPage() {
                   <h3 className="font-semibold text-primary-500 mb-4">Frequently Asked Questions</h3>
                   <div className="space-y-1">
                     <FAQItem
-                      question="Who qualifies for prescription weight-loss medications?"
-                      answer="Prescription weight loss support is typically indicated for adults with a BMI of 30 or higher, or a BMI of 27 or higher in the presence of weight-related health conditions (like high blood pressure or type 2 diabetes), after a complete metabolic medical evaluation."
+                      question="What vaccinations does my child need?"
+                      answer="Vaccination schedules vary by age and country. Our paediatric team follows national immunisation guidelines and can advise on routine vaccines, boosters, and any catch-up doses your child may need."
                     />
                     <FAQItem
-                      question="What makes the Doctors360 program different from commercial diets?"
-                      answer="Commercial programs often promise rapid 'quick fixes' which are rarely sustainable and can cause muscle loss. Our clinic evaluates the underlying hormonal and medical reasons why you might struggle to lose weight, providing structured medical supervision and lifestyle coaching for long-term health."
+                      question="When should I bring my child for a checkup?"
+                      answer="Well-child visits are recommended at regular intervals: shortly after birth, at 2 weeks, 2 months, 4 months, 6 months, 9 months, 12 months, 18 months, and annually thereafter. These visits track growth, development, and vaccination status."
                     />
                   </div>
                 </div>
@@ -388,57 +589,57 @@ export default function ServicesPage() {
 
             <hr className="border-slate-100" />
 
-            {/* 4. PODIATRY */}
-            <div id="podiatry" className="scroll-mt-28">
+            {/* 5. SEXUAL HEALTH */}
+            <div id="sexual-health" className="scroll-mt-28">
               <ScrollReveal animation="fade-up">
                 <div className="grid lg:grid-cols-12 gap-10 items-start">
                   <div className="lg:col-span-5 space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
-                    <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-teal-100 text-teal-deep mx-auto lg:self-center">
-                      <Footprints className="w-7 h-7" />
+                    <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-pink-100 text-pink-600 mx-auto lg:self-center">
+                      <HeartHandshake className="w-7 h-7" />
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500">Podiatry (Foot & Ankle Care)</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500 text-center lg:self-center">Sexual Health</h2>
                     <p className="text-base text-slate-brand leading-relaxed">
-                      Your feet carry you through life, yet they are often overlooked until pain or injury limits your mobility. Our specialized Podiatry Services provide professional clinical assessment, treatments, and preventative foot education.
+                      Doctors360 provides confidential, non-judgmental sexual health services for individuals and couples. Our clinic offers STI screening and treatment, reproductive health counselling, and comprehensive sexual health education in a private and supportive environment.
                     </p>
-                    <div className="bg-teal-50 border border-teal-100 rounded-2xl p-5 text-teal-950">
-                      <h4 className="font-semibold text-teal-800 mb-2">Diabetic Foot Screenings</h4>
-                      <p className="text-xs leading-relaxed text-teal-900/90">
-                        Patients living with diabetes have an elevated risk of nerve damage and circulation issues in their lower limbs. Regular podiatry screening is essential to identify early warning signs, manage calluses, and prevent diabetic ulcers or infections.
+                    <div className="bg-pink-50/50 border border-pink-100 rounded-2xl p-5">
+                      <h4 className="font-semibold text-pink-800 mb-2">Confidential & Respectful</h4>
+                      <p className="text-sm text-pink-900/80 leading-relaxed">
+                        We prioritise your privacy and dignity. All consultations are strictly confidential, and our clinicians are trained to provide culturally sensitive, non-judgmental care.
                       </p>
                     </div>
                   </div>
 
                   <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
                     <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
-                      <h3 className="font-semibold text-primary-500 mb-3">Nail Surgery & Care</h3>
+                      <h3 className="font-semibold text-primary-500 mb-3">STI Screening & Treatment</h3>
                       <p className="text-sm text-slate-brand leading-relaxed">
-                        Safe, sterile clinic-based treatment and minor surgeries for painful ingrown toenails under local anesthetic, as well as management of thick, dystrophic, or fungal nails.
+                        Confidential testing and treatment for sexually transmitted infections including HIV, syphilis, gonorrhoea, chlamydia, and hepatitis B. Results are delivered discreetly with counselling.
                       </p>
                     </div>
                     <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
-                      <h3 className="font-semibold text-primary-500 mb-3">Skin Condition Treatments</h3>
+                      <h3 className="font-semibold text-primary-500 mb-3">Reproductive Health Counselling</h3>
                       <p className="text-sm text-slate-brand leading-relaxed">
-                        Pain-free removal and treatment of corns, deep calluses, plantar warts (verrucas), athlete's foot (tinea pedis), and cracked heels.
+                        Guidance on fertility awareness, preconception health, contraception methods, and family planning options tailored to your individual needs and circumstances.
                       </p>
                     </div>
                     <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
-                      <h3 className="font-semibold text-primary-500 mb-3">Foot Pain & Injury Assessment</h3>
+                      <h3 className="font-semibold text-primary-500 mb-3">Sexual Health Education</h3>
                       <p className="text-sm text-slate-brand leading-relaxed">
-                        Diagnostic assessment of persistent heel pain (plantar fasciitis), arch discomfort, tendonitis, sports-related foot strain, and biomechanical issues.
+                        Evidence-based education for individuals, couples, and groups covering safe sex practices, consent, healthy relationships, and prevention of STIs and unintended pregnancy.
                       </p>
                     </div>
                     <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
-                      <h3 className="font-semibold text-primary-500 mb-3">Wound Care & Dressing</h3>
+                      <h3 className="font-semibold text-primary-500 mb-3">Counselling & Support</h3>
                       <p className="text-sm text-slate-brand leading-relaxed">
-                        Clinical management and sterile dressing of slow-healing foot wounds, pressure points, and lower limb ulcerations.
+                        Private counselling for concerns related to sexual dysfunction, relationship health, post-exposure prophylaxis (PEP), and emotional wellbeing.
                       </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="text-center mt-8">
-                  <button onClick={() => handleBookService("Podiatry")} className="btn-primary">
-                    <CalendarCheck className="w-4 h-4" /> Book Podiatry Consultation
+                  <button onClick={() => handleBookService("Sexual Health")} className="btn-primary">
+                    <CalendarCheck className="w-4 h-4" /> Book Sexual Health Consultation
                   </button>
                 </div>
 
@@ -446,12 +647,12 @@ export default function ServicesPage() {
                   <h3 className="font-semibold text-primary-500 mb-4">Frequently Asked Questions</h3>
                   <div className="space-y-1">
                     <FAQItem
-                      question="What is diabetic foot care and why is it important?"
-                      answer="High blood sugar can cause nerve damage (neuropathy) and reduced blood flow, meaning a minor scratch or blister can quietly develop into a deep, slow-healing wound (ulcer). A podiatrist performs sensation testing, blood flow screening, and provides specialized nail trimming and callus care to prevent serious infections."
+                      question="How often should I get tested for STIs?"
+                      answer="Testing frequency depends on your sexual activity. In general, sexually active individuals should consider testing at least once a year, or more frequently if you have multiple partners or new partners. Our clinicians can advise on the right schedule for you."
                     />
                     <FAQItem
-                      question="When should I see a doctor about an ingrown toenail?"
-                      answer="You should see a clinician if the toe becomes swollen, red, hot, leaks pus, or is too painful to allow normal walking. Self-treating by digging at the nail can introduce bacteria and lead to severe infections, particularly for individuals with poor circulation or diabetes."
+                      question="Are sexual health services confidential?"
+                      answer="Yes, absolutely. All sexual health consultations and test results are strictly confidential and will not be shared without your explicit consent, except where required by law."
                     />
                   </div>
                 </div>
@@ -460,72 +661,57 @@ export default function ServicesPage() {
 
             <hr className="border-slate-100" />
 
-            {/* 5. WELLNESS IV THERAPY */}
-            <div id="iv-therapy" className="scroll-mt-28">
+            {/* 6. GENERAL MEDICAL SERVICES */}
+            <div id="general-medical" className="scroll-mt-28">
               <ScrollReveal animation="fade-up">
                 <div className="grid lg:grid-cols-12 gap-10 items-start">
                   <div className="lg:col-span-5 space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
-                    <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-seafoam-100 text-teal-deep mx-auto lg:self-center">
-                      <Syringe className="w-7 h-7 rotate-45" />
+                    <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-slate-100 text-slate-700 mx-auto lg:self-center">
+                      <Stethoscope className="w-7 h-7" />
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500">Wellness IV Therapy</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500 text-center lg:self-center">General Medical Services</h2>
                     <p className="text-base text-slate-brand leading-relaxed">
-                      Wellness IV Therapy delivers rehydration fluids, key electrolytes, and essential vitamins directly into the bloodstream to promote energy and restore fluid balance. Every drip is prescribed and monitored by qualified healthcare professionals.
+                      Our General Medical Services provide comprehensive primary care for acute and chronic conditions. From routine consultations and diagnostic evaluations to ongoing management of common medical conditions, our team is here to support your everyday health needs.
                     </p>
-                    <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 text-amber-950">
-                      <h4 className="font-semibold text-amber-800 mb-1 flex items-center gap-1.5 text-sm">
-                        <AlertCircle className="w-4 h-4 flex-shrink-0" /> Safety First Policy
-                      </h4>
-                      <p className="text-xs leading-relaxed text-amber-900/90">
-                        IV infusions are medical procedures. A medical consultation, vital signs review, allergy check, and screening of kidney/heart function history are required before any infusion. Wellness infusions are intended to support hydration and are not a substitute for medical treatments.
+                    <div className="bg-slate-50/50 border border-slate-200 rounded-2xl p-5">
+                      <h4 className="font-semibold text-slate-700 mb-2">Your Medical Home</h4>
+                      <p className="text-sm text-slate-600 leading-relaxed">
+                        We believe in continuity of care. Establishing a relationship with a primary care provider ensures your health history is known, your preferences are respected, and your care is coordinated across all services.
                       </p>
                     </div>
                   </div>
 
-                  <div className="lg:col-span-7 space-y-6">
-                    <h3 className="text-xl font-semibold text-primary-500">Our Wellness IV Packages</h3>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
-                        <h4 className="font-semibold text-primary-500 text-sm">Essential Hydration</h4>
-                        <p className="text-xs text-slate-brand mt-1">
-                          A targeted isotonic saline or Ringer's solution infusion designed to quickly restore fluid and electrolyte balance in the body.
-                        </p>
-                      </div>
-                      <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
-                        <h4 className="font-semibold text-primary-500 text-sm">Recovery IV</h4>
-                        <p className="text-xs text-slate-brand mt-1">
-                          Rehydration and mineral replacement following minor illness, stomach bug fluid loss, strenuous athletic events, or jetlag.
-                        </p>
-                      </div>
-                      <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
-                        <h4 className="font-semibold text-primary-500 text-sm">Executive Wellness</h4>
-                        <p className="text-xs text-slate-brand mt-1">
-                          Hydration therapy containing selected B-complex vitamins, vitamin C, and micronutrients to support fatigue recovery in busy professionals.
-                        </p>
-                      </div>
-                      <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
-                        <h4 className="font-semibold text-primary-500 text-sm">Customized Wellness Infusion</h4>
-                        <p className="text-xs text-slate-brand mt-1">
-                          A bespoke hydration and nutritional formula prescribed by our clinician based on your health history and metabolic requirements.
-                        </p>
-                      </div>
+                  <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Routine Consultations</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Comprehensive medical consultations for the diagnosis and treatment of acute illnesses such as colds, flu, sore throat, urinary tract infections, and minor injuries.
+                      </p>
                     </div>
-
-                    <div className="p-5 rounded-2xl bg-white border border-slate-100 shadow-sm">
-                      <h4 className="font-semibold text-primary-500 text-sm mb-2">Who May Benefit?</h4>
-                      <ul className="text-xs text-slate-brand grid sm:grid-cols-2 gap-2">
-                        <li>• Adults dehydrated from travel or heat</li>
-                        <li>• Rehydration after diarrhoea or vomiting</li>
-                        <li>• Fatigue recovery after extreme physical exertion</li>
-                        <li>• Mild dehydration with hangover symptoms</li>
-                      </ul>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Chronic Disease Management</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Ongoing care and monitoring for chronic conditions including hypertension, diabetes, asthma, thyroid disorders, and arthritis, with regular follow-ups and medication management.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Diagnostic Evaluations</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        On-site and referral-based diagnostic testing including blood work, urinalysis, ECG, and imaging to support accurate diagnosis and treatment planning.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Referral Coordination</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Seamless referrals to specialists within our network or external providers when specialised care is needed, ensuring your treatment journey remains coordinated.
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="text-center mt-8">
-                  <button onClick={() => handleBookService("Wellness IV Therapy")} className="btn-primary">
-                    <CalendarCheck className="w-4 h-4" /> Book IV Therapy Consultation
+                  <button onClick={() => handleBookService("General Medical Services")} className="btn-primary">
+                    <CalendarCheck className="w-4 h-4" /> Book General Medical Consultation
                   </button>
                 </div>
 
@@ -533,12 +719,12 @@ export default function ServicesPage() {
                   <h3 className="font-semibold text-primary-500 mb-4">Frequently Asked Questions</h3>
                   <div className="space-y-1">
                     <FAQItem
-                      question="Is Wellness IV Therapy safe?"
-                      answer="Yes, when performed under proper clinical criteria. Our clinic implements strict pre-infusion checks. Patients with severe heart failure, kidney disease, or uncontrolled high blood pressure do not qualify for IV infusions due to the risk of fluid overload."
+                      question="How do I book a general consultation?"
+                      answer="You can book a general consultation by filling out the appointment form on this page or calling our clinic directly. We aim to confirm appointments within 2 hours during business days."
                     />
                     <FAQItem
-                      question="How long does an IV infusion session take?"
-                      answer="A standard hydration infusion session takes between 45 to 60 minutes. You will be seated comfortably in our wellness clinic while a clinical nurse monitors your flow rate and vital signs."
+                      question="Do I need a referral to see a specialist?"
+                      answer="Some services may require a referral from a primary care provider. During your general consultation, our clinician will assess your needs and coordinate any necessary referrals to specialists within our network."
                     />
                   </div>
                 </div>
@@ -547,21 +733,165 @@ export default function ServicesPage() {
 
             <hr className="border-slate-100" />
 
-            {/* 6. DENTAL */}
+            {/* 7. LABORATORY */}
+            <div id="laboratory" className="scroll-mt-28">
+              <ScrollReveal animation="fade-up">
+                <div className="grid lg:grid-cols-12 gap-10 items-start">
+                  <div className="lg:col-span-5 space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
+                    <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-cyan-100 text-cyan-700 mx-auto lg:self-center">
+                      <FlaskConical className="w-7 h-7" />
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500 text-center lg:self-center">Laboratory Services</h2>
+                    <p className="text-base text-slate-brand leading-relaxed">
+                      Our state-of-the-art diagnostic laboratory provides accurate and timely test results to support clinical decision-making and patient care. From routine blood work to specialised diagnostic panels, our lab is equipped to handle a wide range of investigations.
+                    </p>
+                    <div className="bg-cyan-50/50 border border-cyan-100 rounded-2xl p-5">
+                      <h4 className="font-semibold text-cyan-800 mb-2">Quality & Accuracy</h4>
+                      <p className="text-sm text-cyan-900/80 leading-relaxed">
+                        We adhere to strict quality control standards to ensure every test result is reliable. Our laboratory technicians are trained professionals committed to precision and patient safety.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Haematology</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Complete blood counts, haemoglobin levels, white cell differentials, coagulation profiles, and blood typing for transfusion readiness.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Clinical Chemistry</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Comprehensive metabolic panels, liver and kidney function tests, lipid profiles, blood glucose monitoring, and electrolyte analysis.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Microbiology & Infectious Disease</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Culture and sensitivity testing, malaria rapid diagnostics, tuberculosis screening, STI testing, and other infectious disease markers.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Hormone & Specialised Testing</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Thyroid function tests, reproductive hormone panels (LH, FSH, prolactin, testosterone), vitamin D and B12 levels, and tumour markers.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-center mt-8">
+                  <button onClick={() => handleBookService("Laboratory")} className="btn-primary">
+                    <CalendarCheck className="w-4 h-4" /> Book Laboratory Appointment
+                  </button>
+                </div>
+
+                <div className="mt-10 max-w-4xl">
+                  <h3 className="font-semibold text-primary-500 mb-4">Frequently Asked Questions</h3>
+                  <div className="space-y-1">
+                    <FAQItem
+                      question="Do I need a doctor's referral for lab tests?"
+                      answer="Most laboratory tests require a request from a licensed healthcare provider. Our clinicians can order the appropriate tests during a consultation based on your symptoms and medical history."
+                    />
+                    <FAQItem
+                      question="How long do lab results take?"
+                      answer="Turnaround times vary by test. Routine blood work is typically available within 24 hours, while specialised tests such as cultures or hormone panels may take 2 to 5 days. Our team will inform you of expected timelines when you submit your sample."
+                    />
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            <hr className="border-slate-100" />
+
+            {/* 8. PHARMACY */}
+            <div id="pharmacy" className="scroll-mt-28">
+              <ScrollReveal animation="fade-up">
+                <div className="grid lg:grid-cols-12 gap-10 items-start">
+                  <div className="lg:col-span-5 space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
+                    <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-green-100 text-green-700 mx-auto lg:self-center">
+                      <Pill className="w-7 h-7" />
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500 text-center lg:self-center">Pharmacy</h2>
+                    <p className="text-base text-slate-brand leading-relaxed">
+                      Our full-service pharmacy offers prescribed medications, over-the-counter products, and professional pharmaceutical care. We prioritise patient safety through accurate dispensing, medication counselling, and careful management of your prescriptions.
+                    </p>
+                    <div className="bg-green-50/50 border border-green-100 rounded-2xl p-5">
+                      <h4 className="font-semibold text-green-800 mb-2">Your Health, Our Priority</h4>
+                      <p className="text-sm text-green-900/80 leading-relaxed">
+                        Our pharmacists take the time to understand your medication needs, explain proper usage, and check for potential interactions to ensure you receive the safest and most effective care.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Prescription Dispensing</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Accurate and timely dispensing of prescribed medications with thorough verification of dosage, interactions, and patient allergies to ensure safe use.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Medication Counselling</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Personalised guidance on how to take your medications correctly, potential side effects, food and drug interactions, and what to do if you miss a dose.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Over-the-Counter Products</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        A wide range of OTC products including pain relievers, allergy medications, vitamins and supplements, first aid supplies, and personal care items.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Chronic Medication Management</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Ongoing support for patients on long-term medications, including refill reminders, dosage adjustments in coordination with your doctor, and medication reviews.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-center mt-8">
+                  <button onClick={() => handleBookService("Pharmacy")} className="btn-primary">
+                    <CalendarCheck className="w-4 h-4" /> Book Pharmacy Consultation
+                  </button>
+                </div>
+
+                <div className="mt-10 max-w-4xl">
+                  <h3 className="font-semibold text-primary-500 mb-4">Frequently Asked Questions</h3>
+                  <div className="space-y-1">
+                    <FAQItem
+                      question="Do I need a prescription to buy medication?"
+                      answer="Some medications require a prescription from a licensed healthcare provider. Our pharmacists can advise you on which products are available over the counter and which require a prescription."
+                    />
+                    <FAQItem
+                      question="Can I refill my prescription at your pharmacy?"
+                      answer="Yes, we can refill most prescriptions. Please bring your current prescription or medication container, and we will verify the details with your healthcare provider if necessary."
+                    />
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            <hr className="border-slate-100" />
+
+            {/* 9. DENTAL */}
             <div id="dental" className="scroll-mt-28">
               <ScrollReveal animation="fade-up">
                 <div className="grid lg:grid-cols-12 gap-10 items-start">
                   <div className="lg:col-span-5 space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
-                    <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 mx-auto lg:self-center">
+                    <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-purple-100 text-purple-600 mx-auto lg:self-center">
                       <Smile className="w-7 h-7" />
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500">Dental Services</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500 text-center lg:self-center">Dental Services</h2>
                     <p className="text-base text-slate-brand leading-relaxed">
                       Maintaining good oral health is a vital component of your overall physical wellbeing. Doctors360 Dental Clinic provides professional, family-friendly dentistry covering prevention, pain management, restoration, and education.
                     </p>
-                    <div className="bg-amber-50/50 border border-amber-100 rounded-2xl p-5">
-                      <h4 className="font-semibold text-amber-800 mb-2">Routine Dental Checks</h4>
-                      <p className="text-sm text-amber-900/80 leading-relaxed">
+                    <div className="bg-purple-50/50 border border-purple-100 rounded-2xl p-5">
+                      <h4 className="font-semibold text-purple-800 mb-2">Routine Dental Checks</h4>
+                      <p className="text-sm text-purple-900/80 leading-relaxed">
                         We recommend a dental visit twice a year to screen for early signs of decay, clean plaque buildup, and check gum condition to prevent infections.
                       </p>
                     </div>
@@ -621,7 +951,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Fully functional Appointment Booking Contact Form */}
       <section id="appointment-contact" className="scroll-mt-20 border-t border-slate-100">
         <Contact initialServices={selectedServices} />
       </section>

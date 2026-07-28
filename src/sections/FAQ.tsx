@@ -16,7 +16,7 @@ const faqs = [
   {
     question: 'What medical services does Doctors360 offer?',
     answer:
-      'We offer 4 specialized services: Reproductive Health — family planning, prenatal and postnatal care, and sexual health education; Men\'s Health — prostate health screening, hormonal health assessment, and lifestyle & wellness coaching; Vaccination Clinic — childhood vaccination programs, adult & travel vaccines, and catch-up immunisation schedules; and Dental — routine check-ups & cleaning, fillings & extractions, and oral health education. Our care model follows four pillars: Prevention & Wellness, Advanced Diagnostics, Treatment & Therapy, and Follow-up & Recovery.',
+      'We offer 9 specialised services: Concierge & Preventive Medicine — comprehensive health management including weight management and wellness IV therapy; Men\'s Health — TRT, safe male circumcision, and wellness monitoring; Women\'s Health — family planning, prenatal care, and menopause management; Children\'s Health — well-child checkups, vaccinations, and paediatric care; Sexual Health — STI screening, reproductive counselling, and sexual health education; General Medical Services — primary care, chronic disease management, and diagnostic evaluations; Laboratory — haematology, clinical chemistry, and microbiology testing; Pharmacy — prescription dispensing, medication counselling, and OTC products; and Dental Services — preventive, restorative, and emergency dentistry.',
   },
   {
     question: 'Is Doctors360 a nonprofit organization?',

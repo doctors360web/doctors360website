@@ -1,67 +1,79 @@
-import { HeartPulse, UserRound, Scale, Footprints, Syringe, Smile, ArrowRight } from 'lucide-react';
+import { Shield, UserRound, HeartPulse, Baby, HeartHandshake, Stethoscope, FlaskConical, Pill, Smile, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import ScrollReveal from '../components/ScrollReveal';
 
 const services = [
   {
-    icon: HeartPulse,
-    title: "Women's Health",
-    text: "Comprehensive healthcare tailored to women's unique needs, including wellness screenings, family planning, pregnancy care, and menopause management.",
-    points: ['Family Planning & Contraception', 'Pregnancy & Antenatal Care', 'Menopause Symptom Clinic'],
-    accent: 'from-rose-50 to-pink-100/40',
-    iconBg: 'bg-rose-100 text-rose-600',
-    dot: 'bg-rose-400',
-    slug: 'womens-health',
+    icon: Shield,
+    title: "Concierge & Preventive Medicine",
+    text: "Comprehensive health management including routine check-ups, preventive screenings, weight management programs, and wellness IV therapy tailored to your needs.",
+    accent: 'from-teal-50 to-seafoam-100/40',
+    iconBg: 'bg-teal-100 text-teal-deep',
+    slug: 'concierge-preventive',
   },
   {
     icon: UserRound,
     title: "Men's Health",
     text: "Dedicated medical services for men, specializing in Testosterone Replacement Therapy (TRT), safe male circumcision, and overall wellness monitoring.",
-    points: ['Hormone Replacement (TRT)', 'Safe Male Circumcision (SMC)', 'General Screening & Exams'],
     accent: 'from-blue-50 to-indigo-100/40',
     iconBg: 'bg-blue-100 text-blue-600',
-    dot: 'bg-blue-400',
     slug: 'mens-health',
   },
   {
-    icon: Scale,
-    title: 'Weight Management',
-    text: 'Evidence-based weight-loss programmes under medical supervision, focusing on metabolism, lifestyle adjustments, and supportive medications.',
-    points: ['Medical Weight Loss Plans', 'Metabolic Assessments', 'GLP-1 Medication Guidance'],
-    accent: 'from-amber-50 to-yellow-100/40',
+    icon: HeartPulse,
+    title: "Women's Health",
+    text: "Comprehensive healthcare tailored to women's unique needs, including wellness screenings, family planning, pregnancy care, and menopause management.",
+    accent: 'from-rose-50 to-pink-100/40',
+    iconBg: 'bg-rose-100 text-rose-600',
+    slug: 'womens-health',
+  },
+  {
+    icon: Baby,
+    title: "Children's Health",
+    text: "Specialised paediatric care for infants, children, and adolescents, including well-child checkups, vaccinations, growth monitoring, and management of common childhood illnesses.",
+    accent: 'from-yellow-50 to-amber-100/40',
     iconBg: 'bg-amber-100 text-amber-600',
-    dot: 'bg-amber-400',
-    slug: 'weight-management',
+    slug: 'childrens-health',
   },
   {
-    icon: Footprints,
-    title: 'Podiatry',
-    text: 'Comprehensive foot and ankle care covering diabetic screenings, minor nail surgeries, chronic pain treatments, and wound care.',
-    points: ['Diabetic Foot Screenings', 'Ingrown Toenail Treatments', 'Heel & Foot Pain Relief'],
-    accent: 'from-emerald-50 to-teal-100/40',
-    iconBg: 'bg-emerald-100 text-emerald-600',
-    dot: 'bg-emerald-400',
-    slug: 'podiatry',
+    icon: HeartHandshake,
+    title: 'Sexual Health',
+    text: 'Confidential sexual health services including STI screening and treatment, reproductive health counseling, and education for individuals and couples.',
+    accent: 'from-pink-50 to-rose-100/40',
+    iconBg: 'bg-pink-100 text-pink-600',
+    slug: 'sexual-health',
   },
   {
-    icon: Syringe,
-    title: 'Wellness IV Therapy',
-    text: 'Intravenous hydration and micronutrient replacement therapies designed to aid post-illness dehydration, physical exertion, and jetlag.',
-    points: ['Hydration & Nutrient Infusions', 'Recovery & Executive Packages', 'Clinical Vital Signs Check'],
-    accent: 'from-seafoam-100 to-teal-light/20',
-    iconBg: 'bg-seafoam-100 text-teal-deep',
-    dot: 'bg-seafoam-300',
-    slug: 'iv-therapy',
+    icon: Stethoscope,
+    title: 'General Medical Services',
+    text: 'Comprehensive primary care for acute and chronic conditions, including routine consultations, diagnostic evaluations, and ongoing management of common medical conditions.',
+    accent: 'from-slate-50 to-gray-100/40',
+    iconBg: 'bg-slate-100 text-slate-700',
+    slug: 'general-medical',
+  },
+  {
+    icon: FlaskConical,
+    title: 'Laboratory',
+    text: 'State-of-the-art diagnostic laboratory services providing accurate and timely test results to support clinical decision-making and patient care.',
+    accent: 'from-cyan-50 to-sky-100/40',
+    iconBg: 'bg-cyan-100 text-cyan-700',
+    slug: 'laboratory',
+  },
+  {
+    icon: Pill,
+    title: 'Pharmacy',
+    text: 'Full-service pharmacy offering prescribed medications, over-the-counter products, and professional pharmaceutical care with a focus on patient safety and education.',
+    accent: 'from-green-50 to-emerald-100/40',
+    iconBg: 'bg-green-100 text-green-700',
+    slug: 'pharmacy',
   },
   {
     icon: Smile,
     title: 'Dental Services',
     text: 'Professional preventive, restorative, and cosmetic dentistry services to maintain and restore oral health for patients of all ages.',
-    points: ['Routine Check-ups & Cleaning', 'Fillings & Extractions', 'Oral Hygiene & Education'],
     accent: 'from-purple-50 to-violet-100/40',
     iconBg: 'bg-purple-100 text-purple-600',
-    dot: 'bg-purple-400',
     slug: 'dental',
   },
 ];
@@ -86,26 +98,17 @@ export default function Services() {
           {services.map((s, i) => (
             <ScrollReveal key={s.title} animation="fade-up" delay={i * 100}>
               <div className="group relative bg-white rounded-3xl p-7 border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full overflow-hidden flex flex-col justify-between">
-                {/* Gradient overlay on hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${s.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
                 <div className="relative z-10 flex flex-col h-full justify-between">
                   <div>
                     <span className={`flex items-center justify-center w-14 h-14 rounded-2xl ${s.iconBg} mb-5 mx-auto group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500`}>
-                      <s.icon className={`w-7 h-7 ${s.title === 'Wellness IV Therapy' ? 'rotate-45' : ''}`} />
+                      <s.icon className="w-7 h-7" />
                     </span>
                     <h3 className="text-xl font-semibold text-primary-500 text-center">{s.title}</h3>
-                    <p className="mt-2 text-sm text-slate-brand leading-relaxed text-center sm:text-left">{s.text}</p>
-                    <ul className="mt-5 space-y-2.5 flex flex-col items-center sm:items-start">
-                      {s.points.map((p) => (
-                        <li key={p} className="flex items-center gap-2 text-sm text-primary-500 justify-center sm:justify-start">
-                          <span className={`w-1.5 h-1.5 rounded-full ${s.dot}`} />
-                          {p}
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="mt-2 text-sm text-slate-brand leading-relaxed text-center">{s.text}</p>
                   </div>
-                  <div className="flex justify-center sm:justify-start mt-6">
+                  <div className="flex justify-center mt-6">
                     <Link
                       to={`/services#${s.slug}`}
                       className="inline-flex items-center gap-1 text-sm font-semibold text-teal-deep hover:gap-2 transition-all duration-300"

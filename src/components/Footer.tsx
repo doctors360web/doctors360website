@@ -35,11 +35,14 @@ const linkGroups = [
   {
     title: 'Medical Services',
     links: [
-      { label: "Women's Health", href: '/services#womens-health' },
+      { label: "Concierge & Preventive Medicine", href: '/services#concierge-preventive' },
       { label: "Men's Health", href: '/services#mens-health' },
-      { label: 'Weight Management', href: '/services#weight-management' },
-      { label: 'Podiatry', href: '/services#podiatry' },
-      { label: 'Wellness IV Therapy', href: '/services#iv-therapy' },
+      { label: "Women's Health", href: '/services#womens-health' },
+      { label: "Children's Health", href: '/services#childrens-health' },
+      { label: 'Sexual Health', href: '/services#sexual-health' },
+      { label: 'General Medical Services', href: '/services#general-medical' },
+      { label: 'Laboratory', href: '/services#laboratory' },
+      { label: 'Pharmacy', href: '/services#pharmacy' },
       { label: 'Dental Services', href: '/services#dental' },
     ],
   },
