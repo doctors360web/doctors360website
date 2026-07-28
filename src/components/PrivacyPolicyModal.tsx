@@ -26,7 +26,7 @@ export default function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyMod
         </div>
         <div className="flex-1 overflow-y-auto p-6 space-y-6 text-sm text-slate-brand leading-relaxed">
           <div>
-            <h3 className="text-lg font-bold text-primary-500 mb-2">Doctors360 Medical Centre — Comprehensive Privacy Policy</h3>
+            <h3 className="text-lg font-bold text-primary-500 mb-2">Doctors360 Privacy Policy</h3>
             <p><strong>Effective Date:</strong> 28 July 2026</p>
             <p><strong>Website:</strong> www.doctors360.org</p>
             <p className="mt-3">This Privacy Policy describes how Doctors360 Medical Centre collects, uses, stores, shares, and protects personal information when providing healthcare services and operating its website.</p>
