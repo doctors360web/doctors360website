@@ -26,6 +26,17 @@ const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || dotEnv.SUPABASE_SER
   || process.env.VITE_SUPABASE_ANON_KEY || dotEnv.VITE_SUPABASE_ANON_KEY || '';
 
 const BASE_URL = 'https://www.doctors360.org';
+const LASTMOD = '2026-07-29';
+
+const staticPages = [
+  { loc: '/',                changefreq: 'weekly',  priority: '1.0' },
+  { loc: '/services',        changefreq: 'weekly',  priority: '0.9' },
+  { loc: '/about',           changefreq: 'monthly', priority: '0.9' },
+  { loc: '/programs',        changefreq: 'monthly', priority: '0.9' },
+  { loc: '/news',            changefreq: 'weekly',  priority: '0.8' },
+  { loc: '/gallery',         changefreq: 'monthly', priority: '0.6' },
+  { loc: '/donate',          changefreq: 'monthly', priority: '0.8' },
+];
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -47,7 +58,14 @@ export default async function handler(req, res) {
 
     if (error) throw error;
 
-    const urls = (articles || []).map((a) => {
+    const staticXml = staticPages.map((p) => `  <url>
+    <loc>${BASE_URL}${p.loc}</loc>
+    <lastmod>${LASTMOD}</lastmod>
+    <changefreq>${p.changefreq}</changefreq>
+    <priority>${p.priority}</priority>
+  </url>`).join('\n');
+
+    const articleXml = (articles || []).map((a) => {
       const lastmod = (a.created_at || a.date || new Date().toISOString()).slice(0, 10);
       return `  <url>
     <loc>${BASE_URL}/news/${a.slug}</loc>
@@ -59,7 +77,8 @@ export default async function handler(req, res) {
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}
+${staticXml}
+${articleXml}
 </urlset>`;
 
     res.setHeader('Content-Type', 'application/xml; charset=utf-8');
