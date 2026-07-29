@@ -24,6 +24,69 @@ import ScrollReveal from '../components/ScrollReveal';
 import SEOHead from '../components/SEOHead';
 import Contact from '../sections/Contact';
 
+function SickleCellSection() {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50/50 transition-colors"
+      >
+        <div className="flex items-center gap-3">
+          <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-red-100 text-red-600">
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+          </span>
+          <div>
+            <h3 className="font-semibold text-primary-500">Sickle Cell Disease Management</h3>
+            <p className="text-sm text-slate-500">Comprehensive care for children and adults living with sickle cell disease</p>
+          </div>
+        </div>
+        <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180 text-teal-deep' : ''}`} />
+      </button>
+
+      <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[2000px]' : 'max-h-0'}`}>
+        <div className="px-6 pb-6 space-y-6">
+          <p className="text-sm text-slate-brand leading-relaxed">
+            We provide comprehensive care for children and adults living with sickle cell disease through early diagnosis, routine follow-up, prevention, treatment, and patient education. Our multidisciplinary approach aims to improve quality of life, reduce complications, and support patients and their families with evidence-based care.
+          </p>
+
+          <div>
+            <h4 className="font-semibold text-primary-500 mb-3">Our Services Include</h4>
+            <div className="grid sm:grid-cols-2 gap-2">
+              {[
+                'Screening and diagnosis',
+                'Comprehensive clinical assessment and routine follow-up',
+                'Pain crisis management',
+                'Infection prevention and treatment',
+                'Blood transfusion support (where clinically indicated)',
+                'Hydroxyurea therapy and monitoring',
+                'Laboratory investigations and monitoring',
+                'Nutrition and lifestyle counselling',
+                'Genetic counselling and family education',
+                'Referral to specialised care when required',
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-2 text-sm text-slate-brand">
+                  <span className="text-teal-deep mt-0.5 flex-shrink-0">•</span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-red-50/50 border border-red-100 rounded-2xl p-5">
+            <h4 className="font-semibold text-red-800 mb-1 text-sm">Our Commitment</h4>
+            <p className="text-sm text-red-900/80 leading-relaxed">
+              Doctors360 is committed to improving the lives of people living with sickle cell disease through accessible, patient-centred healthcare, early intervention, continuous follow-up, community education, and strong partnerships that promote better health outcomes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -708,6 +771,11 @@ export default function ServicesPage() {
                       </p>
                     </div>
                   </div>
+                </div>
+
+                {/* Sickle Cell Disease Management */}
+                <div className="mt-8">
+                  <SickleCellSection />
                 </div>
 
                 <div className="text-center mt-8">

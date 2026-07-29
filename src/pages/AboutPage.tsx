@@ -37,7 +37,7 @@ const leadership = [
 ];
 
 const governance = [
-  { role: 'Board Chair', name: 'Hon. Peter Kolong' },
+  { role: 'Board Chair', name: 'Estone Omondi Kiziah' },
   { role: 'Vice Chair', name: 'Dr. Sarah Machar' },
   { role: 'Board Secretary', name: 'Beatrice Lam' },
   { role: 'Treasurer', name: 'Simon Taban' },
