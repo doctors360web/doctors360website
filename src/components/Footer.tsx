@@ -41,6 +41,7 @@ const linkGroups = [
       { label: "Children's Health", href: '/services#childrens-health' },
       { label: 'Sexual Health', href: '/services#sexual-health' },
       { label: 'General Medical Services', href: '/services#general-medical' },
+      { label: 'Podiatry', href: '/services#podiatry' },
       { label: 'Laboratory', href: '/services#laboratory' },
       { label: 'Pharmacy', href: '/services#pharmacy' },
       { label: 'Dental Services', href: '/services#dental' },

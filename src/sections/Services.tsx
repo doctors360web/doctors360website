@@ -1,4 +1,4 @@
-import { Shield, UserRound, HeartPulse, Baby, HeartHandshake, Stethoscope, FlaskConical, Pill, Smile, ArrowRight } from 'lucide-react';
+import { Shield, UserRound, HeartPulse, Baby, HeartHandshake, Stethoscope, FlaskConical, Pill, Smile, Footprints, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import ScrollReveal from '../components/ScrollReveal';
@@ -51,6 +51,14 @@ const services = [
     accent: 'from-slate-50 to-gray-100/40',
     iconBg: 'bg-slate-100 text-slate-700',
     slug: 'general-medical',
+  },
+  {
+    icon: Footprints,
+    title: 'Podiatry',
+    text: "Doctors360's specialised foot and ankle care including treatment of common conditions like fungal infections, ingrown nails, heel pain, and diabetic foot assessments.",
+    accent: 'from-orange-50 to-amber-100/40',
+    iconBg: 'bg-orange-100 text-orange-600',
+    slug: 'podiatry',
   },
   {
     icon: FlaskConical,

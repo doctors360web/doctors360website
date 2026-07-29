@@ -10,6 +10,7 @@ import {
   FlaskConical,
   Pill,
   Smile,
+  Footprints,
   CalendarCheck,
   ArrowRight,
   ChevronDown,
@@ -73,8 +74,8 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Comprehensive Medical Services — Concierge & Preventive Medicine, Men's & Women's Health, Children's Health, Sexual Health, Lab, Pharmacy & Dental"
-        description="Explore Doctors360's full range of medical services. We offer Concierge & Preventive Medicine, Men's Health, Women's Health, Children's Health, Sexual Health, General Medical Services, Laboratory, Pharmacy, and Dental Care."
+        title="Comprehensive Medical Services — Concierge & Preventive Medicine, Men's & Women's Health, Children's Health, Sexual Health, Podiatry, Lab, Pharmacy & Dental"
+        description="Explore Doctors360's full range of medical services. We offer Concierge & Preventive Medicine, Men's Health, Women's Health, Children's Health, Sexual Health, General Medical Services, Podiatry, Laboratory, Pharmacy, and Dental Care."
         path="/services"
       />
 
@@ -733,7 +734,79 @@ export default function ServicesPage() {
 
             <hr className="border-slate-100" />
 
-            {/* 7. LABORATORY */}
+            {/* 7. PODIATRY */}
+            <div id="podiatry" className="scroll-mt-28">
+              <ScrollReveal animation="fade-up">
+                <div className="grid lg:grid-cols-12 gap-10 items-start">
+                  <div className="lg:col-span-5 space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
+                    <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-orange-100 text-orange-600 mx-auto lg:self-center">
+                      <Footprints className="w-7 h-7" />
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary-500 text-center lg:self-center">Podiatry</h2>
+                    <p className="text-base text-slate-brand leading-relaxed">
+                      Doctors360's podiatry service provides specialised care for foot and ankle conditions. From common issues like fungal infections and ingrown nails to complex diabetic foot assessments and minor surgical procedures, our team delivers comprehensive podiatric care to keep you mobile and pain-free.
+                    </p>
+                    <div className="bg-orange-50/50 border border-orange-100 rounded-2xl p-5">
+                      <h4 className="font-semibold text-orange-800 mb-2">Expert Foot Care</h4>
+                      <p className="text-sm text-orange-900/80 leading-relaxed">
+                        Your feet endure significant stress every day. Our podiatry professionals are trained to diagnose and treat a wide range of foot and ankle conditions, helping you maintain an active and healthy lifestyle.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Fungal Nail Treatment</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Effective antifungal therapies for nail infections, including topical and oral medications, to restore healthy nail appearance and prevent recurrence.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Heel Pain &amp; Injury Care</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Comprehensive treatment for plantar fasciitis, Achilles tendonitis, and sports-related foot injuries, including orthotic recommendations and rehabilitation guidance.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Diabetic Foot Assessment</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        Specialised foot examinations for diabetic patients, including neuropathy screening, circulation assessment, ulcer prevention, and wound care management.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <h3 className="font-semibold text-primary-500 mb-3">Minor Procedures</h3>
+                      <p className="text-sm text-slate-brand leading-relaxed">
+                        In-office minor surgical procedures including wart removal, ingrown toenail correction, callus debridement, and treatment of corns and verrucae.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-center mt-8">
+                  <button onClick={() => handleBookService("Podiatry")} className="btn-primary">
+                    <CalendarCheck className="w-4 h-4" /> Book Podiatry Consultation
+                  </button>
+                </div>
+
+                <div className="mt-10 max-w-4xl">
+                  <h3 className="font-semibold text-primary-500 mb-4">Frequently Asked Questions</h3>
+                  <div className="space-y-1">
+                    <FAQItem
+                      question="When should I see a podiatrist for foot pain?"
+                      answer="You should consider seeing a podiatrist if you experience persistent foot or ankle pain that lasts more than a few days, have visible changes in the shape or colour of your feet, notice swelling or inflammation that does not improve with rest, or have a chronic condition like diabetes that requires regular foot monitoring."
+                    />
+                    <FAQItem
+                      question="Why are diabetics at higher risk for foot problems?"
+                      answer="Diabetes can cause two major complications that affect the feet: peripheral neuropathy (nerve damage that reduces sensation, making it difficult to feel injuries) and peripheral vascular disease (reduced blood flow that impairs healing). These factors mean minor cuts or blisters can quickly become serious infections if not properly managed. Regular diabetic foot assessments are essential for prevention."
+                    />
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            <hr className="border-slate-100" />
+
+            {/* 8. LABORATORY */}
             <div id="laboratory" className="scroll-mt-28">
               <ScrollReveal animation="fade-up">
                 <div className="grid lg:grid-cols-12 gap-10 items-start">
@@ -805,7 +878,7 @@ export default function ServicesPage() {
 
             <hr className="border-slate-100" />
 
-            {/* 8. PHARMACY */}
+            {/* 9. PHARMACY */}
             <div id="pharmacy" className="scroll-mt-28">
               <ScrollReveal animation="fade-up">
                 <div className="grid lg:grid-cols-12 gap-10 items-start">
@@ -877,7 +950,7 @@ export default function ServicesPage() {
 
             <hr className="border-slate-100" />
 
-            {/* 9. DENTAL */}
+            {/* 10. DENTAL */}
             <div id="dental" className="scroll-mt-28">
               <ScrollReveal animation="fade-up">
                 <div className="grid lg:grid-cols-12 gap-10 items-start">

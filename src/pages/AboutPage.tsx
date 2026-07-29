@@ -20,7 +20,19 @@ const leadership = [
     name: 'Niinsima Cathy',
     title: 'Partnerships & Programs Director',
     image: '/images/Niinsima Cathy, Partnerships & Programs Director, Doctors360.jpeg',
-    bio: 'Cathy leads Doctors360\'s efforts to build partnerships with donors, governments, and communities across South Sudan and Uganda. She oversees program execution, translating the organization\'s mission into real, measurable impact.',
+    bio: "Cathy leads Doctors360\'s efforts to build partnerships with donors, governments, and communities across South Sudan and Uganda. She oversees program execution, translating the organization\'s mission into real, measurable impact.",
+  },
+  {
+    name: 'Wasuk Lugor',
+    title: 'Director of Legal Affairs & Corporate Governance',
+    image: '/images/Wasuk Lugor, Director of Legal Affairs & Corporate Governance, Doctors360.jpeg',
+    bio: 'Wasuk Lugor serves as the Director of Legal Affairs & Corporate Governance at Doctors360. She provides strategic legal guidance, oversees regulatory compliance, strengthens corporate governance, and ensures that our operations uphold the highest standards of ethics, accountability, patient privacy, and healthcare law.',
+  },
+  {
+    name: 'Estone Omondi Kiziah',
+    title: 'Board Chair',
+    image: '/images/Estone Omondi Kiziah, Board Chair, Doctors360.jpeg',
+    bio: 'Estone Omondi Kiziah is the Board Chair of Doctors360 and a seasoned finance and governance professional with over 20 years of leadership experience across the humanitarian, health, and development sectors in Africa and the Middle East. He provides strategic oversight, promotes sound corporate governance, and supports the organization\'s long-term vision of delivering accessible, high-quality healthcare.',
   },
 ];
 
