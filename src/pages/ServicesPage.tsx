@@ -18,6 +18,8 @@ import {
   Syringe,
   AlertCircle,
   CheckCircle2,
+  Heart,
+  Brain,
 } from 'lucide-react';
 
 import ScrollReveal from '../components/ScrollReveal';
@@ -107,7 +109,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export default function ServicesPage() {
   const { hash } = useLocation();
-  const [menTab, setMenTab] = useState<'trt' | 'smc'>('trt');
+  const [menTab, setMenTab] = useState<'trt' | 'smc' | 'cardiovascular' | 'mental' | 'sexual'>('trt');
   const [conciergeTab, setConciergeTab] = useState<'screening' | 'weight' | 'iv' | 'metabolic'>('screening');
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
@@ -138,7 +140,7 @@ export default function ServicesPage() {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Comprehensive Medical Services — Concierge & Preventive Medicine, Men's & Women's Health, Children's Health, Sexual Health, Podiatry, Lab, Pharmacy & Dental"
-        description="Explore Doctors360's full range of medical services. We offer Concierge & Preventive Medicine, Men's Health, Women's Health, Children's Health, Sexual Health, General Medical Services, Podiatry, Laboratory, Pharmacy, and Dental Care."
+        description="Explore Doctors360's full range of medical services. We offer Concierge & Preventive Medicine, Men's Health (TRT, SMC, cardiovascular, mental health, sexual health), Women's Health, Children's Health, Sexual Health, General Medical Services, Podiatry, Laboratory, Pharmacy, and Dental Care."
         path="/services"
       />
 
@@ -382,19 +384,26 @@ export default function ServicesPage() {
                       Men face distinct physiological requirements and wellness issues. Doctors360 provides confidential, specialized medical assessment and treatment including Testosterone Replacement Therapy, safe male circumcision, and general wellness monitoring.
                     </p>
 
-                    <div className="flex gap-2 p-1.5 bg-slate-100 rounded-xl w-full max-w-sm">
-                      <button
-                        onClick={() => setMenTab('trt')}
-                        className={`flex-1 text-center py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${menTab === 'trt' ? 'bg-primary-500 text-white shadow-sm' : 'text-slate-600 hover:text-primary-500'}`}
-                      >
-                        Hormone Therapy (TRT)
-                      </button>
-                      <button
-                        onClick={() => setMenTab('smc')}
-                        className={`flex-1 text-center py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${menTab === 'smc' ? 'bg-primary-500 text-white shadow-sm' : 'text-slate-600 hover:text-primary-500'}`}
-                      >
-                        Circumcision (SMC)
-                      </button>
+                    <div className="flex flex-wrap gap-1.5 p-1.5 bg-slate-100 rounded-xl w-full">
+                      {([
+                        { key: 'trt' as const, label: 'TRT' },
+                        { key: 'smc' as const, label: 'SMC' },
+                        { key: 'cardiovascular' as const, label: 'Cardiovascular' },
+                        { key: 'mental' as const, label: 'Mental Health' },
+                        { key: 'sexual' as const, label: 'Sexual Health' },
+                      ]).map(({ key, label }) => (
+                        <button
+                          key={key}
+                          onClick={() => setMenTab(key)}
+                          className={`flex-1 text-center py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
+                            menTab === key
+                              ? 'bg-primary-500 text-white shadow-sm'
+                              : 'text-slate-600 hover:text-primary-500'
+                          }`}
+                        >
+                          {label}
+                        </button>
+                      ))}
                     </div>
                   </div>
 
@@ -437,7 +446,7 @@ export default function ServicesPage() {
                           </div>
                         </div>
                       </div>
-                    ) : (
+                    ) : menTab === 'smc' ? (
                       <div className="space-y-6 animate-scale-in">
                         <div>
                           <span className="text-xs font-bold text-teal-deep uppercase tracking-widest block mb-1">Minor Surgical Service</span>
@@ -475,6 +484,271 @@ export default function ServicesPage() {
                           </p>
                         </div>
                       </div>
+                    ) : menTab === 'cardiovascular' ? (
+                      <div className="space-y-6 animate-scale-in">
+                        <div>
+                          <span className="text-xs font-bold text-teal-deep uppercase tracking-widest block mb-1">Protect Your Heart. Protect Your Future.</span>
+                          <h3 className="text-2xl font-bold text-primary-500">Cardiovascular Health Clinic</h3>
+                        </div>
+                        <p className="text-sm md:text-base text-slate-brand leading-relaxed">
+                          Your heart works around the clock to keep you healthy. At Doctors360, our Cardiovascular Health Clinic is dedicated to helping you prevent, detect, and manage heart disease before it becomes life-threatening. Whether you have risk factors such as high blood pressure, diabetes, obesity, smoking, excessive alcohol use, or a family history of heart disease, our team provides personalised care to keep your heart healthy for years to come.
+                        </p>
+
+                        <div className="grid sm:grid-cols-2 gap-4">
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Comprehensive Heart Health Assessment</h4>
+                            <ul className="text-xs text-slate-brand space-y-1.5">
+                              <li>• Blood pressure measurement</li>
+                              <li>• Heart rate assessment</li>
+                              <li>• BMI & waist circumference measurement</li>
+                              <li>• Cardiovascular risk & family history review</li>
+                              <li>• Lifestyle and nutrition assessment</li>
+                            </ul>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Hypertension Management</h4>
+                            <ul className="text-xs text-slate-brand space-y-1.5">
+                              <li>• Early diagnosis and medication management</li>
+                              <li>• Regular blood pressure monitoring</li>
+                              <li>• Lifestyle counselling</li>
+                              <li>• Home blood pressure monitoring guidance</li>
+                            </ul>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Cholesterol & Lipid Management</h4>
+                            <ul className="text-xs text-slate-brand space-y-1.5">
+                              <li>• Lipid profile testing and risk assessment</li>
+                              <li>• Dietary counselling</li>
+                              <li>• Medication management</li>
+                              <li>• Regular follow-up monitoring</li>
+                            </ul>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Diabetes & Heart Disease Prevention</h4>
+                            <ul className="text-xs text-slate-brand space-y-1.5">
+                              <li>• Blood sugar and diabetes risk assessment</li>
+                              <li>• Weight management and nutrition planning</li>
+                              <li>• Prevention of diabetes-related heart complications</li>
+                            </ul>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Heart Disease Screening</h4>
+                            <ul className="text-xs text-slate-brand space-y-1.5">
+                              <li>• Electrocardiogram (ECG)</li>
+                              <li>• Blood pressure monitoring and blood tests</li>
+                              <li>• Cardiovascular risk scoring</li>
+                              <li>• Referral for specialised cardiac investigations</li>
+                            </ul>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Weight Management for Heart Health</h4>
+                            <ul className="text-xs text-slate-brand space-y-1.5">
+                              <li>• Medical weight-loss consultations</li>
+                              <li>• Personalised nutrition and exercise planning</li>
+                              <li>• Lifestyle coaching and progress monitoring</li>
+                            </ul>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Smoking & Tobacco Cessation</h4>
+                            <ul className="text-xs text-slate-brand space-y-1.5">
+                              <li>• Smoking cessation counselling and behavioural support</li>
+                              <li>• Nicotine replacement therapy guidance</li>
+                              <li>• Relapse prevention and long-term follow-up</li>
+                            </ul>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Alcohol Reduction & Cessation</h4>
+                            <ul className="text-xs text-slate-brand space-y-1.5">
+                              <li>• Comprehensive alcohol use assessment</li>
+                              <li>• Personalised reduction or cessation plans</li>
+                              <li>• Counselling, nutritional guidance and follow-up</li>
+                              <li>• Referral for specialised addiction care when needed</li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <div className="p-4 rounded-xl bg-red-50 border border-red-200">
+                          <h4 className="font-semibold text-red-800 text-sm mb-1">Who Should Consider a Heart Health Check?</h4>
+                          <p className="text-xs text-red-900/80 leading-relaxed">
+                            Adults over 40 years, people with high blood pressure or diabetes, individuals who are overweight or obese, smokers or tobacco users, people who drink alcohol regularly or excessively, anyone with a family history of heart disease, people experiencing chest pain, shortness of breath, or palpitations, and anyone wanting to take a proactive approach to their health.
+                          </p>
+                        </div>
+
+                        <div className="p-4 rounded-xl bg-teal-50 border border-teal-200 flex gap-3 text-teal-900">
+                          <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                          <div className="text-xs leading-relaxed">
+                            <strong>Why Choose Doctors360?</strong> Comprehensive cardiovascular risk assessment, evidence-based prevention and treatment, personalised lifestyle and wellness plans, confidential and compassionate care, integrated services with Preventive Health, Laboratory, Weight Management and Wellness Clinics.
+                          </div>
+                        </div>
+                      </div>
+                    ) : menTab === 'mental' ? (
+                      <div className="space-y-6 animate-scale-in">
+                        <div>
+                          <span className="text-xs font-bold text-teal-deep uppercase tracking-widest block mb-1">Strong Minds. Healthier Lives.</span>
+                          <h3 className="text-2xl font-bold text-primary-500">Men's Mental Health</h3>
+                        </div>
+                        <p className="text-sm md:text-base text-slate-brand leading-relaxed">
+                          Mental health is an essential part of overall wellbeing, yet many men delay seeking help due to stigma or the belief that they should cope alone. At Doctors360, we provide confidential, compassionate, and evidence-based mental health services designed specifically for men. Whether you are experiencing stress, anxiety, depression, burnout, relationship challenges, or substance use concerns, our team is here to support you.
+                        </p>
+
+                        <div className="grid sm:grid-cols-2 gap-4">
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Stress Management</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Learn practical strategies to manage work, family, financial, and daily life pressures.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Anxiety Assessment & Treatment</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Professional assessment, counselling, and treatment plans for anxiety disorders.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Depression Screening & Care</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Early identification and personalised management for depression.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Burnout Recovery</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Support for professionals, business owners, and caregivers experiencing emotional exhaustion.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Sleep Health</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Assessment and treatment of insomnia and other sleep-related concerns.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Alcohol & Substance Use Support</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Confidential support to reduce or stop alcohol and tobacco use, including counselling, relapse prevention, and referral for specialised care.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Relationship & Family Counselling</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Support for communication, parenting, marriage, and family challenges.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Grief & Loss Counselling</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Compassionate care following bereavement or major life changes.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Workplace Mental Health</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Support for work-related stress, conflict, and career transitions.
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="p-4 rounded-xl bg-purple-50 border border-purple-200">
+                          <h4 className="font-semibold text-purple-800 text-sm mb-1">Who Can Benefit?</h4>
+                          <p className="text-xs text-purple-900/80 leading-relaxed">
+                            Men experiencing persistent stress, sadness, or anxiety. Those struggling with alcohol or substance use. Men facing relationship or family difficulties. Individuals with sleep problems or burnout. Anyone wanting to improve emotional wellbeing and resilience.
+                          </p>
+                        </div>
+
+                        <div className="p-4 rounded-xl bg-teal-50 border border-teal-200 flex gap-3 text-teal-900">
+                          <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                          <div className="text-xs leading-relaxed">
+                            <strong>Why Choose Doctors360?</strong> Confidential and respectful care. Evidence-based assessment and treatment. Integrated support with preventive health and wellness services. Personalised care plans and follow-up. A safe, judgement-free environment.
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="space-y-6 animate-scale-in">
+                        <div>
+                          <span className="text-xs font-bold text-teal-deep uppercase tracking-widest block mb-1">Confidential Care for Every Stage of Life</span>
+                          <h3 className="text-2xl font-bold text-primary-500">Men's Sexual Health</h3>
+                        </div>
+                        <p className="text-sm md:text-base text-slate-brand leading-relaxed">
+                          Sexual health is an important part of a man's physical, emotional, and reproductive wellbeing. At Doctors360, we provide confidential, respectful, and evidence-based sexual health services to help men prevent, diagnose, and treat sexual health concerns. Whether you are experiencing changes in sexual performance, have concerns about sexually transmitted infections, or simply want a routine sexual health check, our experienced clinicians are here to help.
+                        </p>
+
+                        <div className="grid sm:grid-cols-2 gap-4">
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">ED Assessment & Treatment</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Comprehensive evaluation and personalised treatment to restore confidence and sexual function.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Premature Ejaculation Management</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Medical assessment, counselling, and treatment options tailored to your needs.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Low Libido Evaluation</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Assessment of hormonal, medical, and lifestyle factors contributing to reduced sexual desire.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">STI Screening & Treatment</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Confidential testing and treatment for common sexually transmitted infections.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">HIV Testing, Prevention & Care</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Rapid HIV testing, counselling, and access to prevention services including PrEP and PEP where appropriate.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Male Fertility Assessment</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Evaluation for men experiencing difficulty conceiving, including referral for semen analysis and specialist care.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Testosterone Deficiency Assessment</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Clinical assessment and laboratory testing for men with symptoms of low testosterone.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Safe Male Circumcision</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Professional circumcision services using approved techniques with comprehensive follow-up care.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Sexual Health Counselling</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Support for sexual wellbeing, relationship concerns, performance anxiety, and healthy sexual practices.
+                            </p>
+                          </div>
+                          <div className="bg-white p-4 rounded-xl border border-slate-200/50">
+                            <h4 className="font-semibold text-primary-500 text-sm mb-1.5">Routine Sexual Health Check-ups</h4>
+                            <p className="text-xs text-slate-brand leading-relaxed">
+                              Regular screening and preventive care to maintain lifelong sexual health.
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="p-4 rounded-xl bg-pink-50 border border-pink-200">
+                          <h4 className="font-semibold text-pink-800 text-sm mb-1">Who Should Consider a Sexual Health Check?</h4>
+                          <p className="text-xs text-pink-900/80 leading-relaxed">
+                            Men with concerns about sexual performance or libido. Anyone with symptoms of a sexually transmitted infection. Men starting a new sexual relationship. Men planning to start a family. Anyone seeking confidential sexual health advice. Men interested in preventive sexual health screening.
+                          </p>
+                        </div>
+
+                        <div className="p-4 rounded-xl bg-teal-50 border border-teal-200 flex gap-3 text-teal-900">
+                          <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                          <div className="text-xs leading-relaxed">
+                            <strong>Why Choose Doctors360?</strong> Confidential and discreet consultations. Evidence-based diagnosis and treatment. Experienced healthcare professionals. Modern laboratory support. Integrated care with Men's Health, Preventive Health, Laboratory and Mental Health services. Respectful, judgement-free environment.
+                          </div>
+                        </div>
+                      </div>
                     )}
                   </div>
                 </div>
@@ -495,6 +769,18 @@ export default function ServicesPage() {
                     <FAQItem
                       question="What is the recovery period after an adult circumcision?"
                       answer="For adults, full recovery typically takes between 4 to 6 weeks. Light activities can be resumed in a few days, but heavy lifting and sexual activity must be avoided for the full recovery period to allow complete wound healing. Detailed care instructions are provided immediately after the procedure."
+                    />
+                    <FAQItem
+                      question="How often should I have a heart health check?"
+                      answer="We recommend a baseline cardiovascular assessment from age 40, or earlier if you have risk factors such as high blood pressure, diabetes, obesity, smoking, or a family history of heart disease. Your clinician will advise on the appropriate follow-up interval based on your individual risk profile."
+                    />
+                    <FAQItem
+                      question="How do I know if I need mental health support?"
+                      answer="If you have been experiencing persistent feelings of sadness, anxiety, irritability, or hopelessness for more than two weeks, or if stress, sleep problems, or substance use are affecting your daily life, we encourage you to book a confidential consultation. Seeking help early can prevent more serious difficulties."
+                    />
+                    <FAQItem
+                      question="Is a men's sexual health consultation confidential?"
+                      answer="Yes, absolutely. All sexual health consultations and test results are strictly confidential and will not be shared without your explicit consent, except where required by law. Our clinicians provide a respectful, judgement-free environment for all patients."
                     />
                   </div>
                 </div>

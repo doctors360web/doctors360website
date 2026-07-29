@@ -15,7 +15,7 @@ const services = [
   {
     icon: UserRound,
     title: "Men's Health",
-    text: "Dedicated medical services for men, specializing in Testosterone Replacement Therapy (TRT), safe male circumcision, and overall wellness monitoring.",
+    text: "Comprehensive men's healthcare covering Testosterone Replacement Therapy (TRT), safe male circumcision, cardiovascular health, mental health support, and sexual wellness.",
     accent: 'from-blue-50 to-indigo-100/40',
     iconBg: 'bg-blue-100 text-blue-600',
     slug: 'mens-health',
