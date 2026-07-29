@@ -1,6 +1,6 @@
 # Doctors360 — Full Content Reference
 # Website: https://www.doctors360.org
-# Last Updated: 2026-07-24
+# Last Updated: 2026-07-29
 # This file contains the full-text content of the Doctors360 website for AI model consumption.
 
 ---
@@ -96,31 +96,88 @@ Your health data and personal information are handled with the utmost care, secu
 
 ## Our Departments — Specialized Care Across Every Field
 
-With 4 specialized services, we bring focused, expert care to the communities we serve.
+With 10 medical specialties, we bring focused, expert care to the communities we serve.
 
-### Reproductive Health
-Comprehensive reproductive healthcare services including family planning, prenatal and postnatal care, and sexual health education.
-- Family planning counseling
-- Prenatal & postnatal care
-- Sexual health screening
+### Concierge & Preventive Medicine
+Comprehensive health management including routine check-ups, preventive screenings, weight management programs, and wellness IV therapy.
+- Annual wellness exams & cardiovascular screening
+- Weight management & metabolic risk management
+- Wellness IV Therapy (hydration, recovery, executive wellness)
+- Diabetes & hypertension care
 
 ### Men's Health
-Dedicated men's health services addressing the unique medical needs of men at every stage of life.
-- Prostate health screening
-- Hormonal health assessment
-- Lifestyle & wellness coaching
+Dedicated men's health services with 5 sub-specialties covering hormone therapy, circumcision, cardiovascular health, mental health, and sexual health.
 
-### Vaccination Clinic
-Up-to-date immunisation services for children and adults, following WHO and national guidelines.
-- Childhood vaccination programs
-- Adult & travel vaccines
-- Catch-up immunisation schedules
+#### TRT — Testosterone Replacement Therapy
+Medically supervised treatment for men with clinically confirmed testosterone deficiency. Includes comprehensive diagnostics, symptom evaluation, and ongoing monitoring.
+
+#### SMC — Safe Male Circumcision
+Professional circumcision services for infants, children, adolescents, and adults. Sterile procedures with thorough pre-op and post-op care.
+
+#### Cardiovascular Health Clinic
+Heart health assessments, blood pressure measurement, BMI calculation, cardiovascular risk assessment. Services include hypertension management, cholesterol & lipid management, diabetes & heart disease prevention, heart disease screening (ECG), weight management for heart health, smoking & tobacco cessation, and alcohol reduction programmes.
+
+#### Men's Mental Health
+Confidential mental health services for men including stress management, anxiety assessment & treatment, depression screening & care, burnout recovery, sleep health, alcohol & substance use support, relationship & family counselling, grief & loss counselling, and workplace mental health support.
+
+#### Men's Sexual Health
+Confidential sexual health services including ED assessment & treatment, premature ejaculation management, low libido evaluation, STI screening & treatment, HIV testing prevention & care (PrEP/PEP), male fertility assessment, testosterone deficiency assessment, and routine sexual health check-ups.
+
+### Women's Health
+Comprehensive clinical support, preventative checkups, and educational tools for women through every life transition.
+- Wellness screenings & cervical cancer screening
+- Family planning & contraception
+- Pregnancy & prenatal care
+- Menopause clinic
+
+### Children's Health
+Paediatric services supporting healthy development of infants, children, and adolescents.
+- Well-child checkups & growth monitoring
+- Vaccination programmes
+- Common illness management
+- Adolescent health consultations
+
+### Sexual Health
+Confidential, non-judgmental sexual health services for individuals and couples.
+- STI screening & treatment
+- Reproductive health counselling
+- Sexual health education
+- Counselling & support
+
+### General Medical Services
+Comprehensive primary care for acute and chronic conditions.
+- Routine consultations
+- Chronic disease management
+- Diagnostic evaluations
+- Referral coordination
+
+### Podiatry
+Specialised foot and ankle care.
+- Fungal nail treatment
+- Heel pain & injury care
+- Diabetic foot assessment
+- Minor surgical procedures
+
+### Laboratory
+State-of-the-art diagnostic laboratory services.
+- Haematology
+- Clinical chemistry
+- Microbiology & infectious disease
+- Hormone & specialised testing
+
+### Pharmacy
+Full-service pharmacy with professional pharmaceutical care.
+- Prescription dispensing
+- Medication counselling
+- Over-the-counter products
+- Chronic medication management
 
 ### Dental
-Professional dental care covering preventive, restorative, and cosmetic dentistry for the whole family.
-- Routine check-ups & cleaning
-- Fillings & extractions
-- Oral health education
+Professional dental care for the whole family.
+- Preventive dentistry
+- Restorative procedures
+- Extractions & emergency care
+- Periodontal care
 
 ---
 
@@ -133,7 +190,7 @@ Doctors360 is an integrated medical services provider and registered NGO based i
 Our main medical centre is located in Juba, South Sudan. We also run community health programs in Uganda. Our coordinates are 4.859363, 31.57125. We are expanding into additional East African countries by 2027.
 
 ### What medical services does Doctors360 offer?
-We offer 4 specialized services: Reproductive Health — family planning, prenatal and postnatal care, and sexual health education; Men's Health — prostate health screening, hormonal health assessment, and lifestyle & wellness coaching; Vaccination Clinic — childhood vaccination programs, adult & travel vaccines, and catch-up immunisation schedules; and Dental — routine check-ups & cleaning, fillings & extractions, and oral health education.
+We offer 10 medical specialties: Concierge & Preventive Medicine (screenings, weight management, IV therapy, metabolic care), Men's Health (TRT, safe male circumcision, cardiovascular health, mental health, sexual health), Women's Health (screenings, family planning, pregnancy care, menopause), Children's Health (checkups, vaccinations, illness management), Sexual Health (STI screening, counselling), General Medical Services (consultations, chronic disease management), Podiatry (foot & ankle care), Laboratory (diagnostic testing), Pharmacy (prescriptions, medication management), and Dental (preventive & restorative care).
 
 ### Is Doctors360 a nonprofit organization?
 Yes. Doctors360 is a registered NGO in South Sudan. We provide 30% of our care free of charge and operate community health programs funded by donors and partnerships with organizations including WHO, UNICEF, and MSF.

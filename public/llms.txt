@@ -18,17 +18,32 @@ Doctors360 is an integrated medical services provider and registered NGO committ
 
 ## Pages
 - [Home](https://www.doctors360.org/): Main landing page with overview of services, departments, testimonials, and appointment booking.
+- [Services](https://www.doctors360.org/services): All medical services including Concierge & Preventive Medicine, Men's Health, Women's Health, Children's Health, Sexual Health, General Medical Services, Podiatry, Laboratory, Pharmacy, and Dental Care.
 - [About Us](https://www.doctors360.org/about): Organization history, leadership team, governance board, strategic objectives, and timeline.
 - [NGO Programs](https://www.doctors360.org/programs): Community health programs, impact statistics, partnerships, and geographic reach across East Africa.
 - [News & Blog](https://www.doctors360.org/news): Medical articles, community stories, organisational updates, and health education.
 - [Gallery](https://www.doctors360.org/gallery): Photos from community outreach, medical centre, and events.
 - [Donate & Support](https://www.doctors360.org/donate): Donation tiers, volunteer opportunities, corporate partnerships, and support form.
 
-## Medical Services (4 Services)
-- Reproductive Health — Family planning, prenatal and postnatal care, sexual health education
-- Men's Health — Prostate health screening, hormonal health assessment, lifestyle & wellness coaching
-- Vaccination Clinic — Childhood vaccination programs, adult & travel vaccines, catch-up immunisation schedules
-- Dental — Routine check-ups & cleaning, fillings & extractions, oral health education
+## Medical Services (10 Specialties)
+- Concierge & Preventive Medicine — Annual wellness exams, cardiovascular screening, weight management, IV therapy, metabolic risk management
+- Men's Health — TRT, safe male circumcision, cardiovascular health clinic, men's mental health, men's sexual health
+- Women's Health — Wellness screenings, family planning, pregnancy & prenatal care, menopause clinic
+- Children's Health — Well-child checkups, vaccinations, common illness management, adolescent health
+- Sexual Health — STI screening & treatment, reproductive health counselling, sexual health education
+- General Medical Services — Routine consultations, chronic disease management, diagnostic evaluations
+- Podiatry — Fungal nail treatment, heel pain care, diabetic foot assessment, minor procedures
+- Laboratory — Haematology, clinical chemistry, microbiology, hormone testing
+- Pharmacy — Prescription dispensing, medication counselling, chronic medication management
+- Dental — Preventive dentistry, restorative procedures, extractions, periodontal care
+
+### Men's Health Expanded
+Doctors360 Men's Health clinic covers 5 sub-specialties:
+1. **TRT** — Testosterone Replacement Therapy for men with clinically confirmed testosterone deficiency
+2. **SMC** — Safe Male Circumcision for infants, children, and adults
+3. **Cardiovascular Health** — Heart health assessments, hypertension & cholesterol management, heart disease screening, smoking/alcohol cessation, lifestyle coaching
+4. **Men's Mental Health** — Stress management, anxiety, depression, burnout recovery, sleep health, substance use support, relationship counselling
+5. **Men's Sexual Health** — ED treatment, premature ejaculation, low libido, STI/HIV testing, male fertility, sexual health counselling
 
 ## Four-Pillar Care Model
 1. Prevention & Wellness — Check-ups, vaccinations, lifestyle counseling, and preventive screenings

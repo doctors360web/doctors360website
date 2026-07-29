@@ -142,6 +142,18 @@ export default function ServicesPage() {
         title="Comprehensive Medical Services — Concierge & Preventive Medicine, Men's & Women's Health, Children's Health, Sexual Health, Podiatry, Lab, Pharmacy & Dental"
         description="Explore Doctors360's full range of medical services. We offer Concierge & Preventive Medicine, Men's Health (TRT, SMC, cardiovascular, mental health, sexual health), Women's Health, Children's Health, Sexual Health, General Medical Services, Podiatry, Laboratory, Pharmacy, and Dental Care."
         path="/services"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Doctors360 Medical Services",
+          "description": "Full range of medical services including Concierge & Preventive Medicine, Men's Health, Women's Health, Children's Health, Sexual Health, General Medical Services, Podiatry, Laboratory, Pharmacy, and Dental Care.",
+          "url": "https://www.doctors360.org/services",
+          "isPartOf": { "@id": "https://www.doctors360.org/#website" },
+          "about": {
+            "@type": "Thing",
+            "name": "Medical Services"
+          }
+        }}
       />
 
       {/* Hero Header */}
