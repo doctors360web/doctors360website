@@ -45,3 +45,4 @@ test-login.cjs
 test-signup.cjs
 update-admin-credentials.cjs
 
+.vercel
